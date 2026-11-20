@@ -1,0 +1,16 @@
+# preview build (claude.ai artifact only)
+preview/
+preview_files.json
+
+# python
+__pycache__/
+
+# old versions and backups
+src/*.bak.py
+src/build.v2.py
+src/site.v2.css
+src/site.v2.js
+
+# os
+.DS_Store
+Thumbs.db

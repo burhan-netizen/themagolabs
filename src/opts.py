@@ -296,8 +296,8 @@ CSS = r'''
 .js .d3-step{display:none}.d3-step{margin-top:56px;animation:d3in .6s cubic-bezier(.2,.8,.2,1)}
 .js .d3-step.on{display:block}
 @keyframes d3in{from{opacity:0;transform:translateY(30px)}}
-.d3-step label,.d3-step .q{display:block;font-size:clamp(34px,5vw,72px);letter-spacing:-.055em;line-height:1}
-.d3-step .q em,.d3-step label em{font-family:"Newsreader",serif;font-weight:300}
+.d3-step label,.d3-step .d3-q{display:block;font-size:clamp(34px,5vw,72px);letter-spacing:-.055em;line-height:1}
+.d3-step .d3-q em,.d3-step label em{font-family:"Newsreader",serif;font-weight:300}
 .d3-step input{display:block;width:100%;margin-top:36px;background:none;border:0;border-bottom:2px solid #3A3A37;color:var(--paper);font:inherit;font-size:clamp(24px,3vw,40px);padding:10px 0;letter-spacing:-.03em}
 .d3-step input::placeholder{color:#55534E}
 .d3-step input:focus{outline:none;border-color:var(--go)}
@@ -319,11 +319,16 @@ document.addEventListener('DOMContentLoaded',function(){
 var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var _d=$('#op-data');var DATA=_d?JSON.parse(_d.textContent):{concepts:[],reviews:[]};
-function wa(o){var n=(window.MAGO&&MAGO.whatsapp)||'';var lines=['Hi Burhan, I\'m '+(o.name||'')+(o.business?' from '+o.business:'')+'.',
+function msg(o){return ['Hi Burhan, I\'m '+(o.name||'')+(o.business?' from '+o.business:'')+'.',
  o.has==='no'?'I don\'t have a website yet. I\'d like the free 48-hour preview.':'I have a website'+(o.website?' at '+o.website:'')+'. I\'d like the free audit.',
- o.goals&&o.goals.length?'I want more '+o.goals.join(', ')+'.':'', o.msg||'', 'Reach me at '+(o.reach||'')+'.'].filter(Boolean);
- var ep=window.MAGO&&MAGO.formEndpoint; if(ep){try{fetch(ep,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})}catch(e){}}
- return 'https://wa.me/'+n+'?text='+encodeURIComponent(lines.join('\n'));}
+ o.goals&&o.goals.length?'I want more '+o.goals.join(', ')+'.':'', o.msg||'', 'Reach me at '+(o.reach||'')+'.'].filter(Boolean).join('\n');}
+function wa(o){var n=(window.MAGO&&MAGO.whatsapp)||'';return 'https://wa.me/'+n+'?text='+encodeURIComponent(msg(o));}
+function sendMail(o){var M=window.MAGO||{},ep=M.formEndpoint;
+ var subj='New enquiry: '+(o.business||o.name||'website')+(o.has==='no'?' (no website yet)':'');
+ if(!ep){location.href='mailto:'+(M.email||'')+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(msg(o));return Promise.resolve('mailto');}
+ var body={name:o.name||'',business:o.business||'',has_website:o.has==='no'?'no':'yes',website:o.website||'',wants_more:(o.goals||[]).join(', '),contact:o.reach||'',message:msg(o),subject:subj,_subject:subj,page:location.pathname};
+ if(M.formKey)body.access_key=M.formKey;
+ return fetch(ep,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error(r.status);return 'sent'});}
 function loadLong(ph){var l=$('img.long',ph);if(l&&!l.src)l.src=l.dataset.src;}
 $$('.o-ph').forEach(function(ph){ph.addEventListener('pointerenter',function(){loadLong(ph)});ph.addEventListener('focus',function(){loadLong(ph)});});
 
@@ -432,19 +437,24 @@ $$('.d2').forEach(function(sec){var f=$('form',sec),url=$('.d2-url',sec);
 /* D3 one at a time */
 $$('.d3-box').forEach(function(sec){var st=$$('.d3-step',sec),i=0,o={goals:[]},bar=$('.d3-prog i',sec),lab=$('.d3-prog .c',sec);
  function vis(k){return !(st[k].dataset.key==='website'&&o.has==='no')}
- function show(k,foc){i=k;st.forEach(function(s,j){s.classList.toggle('on',j===k)});var tot=st.length-1;bar.style.width=(Math.min(k,tot)/tot*100)+'%';lab.textContent=k>=tot?'Review':(String(k+1)+' of '+tot);
+ function show(k,foc){i=k;st.forEach(function(s,j){s.classList.toggle('on',j===k)});var tot=st.length-2;bar.style.width=(Math.min(k,tot)/tot*100)+'%';lab.textContent=k>tot?'Sent':k===tot?'Review':(String(k+1)+' of '+tot);
   var inp=$('input',st[k]);if(inp&&foc!==false)setTimeout(function(){inp.focus({preventScroll:true})},50);if(st[k].dataset.key==='sum')sum();}
  function next(){var s=st[i],key=s.dataset.key,inp=$('input',s);if(inp){var v=inp.value.trim();if(!v&&inp.required){inp.setAttribute('aria-invalid','true');inp.focus();return;}o[key]=v;}
   var k=i+1;while(k<st.length&&!vis(k))k++;show(k);}
  function back(){var k=i-1;while(k>0&&!vis(k))k--;show(Math.max(0,k));}
  function sum(){var rows=[['Name',o.name],['Business',o.business],['Website',o.has==='no'?'Not yet':(o.website||'Yes')],['Wants more',(o.goals.length?o.goals:['calls']).join(', ')],['Reach at',o.reach]];
-  $('.d3-sum',sec).innerHTML=rows.map(function(r){return '<div><span></span><b></b></div>'}).join('');$$('.d3-sum div',sec).forEach(function(d,j){$('span',d).textContent=rows[j][0];$('b',d).textContent=rows[j][1]||'-'});$('.d3-go',sec).href=wa(o);}
+  $('.d3-sum',sec).innerHTML=rows.map(function(r){return '<div><span></span><b></b></div>'}).join('');$$('.d3-sum div',sec).forEach(function(d,j){$('span',d).textContent=rows[j][0];$('b',d).textContent=rows[j][1]||'-'});$$('.d3-wa',sec).forEach(function(a){a.href=wa(o)});}
  $$('.d3-step input',sec).forEach(function(inp){inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();next();}})});
  $$('.next',sec).forEach(function(b){b.onclick=next});$$('.back',sec).forEach(function(b){b.onclick=back});
  $$('.d3-ch',sec).forEach(function(w){var s=w.closest('.d3-step'),multi=s.dataset.key==='goals';$$('button',w).forEach(function(b){b.onclick=function(){
   if(multi){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');o.goals=$$('button[aria-pressed=true]',w).map(function(x){return x.dataset.v});}
   else{$$('button',w).forEach(function(x){x.setAttribute('aria-pressed',x===b)});o[s.dataset.key]=b.dataset.v;setTimeout(next,reduce?0:260);}}})});
  document.addEventListener('mago:site',function(e){o.has=e.detail;$$('.d3-step[data-key=has] button',sec).forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===e.detail)});});
+ var sb=$('.d3-send',sec),stt=$('.d3-status',sec);
+ if(sb)sb.addEventListener('click',function(){if(!o.goals.length)o.goals=['calls'];sb.disabled=true;stt.textContent='Sending...';
+  sendMail(o).then(function(how){stt.textContent='';try{(window.dataLayer=window.dataLayer||[]).push({event:'generate_lead',form:'contact',has_site:o.has||'yes',via:how})}catch(e){}
+   if(how==='sent'){var k=st.length-1;show(k,false);}else{sb.disabled=false;stt.textContent='Your email app should open with the message ready. Nothing opened? Use WhatsApp instead.';}})
+  .catch(function(){sb.disabled=false;stt.textContent='That didn\'t go through. Please try again, or send it on WhatsApp.';});});
  show(0,false);});
 });
 '''
@@ -579,15 +589,18 @@ def parts(ns, tagged=True):
     steps = [
         ('name', f'<label for="d3a">Hi, I\'m Burhan. <em>And you are?</em></label><input id="d3a" name="name" placeholder="Type your name" required autocomplete="name">'),
         ('business', f'<label for="d3b">What\'s your <em>business</em> called?</label><input id="d3b" name="business" placeholder="Business name" autocomplete="organization">'),
-        ('has', f'<span class="q">Do you have a <em>website</em> yet?</span><div class="d3-ch">{ch([("yes", "Yes, I do"), ("no", "Not yet")])}</div>'),
+        ('has', f'<span class="d3-q">Do you have a <em>website</em> yet?</span><div class="d3-ch">{ch([("yes", "Yes, I do"), ("no", "Not yet")])}</div>'),
         ('website', f'<label for="d3c">Where can I <em>find it?</em></label><input id="d3c" name="website" placeholder="yourbusiness.com" inputmode="url">'),
-        ('goals', f'<span class="q">What do you want <em>more of?</em></span><div class="d3-ch">{ch([(g_, g_.capitalize()) for g_ in ["calls", "bookings", "enquiries", "sales"]])}</div>'),
+        ('goals', f'<span class="d3-q">What do you want <em>more of?</em></span><div class="d3-ch">{ch([(g_, g_.capitalize()) for g_ in ["calls", "bookings", "enquiries", "sales"]])}</div>'),
         ('reach', f'<label for="d3d">Best way to <em>reach you?</em></label><input id="d3d" name="reach" placeholder="Email or phone" required autocomplete="email">'),
     ]
     d3s = "".join(f'<div class="d3-step" data-key="{k}">{h}<div class="d3-nav"><button class="op-btn next" type="button">OK →</button>'
                   f'{"<span class=hint>or press Enter</span>" if "input" in h else ""}{"" if i == 0 else "<button class=back type=button>Back</button>"}</div></div>' for i, (k, h) in enumerate(steps))
-    d3s += ('<div class="d3-step" data-key="sum"><span class="q">All set. <em>Send it?</em></span><div class="d3-sum"></div>'
-            '<div class="d3-nav"><a class="op-btn go d3-go" href="#" target="_blank" rel="noopener">Send on WhatsApp</a><button class="back" type="button">Back</button></div></div>')
+    d3s += ('<div class="d3-step" data-key="sum"><span class="d3-q">All set. <em>Send it?</em></span><div class="d3-sum"></div>'
+            '<div class="d3-nav"><button class="op-btn go d3-send" type="button">Send it →</button><a class="d3-wa" href="#" target="_blank" rel="noopener">or send it on WhatsApp</a><button class="back" type="button">Back</button></div>'
+            '<p class="d3-status" role="status" aria-live="polite"></p></div>'
+            '<div class="d3-step" data-key="done"><span class="d3-q">Thank you. <em>It\'s with Burhan.</em></span>'
+            '<p class="d3-done-p">You\'ll hear back within one business day. Want an answer sooner? <a class="d3-wa" href="#" target="_blank" rel="noopener">Message Burhan on WhatsApp</a>.</p></div>')
     d3box = f'<div class="d3-box"><div class="d3-prog"><span class="c">1 of 6</span><span class="t"><i style="width:0"></i></span></div>{d3s}</div>'
     d3 = (f'<section class="op-sec op-dark d3" aria-label="Option D3">{tag("D3", "One question at a time", "Full-screen, one big question per step with a progress bar. Press Enter to move on.")}'
           f'<div class="wrap">{d3box}</div></section>')
@@ -614,6 +627,30 @@ def build(ns):
     page("/options/", "Design Options", "Design options for review.", body, noindex=True)
 
 SITE_CSS = r"""
+/* contact v2: calm background, one card, one question style */
+.cx{position:relative;background:#0B0B0A;color:var(--paper);overflow:hidden;padding:clamp(90px,11vw,150px) 0 clamp(70px,8vw,110px)}
+.cx-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 85% 0%,rgba(16,181,101,.13),transparent 70%),radial-gradient(50% 60% at 0% 100%,rgba(242,241,236,.05),transparent 70%)}
+.cx .wrap{position:relative;z-index:1}
+.cx-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:14px 32px}
+.cx .c-h{margin:0;font-size:clamp(20px,1.8vw,26px);color:#B9B7AF}
+.cx-card{margin-top:36px;border-radius:32px;background:linear-gradient(180deg,#151514,#111110);border:1px solid #262624;padding:clamp(26px,5vw,72px);box-shadow:0 60px 120px -60px rgba(0,0,0,.9)}
+.cx .d3-box{margin:0;max-width:none}
+.cx .d3-step{margin-top:clamp(28px,4vw,48px)}
+.cx .d3-step label,.cx .d3-step .d3-q{display:block;font-size:clamp(30px,4.2vw,60px);line-height:1.02;letter-spacing:-.05em;color:var(--paper);background:none;border:0;padding:0;width:auto}
+.cx .d3-step input{border-bottom-color:#33332F}
+.cx .d3-sum div{font-size:17px}
+.cx .d3-nav{gap:14px 22px}
+.cx .d3-wa{color:#C9C7BF;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(242,241,236,.3);padding-bottom:2px}
+.cx .d3-wa:hover{color:var(--go);border-color:var(--go)}
+.d3-status{min-height:1.4em;margin-top:16px;color:#C9C7BF;font-size:15px}
+.d3-done-p{margin-top:22px;color:#B9B7AF;font-size:18px;max-width:46ch}
+.d3-done-p a{color:var(--paper)}
+.d3-send[disabled]{opacity:.6;cursor:progress}
+.cx .d3-alt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px;align-items:center;margin-top:28px;color:#8F8D86;font-size:14.5px}
+.cx .d3-alt a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(242,241,236,.35);padding-bottom:3px;display:inline-flex;gap:8px;align-items:center}
+.cx .d3-alt a:hover{border-color:var(--go);color:var(--go)}
+@media (max-width:700px){.cx-card{border-radius:24px}.cx .d3-alt{flex-direction:column;align-items:flex-start}}
+.formgrid.solo{display:block}.formgrid.solo .intro{max-width:880px}
 /* chosen sections on the live site */
 .a2-more{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-top:44px;padding-top:28px;border-top:1px solid #2A2A28}
 .a2-more .cnote,.a2-more>div:first-child{max-width:720px}
@@ -621,7 +658,7 @@ SITE_CSS = r"""
 .c1-swipe:active{cursor:grabbing}
 @media (pointer:coarse){.d3-nav .hint{display:none}}
 .contact-sec .d3-box{margin-top:36px;position:relative;z-index:2}
-.contact-sec .d3-step label,.contact-sec .d3-step .q{font-size:clamp(30px,4.4vw,64px)}
+.contact-sec .d3-step label,.contact-sec .d3-step .d3-q{font-size:clamp(30px,4.4vw,64px)}
 .contact-sec .d3-step{margin-top:40px}
 .contact-sec .c-h{max-width:none;font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;margin-top:18px;color:#DAD8D0;font-weight:400}
 .contact-sec .c-h em{font-family:"Newsreader",serif;font-weight:300}

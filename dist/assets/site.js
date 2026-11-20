@@ -455,7 +455,7 @@ window.MAGO_ORBIT = function (G, ST) {
     });
     /* footer word */
     var fw = $('.ftr .word');
-    if (fw) G.from(split(fw), { yPercent: 100, duration: 1.2, stagger: .06, ease: 'power4.out', scrollTrigger: { trigger: fw, start: 'top 95%' } });
+    if (fw) G.from(fw, { y: 70, opacity: 0, duration: 1.3, ease: 'power4.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: fw, start: 'top 95%' } });
     /* parallax media */
     $$('[data-parallax]').forEach(function (el) {
       G.fromTo(el, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
@@ -667,11 +667,16 @@ document.addEventListener('DOMContentLoaded',function(){
 var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var _d=$('#op-data');var DATA=_d?JSON.parse(_d.textContent):{concepts:[],reviews:[]};
-function wa(o){var n=(window.MAGO&&MAGO.whatsapp)||'';var lines=['Hi Burhan, I\'m '+(o.name||'')+(o.business?' from '+o.business:'')+'.',
+function msg(o){return ['Hi Burhan, I\'m '+(o.name||'')+(o.business?' from '+o.business:'')+'.',
  o.has==='no'?'I don\'t have a website yet. I\'d like the free 48-hour preview.':'I have a website'+(o.website?' at '+o.website:'')+'. I\'d like the free audit.',
- o.goals&&o.goals.length?'I want more '+o.goals.join(', ')+'.':'', o.msg||'', 'Reach me at '+(o.reach||'')+'.'].filter(Boolean);
- var ep=window.MAGO&&MAGO.formEndpoint; if(ep){try{fetch(ep,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})}catch(e){}}
- return 'https://wa.me/'+n+'?text='+encodeURIComponent(lines.join('\n'));}
+ o.goals&&o.goals.length?'I want more '+o.goals.join(', ')+'.':'', o.msg||'', 'Reach me at '+(o.reach||'')+'.'].filter(Boolean).join('\n');}
+function wa(o){var n=(window.MAGO&&MAGO.whatsapp)||'';return 'https://wa.me/'+n+'?text='+encodeURIComponent(msg(o));}
+function sendMail(o){var M=window.MAGO||{},ep=M.formEndpoint;
+ var subj='New enquiry: '+(o.business||o.name||'website')+(o.has==='no'?' (no website yet)':'');
+ if(!ep){location.href='mailto:'+(M.email||'')+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(msg(o));return Promise.resolve('mailto');}
+ var body={name:o.name||'',business:o.business||'',has_website:o.has==='no'?'no':'yes',website:o.website||'',wants_more:(o.goals||[]).join(', '),contact:o.reach||'',message:msg(o),subject:subj,_subject:subj,page:location.pathname};
+ if(M.formKey)body.access_key=M.formKey;
+ return fetch(ep,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error(r.status);return 'sent'});}
 function loadLong(ph){var l=$('img.long',ph);if(l&&!l.src)l.src=l.dataset.src;}
 $$('.o-ph').forEach(function(ph){ph.addEventListener('pointerenter',function(){loadLong(ph)});ph.addEventListener('focus',function(){loadLong(ph)});});
 
@@ -780,18 +785,23 @@ $$('.d2').forEach(function(sec){var f=$('form',sec),url=$('.d2-url',sec);
 /* D3 one at a time */
 $$('.d3-box').forEach(function(sec){var st=$$('.d3-step',sec),i=0,o={goals:[]},bar=$('.d3-prog i',sec),lab=$('.d3-prog .c',sec);
  function vis(k){return !(st[k].dataset.key==='website'&&o.has==='no')}
- function show(k,foc){i=k;st.forEach(function(s,j){s.classList.toggle('on',j===k)});var tot=st.length-1;bar.style.width=(Math.min(k,tot)/tot*100)+'%';lab.textContent=k>=tot?'Review':(String(k+1)+' of '+tot);
+ function show(k,foc){i=k;st.forEach(function(s,j){s.classList.toggle('on',j===k)});var tot=st.length-2;bar.style.width=(Math.min(k,tot)/tot*100)+'%';lab.textContent=k>tot?'Sent':k===tot?'Review':(String(k+1)+' of '+tot);
   var inp=$('input',st[k]);if(inp&&foc!==false)setTimeout(function(){inp.focus({preventScroll:true})},50);if(st[k].dataset.key==='sum')sum();}
  function next(){var s=st[i],key=s.dataset.key,inp=$('input',s);if(inp){var v=inp.value.trim();if(!v&&inp.required){inp.setAttribute('aria-invalid','true');inp.focus();return;}o[key]=v;}
   var k=i+1;while(k<st.length&&!vis(k))k++;show(k);}
  function back(){var k=i-1;while(k>0&&!vis(k))k--;show(Math.max(0,k));}
  function sum(){var rows=[['Name',o.name],['Business',o.business],['Website',o.has==='no'?'Not yet':(o.website||'Yes')],['Wants more',(o.goals.length?o.goals:['calls']).join(', ')],['Reach at',o.reach]];
-  $('.d3-sum',sec).innerHTML=rows.map(function(r){return '<div><span></span><b></b></div>'}).join('');$$('.d3-sum div',sec).forEach(function(d,j){$('span',d).textContent=rows[j][0];$('b',d).textContent=rows[j][1]||'-'});$('.d3-go',sec).href=wa(o);}
+  $('.d3-sum',sec).innerHTML=rows.map(function(r){return '<div><span></span><b></b></div>'}).join('');$$('.d3-sum div',sec).forEach(function(d,j){$('span',d).textContent=rows[j][0];$('b',d).textContent=rows[j][1]||'-'});$$('.d3-wa',sec).forEach(function(a){a.href=wa(o)});}
  $$('.d3-step input',sec).forEach(function(inp){inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();next();}})});
  $$('.next',sec).forEach(function(b){b.onclick=next});$$('.back',sec).forEach(function(b){b.onclick=back});
  $$('.d3-ch',sec).forEach(function(w){var s=w.closest('.d3-step'),multi=s.dataset.key==='goals';$$('button',w).forEach(function(b){b.onclick=function(){
   if(multi){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');o.goals=$$('button[aria-pressed=true]',w).map(function(x){return x.dataset.v});}
   else{$$('button',w).forEach(function(x){x.setAttribute('aria-pressed',x===b)});o[s.dataset.key]=b.dataset.v;setTimeout(next,reduce?0:260);}}})});
  document.addEventListener('mago:site',function(e){o.has=e.detail;$$('.d3-step[data-key=has] button',sec).forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===e.detail)});});
+ var sb=$('.d3-send',sec),stt=$('.d3-status',sec);
+ if(sb)sb.addEventListener('click',function(){if(!o.goals.length)o.goals=['calls'];sb.disabled=true;stt.textContent='Sending...';
+  sendMail(o).then(function(how){stt.textContent='';try{(window.dataLayer=window.dataLayer||[]).push({event:'generate_lead',form:'contact',has_site:o.has||'yes',via:how})}catch(e){}
+   if(how==='sent'){var k=st.length-1;show(k,false);}else{sb.disabled=false;stt.textContent='Your email app should open with the message ready. Nothing opened? Use WhatsApp instead.';}})
+  .catch(function(){sb.disabled=false;stt.textContent='That didn\'t go through. Please try again, or send it on WhatsApp.';});});
  show(0,false);});
 });

@@ -351,7 +351,7 @@
     });
     /* footer word */
     var fw = $('.ftr .word');
-    if (fw) G.from(split(fw), { yPercent: 100, duration: 1.2, stagger: .06, ease: 'power4.out', scrollTrigger: { trigger: fw, start: 'top 95%' } });
+    if (fw) G.from(fw, { y: 70, opacity: 0, duration: 1.3, ease: 'power4.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: fw, start: 'top 95%' } });
     /* parallax media */
     $$('[data-parallax]').forEach(function (el) {
       G.fromTo(el, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });

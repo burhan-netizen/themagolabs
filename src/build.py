@@ -90,9 +90,11 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
                 '<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>')
         js = libs + f"<script>{JS}</script>"
     else:
-        css = '<link rel="stylesheet" href="/assets/site.css">'
+        import hashlib
+        ver = hashlib.sha1((CSS + JS).encode("utf-8")).hexdigest()[:10]
+        css = f'<link rel="stylesheet" href="/assets/site.css?v={ver}">'
         js = ('<script src="/assets/vendor/gsap.min.js"></script><script src="/assets/vendor/ScrollTrigger.min.js"></script>'
-              '<script src="/assets/vendor/lenis.min.js"></script><script src="/assets/site.js"></script>')
+              '<script src="/assets/vendor/lenis.min.js"></script>' + f'<script src="/assets/site.js?v={ver}"></script>')
     ga = ""
     if SITE["ga4"] and MODE != "preview":
         ga = f'<script async src="https://www.googletagmanager.com/gtag/js?id={SITE["ga4"]}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{SITE["ga4"]}");</script>'
@@ -107,7 +109,7 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
 <link rel="icon" href="{asset('/favicon.ico')}" sizes="any"><link rel="apple-touch-icon" href="{asset('/apple-touch-icon.png')}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&family=Newsreader:ital,opsz,wght@1,6..72,300&display=swap">
-<script>document.documentElement.classList.add("js");window.MAGO={{whatsapp:"{SITE['whatsapp']}",formEndpoint:"{SITE['form_endpoint']}"}};</script>
+<script>document.documentElement.classList.add("js");window.MAGO={{whatsapp:"{SITE['whatsapp']}",formEndpoint:"{SITE['form_endpoint']}",formKey:"{SITE.get('form_key', '')}",email:"{SITE['email']}"}};</script>
 {css}{ga}{ld}'''
     inner = f'{LOADER if loader else ""}{header(active)}<main id="main">{body}</main>{footer()}{js}'
     if MODE == "preview" and path == "/":
@@ -169,14 +171,12 @@ FOUNDER_PHOTOS = [  # (file, caption, place)
 
 def contact(title="Your hardest working hire *starts here.*", sub=""):
     P = OPTS.parts(globals(), False)
-    return f'''<section class="contact-sec" id="contact" data-dark aria-labelledby="contact-h">
-  <img class="poster" src="{asset('/assets/video/sun-poster.jpg')}" alt="" loading="lazy" aria-hidden="true">
-  <video muted playsinline loop preload="none" aria-hidden="true" style="opacity:0;transition:opacity 1.2s" data-src="{asset('/assets/video/sun.mp4')}"></video>
-  <div class="shade"></div>
-  <div class="wrap"><span class="lab live">Let's talk · reply within one business day</span>
-    <h2 class="c-h" id="contact-h">{it(title)}{(" " + E(sub)) if sub else ""}</h2>
-    {P["d3box"]}
-    <div class="d3-alt"><a href="{WA}">{WA_SVG}Rather chat? WhatsApp Burhan directly</a><span>Have a website? Free audit. No website yet? Free working preview in 48 hours. No strings, no spam.</span></div>
+    return f'''<section class="contact-sec cx" id="contact" data-dark aria-labelledby="contact-h">
+  <div class="cx-glow" aria-hidden="true"></div>
+  <div class="wrap"><div class="cx-head"><span class="lab live">Let's talk · reply within one business day</span>
+    <h2 class="c-h" id="contact-h">{it(title)}{(" " + E(sub)) if sub else ""}</h2></div>
+    <div class="cx-card">{P["d3box"]}</div>
+    <div class="d3-alt"><span>Have a website? Free audit. No website yet? Free working preview in 48 hours. No strings, no spam.</span><a href="{WA}">{WA_SVG}Rather chat? WhatsApp Burhan</a></div>
   </div></section>'''
 
 def final(*a, **k):
@@ -585,15 +585,15 @@ def build_about():
          schema=[bc(("/about/", "About")), {"@context": "https://schema.org", "@type": "Person", "name": SITE["founder"], "jobTitle": "Founder", "worksFor": {"@type": "Organization", "name": "The Mago Labs"}, "sameAs": [SITE["linkedin"]]}])
 
 def build_forms():
-    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Free site audit"))}<div class="formgrid"><div class="intro">
+    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Free site audit"))}<div class="formgrid solo"><div class="intro">
 <h1 class="h-page" data-split style="font-size:clamp(44px,6vw,104px)">Where is your site <em>losing customers?</em></h1>
 <p class="lede" data-rise>We go through your website the way a customer does: on a phone, in a hurry. You get a short, plain-English list of what's costing you enquiries and what to fix first.</p>
-<ul class="checks" data-stagger><li>Free. No strings.</li><li>A reply within one business day</li><li>No site yet? A free working preview in 48 hours</li></ul></div>{form("audit")}</div></div></section>'''
+<ul class="checks" data-stagger><li>Free. No strings.</li><li>A reply within one business day</li><li>No site yet? A free working preview in 48 hours</li></ul></div></div></div></section>{contact("Tell us about *your site.*")}'''
     page("/free-audit/", "Free Website Audit", "Find out exactly where your website loses customers. A free, plain-English audit from The Mago Labs.", body)
-    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Contact"))}<div class="formgrid"><div class="intro">
+    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Contact"))}<div class="formgrid solo"><div class="intro">
 <h1 class="h-page" data-split style="font-size:clamp(44px,6vw,104px)">Let's talk about <em>your website.</em></h1>
-<p class="lede" data-rise>You talk directly to Burhan, the founder. WhatsApp gets the fastest reply.</p>
-<ul class="checks" data-stagger><li>WhatsApp: <a class="ulink" href="{WA}">{SITE['whatsapp_display']}</a></li><li>Email: <a class="ulink" href="mailto:{SITE['email']}">{SITE['email']}</a></li><li>Working with businesses in India, Australia, the US, the UK, Canada and New Zealand</li></ul></div>{form("contact")}</div></div></section>'''
+<p class="lede" data-rise>You talk directly to Burhan, the founder. Answer six quick questions below, or email or WhatsApp him directly.</p>
+<ul class="checks" data-stagger><li>WhatsApp: <a class="ulink" href="{WA}">{SITE['whatsapp_display']}</a></li><li>Email: <a class="ulink" href="mailto:{SITE['email']}">{SITE['email']}</a></li><li>Working with businesses in India, Australia, the US, the UK, Canada and New Zealand</li></ul></div></div></div></section>{contact("Six quick questions. *Then we talk.*")}'''
     page("/contact/", "Contact", "Talk directly to the founder of The Mago Labs on WhatsApp or email. Reply within one business day.", body, schema=[bc(("/contact/", "Contact"))])
     body = f'''<section class="phero space" data-dark style="min-height:80vh"><div class="wrap"><span class="dot" style="width:18px;height:18px"></span>
 <h1 class="h-page" data-split style="margin-top:28px">Got it. <em>You've landed.</em></h1>

@@ -15,7 +15,8 @@ SITE = {
     "rating": "5.0",
     "review_count": 8,
     "businesses": "75+",
-    "form_endpoint": "",                     # paste a Formspree / Web3Forms / Basin URL here to send forms to your inbox
+    "form_endpoint": "",  # paste a Formspree / Web3Forms / Basin URL here to send forms to your inbox
+    "form_key": "",  # Web3Forms only: its access key. Leave empty for Formspree or Basin.
     "ga4": "",                               # paste a GA4 measurement ID (G-XXXX) to switch analytics on
 }
 

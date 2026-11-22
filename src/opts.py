@@ -326,7 +326,7 @@ function wa(o){var n=(window.MAGO&&MAGO.whatsapp)||'';return 'https://wa.me/'+n+
 function sendMail(o){var M=window.MAGO||{},ep=M.formEndpoint;
  var subj='New enquiry: '+(o.business||o.name||'website')+(o.has==='no'?' (no website yet)':'');
  if(!ep){location.href='mailto:'+(M.email||'')+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(msg(o));return Promise.resolve('mailto');}
- var body={name:o.name||'',business:o.business||'',has_website:o.has==='no'?'no':'yes',website:o.website||'',wants_more:(o.goals||[]).join(', '),contact:o.reach||'',message:msg(o),subject:subj,_subject:subj,page:location.pathname};
+ var body={name:o.name||'',business:o.business||'',has_website:o.has==='no'?'no':'yes',website:o.website||'',wants_more:(o.goals||[]).join(', '),contact:o.reach||'',company_site:($('input[name=company_site]')||{}).value||'',message:msg(o),subject:subj,_subject:subj,page:location.pathname};
  if(M.formKey)body.access_key=M.formKey;
  return fetch(ep,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error(r.status);return 'sent'});}
 function loadLong(ph){var l=$('img.long',ph);if(l&&!l.src)l.src=l.dataset.src;}
@@ -601,7 +601,7 @@ def parts(ns, tagged=True):
             '<p class="d3-status" role="status" aria-live="polite"></p></div>'
             '<div class="d3-step" data-key="done"><span class="d3-q">Thank you. <em>It\'s with Burhan.</em></span>'
             '<p class="d3-done-p">You\'ll hear back within one business day. Want an answer sooner? <a class="d3-wa" href="#" target="_blank" rel="noopener">Message Burhan on WhatsApp</a>.</p></div>')
-    d3box = f'<div class="d3-box"><div class="d3-prog"><span class="c">1 of 6</span><span class="t"><i style="width:0"></i></span></div>{d3s}</div>'
+    d3box = f'<div class="d3-box"><input name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><div class="d3-prog"><span class="c">1 of 6</span><span class="t"><i style="width:0"></i></span></div>{d3s}</div>'
     d3 = (f'<section class="op-sec op-dark d3" aria-label="Option D3">{tag("D3", "One question at a time", "Full-screen, one big question per step with a progress bar. Press Enter to move on.")}'
           f'<div class="wrap">{d3box}</div></section>')
 

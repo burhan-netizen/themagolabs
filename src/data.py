@@ -188,7 +188,7 @@ SERVICES = [
          cases=["prabhakar-processors", "centurion-strategic-ventures"],
          faq=[("Who owns the website?", "You do. Your domain is registered in your name and you keep full ownership of the code."),
               ("Is hosting really free?", "Yes. Hosting is included for life for standard business websites, under fair use. There is no monthly fee."),
-              ("What happens after the first year?", "Leave it running at no cost, send changes at $30 an hour, or edit it yourself for free with the built-in CMS."),
+              ("What happens after the first year?", "Leave it running as it is, send us changes whenever you need them, or edit it yourself with the built-in CMS."),
               ("Can you add custom features?", "Yes. Calculators, booking flows, separate enquiry paths and CRM connections are all things we have built for clients.")]),
     dict(slug="website-redesign", icon="growth", name="Website redesign", nav="Website redesign",
          title="Website Redesign for More Enquiries", h1="Your site gets visitors. *Let's make them call.*",
@@ -199,7 +199,7 @@ SERVICES = [
          faq=[("How do I know my site needs a redesign?", "If people visit but rarely call, enquire or book, something on the site is stopping them. Our free audit tells you what, in plain English."),
               ("Will I lose my Google rankings?", "We keep your important pages and redirect old addresses so the rankings you have earned carry over."),
               ("Can you keep my content?", "Yes. We keep what works, rewrite what does not, and tell you which is which."),
-              ("How long does a redesign take?", "Between 5 and 28 days depending on the package and the size of the site.")]),
+              ("How long does a redesign take?", "Between 5 and 28 days, depending on the size of the site.")]),
     dict(slug="local-seo", icon="local", name="Local SEO", nav="Local SEO",
          title="Local SEO That Gets You Found", h1="Get found by the people *already searching.*",
          card="Show up on Google and Maps when someone nearby searches for exactly what you sell.",
@@ -230,8 +230,8 @@ INDUSTRIES = [
 FAQ_HOME = [
     ("What does the free audit include?", "Burhan reviews your website himself: how it looks, how fast it loads, how easy it is to contact you, and how you show up on Google. You get a short, plain-English summary of what to fix first. There is no charge and no obligation."),
     ("I don't have a website yet. Where do I start?", "Ask for a free preview. Tell us what your business does and we will send back a working preview of your new website within 48 hours, free and with no strings."),
-    ("How much does a custom website cost?", "There are four packages, starting from $999. You get a clear, fixed quote before any work starts. Hosting is included and you keep full ownership of your domain and code."),
+    ("How much does a custom website cost?", "It depends on what your business needs. You get a clear, fixed quote in writing before any work starts. Hosting is included and you keep full ownership of your domain and code."),
     ("How long does a website take?", "Launch sites go live in 5 days, Growth in 14, Scale in 21 and online stores in 28."),
     ("Will my website rank on Google?", "Every site is built to rank: clean structure, proper headings, local schema and fast load times. Nobody can honestly promise a specific position."),
-    ("What happens after launch?", "The first year of support is free. After that, leave it running at no cost, send changes at $30 an hour, or edit it yourself for free."),
+    ("What happens after launch?", "The first year of support is free. After that, leave it running as it is, send us changes whenever you need them, or edit it yourself."),
 ]

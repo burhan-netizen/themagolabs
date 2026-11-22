@@ -40,7 +40,7 @@ def abs_url(p): return SITE["domain"] + p
 WA = f"https://wa.me/{SITE['whatsapp']}?text=" + "Hi%20Burhan%2C%20I%20found%20The%20Mago%20Labs%20and%20would%20like%20to%20talk%20about%20a%20website."
 
 # ---------------- shell ----------------
-NAV = [("/work/", "Work"), ("/concepts/", "Concepts"), ("/services/", "Services"), ("/pricing/", "Pricing"), ("/about/", "About")]
+NAV = [("/work/", "Work"), ("/concepts/", "Concepts"), ("/services/", "Services"), ("/about/", "About")]
 def header(active):
     items = "".join(f'<li><a href="{href(p)}" aria-label="{n}"{" aria-current=" + chr(34) + "page" + chr(34) if active == p else ""}><span class="roll" aria-hidden="true"><i>{n}<br>{n}</i></span></a></li>' for p, n in NAV)
     m = "".join(f'<li><a href="{href(p)}">{n}<span>0{i}</span></a></li>' for i, (p, n) in enumerate(NAV + [("/testimonials/", "Reviews"), ("/contact/", "Contact")], 1))
@@ -64,7 +64,7 @@ def footer():
     <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links"><a href="{WA}">{WA_SVG}WhatsApp Burhan ↗</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
     <div class="cols">
       <div><h4>Studio</h4><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li></ul></div>
-      <div><h4>Build</h4><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}<li><a href="{href('/pricing/')}">Pricing</a></li></ul></div>
+      <div><h4>Build</h4><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}</ul></div>
       <div><h4>Talk</h4><ul><li><a href="{WA}">WhatsApp</a></li><li><a href="mailto:{SITE['email']}">Email</a></li><li><a href="{SITE['linkedin']}" rel="noopener">LinkedIn</a></li><li><a href="{SITE['instagram']}" rel="noopener">Instagram</a></li><li><a href="{href('/contact/')}">Contact</a></li></ul></div>
     </div>
   </div>
@@ -385,14 +385,6 @@ def build_home():
 
 {reviews()}
 
-<section class="sec stone"><div class="wrap">{sh("Pricing", H['pay_h'], "No monthly rent on your own website.")}
-  <div class="facts" data-stagger>
-    <div class="fact ink"><span class="lab">From</span><span class="big">$999</span><p>Fixed price, in writing, before we start. It doesn't move.</p></div>
-    <div class="fact"><span class="lab">Hosting</span><span class="big">$0<span style="font-size:.4em">/mo</span></span><p>Included for life. No surprise renewals.</p></div>
-    <div class="fact"><span class="lab">Ownership</span><span class="big">100%</span><p>Your domain and your code, in your name.</p></div>
-  </div>
-  <div class="ctas" style="margin-top:40px"><a class="btn" href="{href('/pricing/')}" data-magnetic>See all four packages</a></div>
-</div></section>
 
 <section class="sec"><div class="wrap">{sh("Questions", "Straight *answers.*")}{faq(C.FAQ)}</div></section>
 {final()}'''
@@ -492,7 +484,7 @@ def build_services():
 <section class="phero"><div class="wrap">{crumbs(("", "Services"))}
   <h1 class="h-page" data-split>Websites built to <em>bring in work.</em></h1>
   <p class="lede" data-rise>Everything we make has one job: turn someone who's never heard of you into someone who calls.</p>
-  <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{href('/pricing/')}" data-magnetic>See pricing</a></div>
+  <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{href('/work/')}" data-magnetic>See the work</a></div>
 </div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap">{stack()}</div></section>
 <section class="sec stone"><div class="wrap">{sh("By industry", "Built for how *your customers* choose.")}<div class="grid3" data-stagger>{inds}</div></div></section>
@@ -507,7 +499,7 @@ def build_services():
 <section class="phero"><div class="wrap">{crumbs(("/services/", "Services"), ("", s["name"]))}
   <h1 class="h-page" data-split>{it(s["h1"])}</h1>
   <p class="lede" data-rise>{E(s["intro"])}</p>
-  <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{href('/pricing/')}" data-magnetic>From $999</a></div>
+  <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{href('/work/')}" data-magnetic>See the work</a></div>
 </div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap"><div class="formgrid"><div class="intro"><span class="lab">What you get</span><h2 class="h2" data-split>Everything it needs. <em>Nothing it doesn't.</em></h2></div><ul class="checks" style="grid-column:7/span 6" data-stagger>{inc}</ul></div></div></section>
 <section class="sec dark" data-dark><div class="wrap">{sh("How it works", "Four steps. *No surprises.*")}{method(C.METHOD)}</div></section>
@@ -516,7 +508,7 @@ def build_services():
 {final()}'''
         page(f"/services/{slug}/", s["title"], s["intro"][:155].rsplit(" ", 1)[0] + ".", body, active="/services/",
              schema=[bc(("/services/", "Services"), (f"/services/{slug}/", s["name"])), faq_schema(s["faq"]),
-                     {"@context": "https://schema.org", "@type": "Service", "name": s["name"], "provider": {"@type": "Organization", "name": "The Mago Labs"}, "offers": {"@type": "Offer", "priceCurrency": "USD", "price": "999"}}])
+                     {"@context": "https://schema.org", "@type": "Service", "name": s["name"], "provider": {"@type": "Organization", "name": "The Mago Labs"}}])
 
 def build_industries():
     cards = "".join(f'<a class="col" href="{href("/industries/" + k + "/")}" style="text-decoration:none" data-cursor="Explore"><span class="num">{len(v["cases"])} live client{"s" if len(v["cases"]) > 1 else ""}</span><h3 class="h3">{E(v["name"])}</h3><p>{E(v["intro"])}</p></a>' for k, v in C.INDUSTRIES.items())
@@ -612,7 +604,7 @@ def build_legal():
 <h2>How we use it</h2><p>Only to reply, prepare your audit or quote, and do the work you ask for. We never sell your details.</p><h2>Analytics</h2><p>We may use analytics to see which pages help. Where the law requires it, we ask first.</p>
 <h2>Your rights</h2><p>Ask to see, correct or delete your details any time: <a href="mailto:{SITE['email']}">{SITE['email']}</a>.</p>'''
     tm = f'''<p class="note">Plain-English draft. Have it checked by a lawyer before launch.</p><h2>Quotes and payment</h2><p>Every project starts with a fixed written quote. Payment is half to start and half at launch.</p>
-<h2>Ownership</h2><p>Once paid in full, you own the design, content and code. Your domain is registered in your name.</p><h2>Changes and support</h2><p>Two rounds of revisions and one year of free support for small changes. After that, $30 an hour, or edit it yourself.</p>
+<h2>Ownership</h2><p>Once paid in full, you own the design, content and code. Your domain is registered in your name.</p><h2>Changes and support</h2><p>Two rounds of revisions and one year of free support for small changes. After that, changes are quoted when you ask for them, or you can edit the site yourself.</p>
 <h2>Hosting</h2><p>Included for standard business websites under fair use. Unusual traffic or storage may need a paid plan, always agreed first.</p><h2>Contact</h2><p><a href="mailto:{SITE['email']}">{SITE['email']}</a></p>'''
     for p, t, h, x in [("/privacy/", "Privacy Policy", "Privacy", pv), ("/terms/", "Terms of Service", "Terms", tm)]:
         page(p, t, f"{t} for The Mago Labs.", f'<section class="phero"><div class="wrap">{crumbs(("", h))}<h1 class="h-page" data-split>{h}<em>.</em></h1><div class="legal" style="margin-top:48px">{x}</div></div></section>')
@@ -626,7 +618,7 @@ for n in os.listdir(os.path.join(ROOT, OUT)):
     q = os.path.join(ROOT, OUT, n); shutil.rmtree(q) if os.path.isdir(q) else os.remove(q)
 shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(ROOT, OUT, "assets"),
                 ignore=shutil.ignore_patterns("vendor") if MODE == "preview" else None)
-for b in [build_home, build_work, build_cases, build_concepts, build_testimonials, build_services, build_industries, build_pricing, build_process, build_about, build_forms, build_legal]:
+for b in [build_home, build_work, build_cases, build_concepts, build_testimonials, build_services, build_industries, build_process, build_about, build_forms, build_legal]:
     b()
 png = os.path.join(BRAND, "png")
 shutil.copy(os.path.join(png, "favicon.ico"), os.path.join(ROOT, OUT, "favicon.ico"))

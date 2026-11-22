@@ -4,7 +4,7 @@ One italic phrase per headline (*like this*). No em dashes."""
 
 HOME = dict(
     title="The Mago Labs | Websites That Pay For Themselves",
-    desc="Custom websites built to bring in calls, bookings and jobs. A dental clinic went from 25 to 58 patients a day. Fixed price from $999. Get a free site audit.",
+    desc="Custom websites built to bring in calls, bookings and jobs. A dental clinic went from 25 to 58 patients a day. Get a free site audit.",
     h1="Websites that *pay for* themselves.",
     lede="Right now, customers are orbiting your business. Searching, comparing, drifting off. We build the website that pulls them in.",
     orbit_label="The pull",
@@ -39,10 +39,10 @@ METHOD = [
 FAQ = [
     ("What does the free audit actually include?", "We go through your site the way a customer does: on a phone, in a hurry. Speed, clarity, trust, how easy it is to call you, how you show up on Google. You get a short, plain-English list of what's costing you enquiries, in order of what to fix first."),
     ("No website yet. Is this still for me?", "Yes. Tell us what you do and who you do it for, and we'll send back a working preview of your new site within 48 hours. Free."),
-    ("How much does it cost?", "Fixed packages from $999. You get the exact number in writing before we start, and it doesn't change. Hosting is included and you own everything."),
+    ("How much does it cost?", "It depends on what your business needs. After a free call you get a fixed quote in writing before any work starts, and it doesn't change. Hosting is included and you own everything."),
     ("How fast can it be live?", "Between 5 and 28 days, depending on the size of the site. You'll know the date before you sign."),
     ("Can you promise I'll rank first on Google?", "No, and be wary of anyone who does. We build every site the way Google rewards: fast, clean, properly structured, with local schema. Then we track what happens."),
-    ("What happens after launch?", "The first year of changes and fixes is on us. After that, leave it running at no cost, send changes at $30 an hour, or edit it yourself."),
+    ("What happens after launch?", "The first year of changes and fixes is on us. After that, leave it running as it is, send us changes whenever you need them, or edit it yourself."),
 ]
 
 SERVICES = {

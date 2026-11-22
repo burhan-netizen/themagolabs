@@ -507,14 +507,14 @@ def parts(ns, tagged=True):
           f'<div class="a2-stage">{"".join(ph(c) for c in cons)}</div>'
           f'<div class="wrap"><div class="a2-bar"><div class="a2-info"><b>{E(cons[0]["name"])}</b><span>{E(cons[0]["trade"])} · {E(cons[0]["where"])}</span></div>'
           f'<div class="a2-ctl"><button class="op-round prev" type="button" aria-label="Previous concept">←</button><span class="n"></span><button class="op-round next" type="button" aria-label="Next concept">→</button></div>'
-          f'<a class="live" href="{cons[0]["url"]}" target="_blank" rel="noopener">Open the live concept ↗</a></div>'
+          f'<a class="live" href="{cons[0]["url"]}" target="_blank" rel="noopener">Open the live concept<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div>'
           f'<div class="a2-more">{ns["CNOTE"]}<a class="op-btn" href="{ns["href"]("/concepts/")}">See all {len(cons)} concepts</a></div></div></section>')
     # A3
     rows = "".join(f'<li><button type="button" role="tab" aria-selected="false"><span class="i">{i:02d}</span><span class="nm">{E(c["name"])}</span><span class="wh">{E(c["trade"])} · {E(c["where"])}</span></button></li>' for i, c in enumerate(cons, 1))
     bases = "".join(f'<img class="base" src="{c["poster"]}" alt="" loading="lazy" decoding="async">' for c in cons)
     a3 = (f'<section class="op-sec op-dark a3" aria-label="Option A3">{tag("A3", "Index and phone", "A typographic list of every trade. Hover a name and the phone beside it switches to that site and scrolls it.")}'
           f'<div class="wrap" style="margin-top:56px">{head_concepts}<div class="a3-grid"><ul class="a3-list" role="tablist" aria-label="Concept sites">{rows}</ul>'
-          f'<div class="a3-ph"><span class="o-scr"><span class="bdg">Concept</span>{bases}<img class="long" alt="" aria-hidden="true"></span><div class="meta"><b></b><a href="#" target="_blank" rel="noopener">Open ↗</a></div></div></div></div></section>')
+          f'<div class="a3-ph"><span class="o-scr"><span class="bdg">Concept</span>{bases}<img class="long" alt="" aria-hidden="true"></span><div class="meta"><b></b><a href="#" target="_blank" rel="noopener">Open<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></div></div></div></section>')
 
     # B
     vis = ['<div class="b-vis"><span>Calls this week</span><span class="v"><s>12</s> → <b>?</b></span></div>',
@@ -535,7 +535,7 @@ def parts(ns, tagged=True):
           f'<div class="wrap" style="margin-top:56px">{head_proc}<div class="b3-grid"><div class="b3-list">{b3r}</div><div class="b3-card">{b3s}<span class="big">01</span></div></div></div></section>')
 
     # C
-    g = f'<a class="c1-badge" href="{SITE["google_reviews"]}" rel="noopener"><b>{SITE["rating"]}</b>★★★★★ · {SITE["review_count"]} Google reviews ↗</a>'
+    g = f'<a class="c1-badge" href="{SITE["google_reviews"]}" rel="noopener"><b>{SITE["rating"]}</b>★★★★★ · {SITE["review_count"]} Google reviews<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>'
     dots = "".join(f'<button type="button" aria-label="Review {i + 1}"></button>' for i in range(len(revs)))
     c1 = (f'<section class="op-sec op-paper c1" aria-label="Option C1">{tag("C1", "One big quote", "One review at a time, huge, with the client logo and the result. Changes every few seconds.")}'
           f'<div class="wrap" style="margin-top:56px"><span class="op-lab">Reviews</span><h2 class="op-h" style="margin-top:18px">In their <em>own words.</em></h2>{g}'
@@ -553,7 +553,7 @@ def parts(ns, tagged=True):
     c2cols = "".join(f'<div class="c2-col{" rev" if j == 1 else ""}" style="--d:{[52, 64, 58][j]}s">{"".join(col)}{"".join(col)}</div>' for j, col in enumerate(cc))
     c2 = (f'<section class="op-sec op-dark c2" aria-label="Option C2">{tag("C2", "Wall of love", "Every review at once in slowly moving columns. Hover to pause and read.")}'
           f'<div class="wrap" style="margin-top:56px"><div class="c2-head"><div><span class="op-lab">Reviews</span><h2 class="op-h" style="margin-top:18px">In their <em>own words.</em></h2></div>'
-          f'<a class="c2-badge" href="{SITE["google_reviews"]}" rel="noopener"><span class="n">{SITE["rating"]}</span><span class="s"><b>★★★★★</b>{SITE["review_count"]} Google reviews ↗</span></a></div>'
+          f'<a class="c2-badge" href="{SITE["google_reviews"]}" rel="noopener"><span class="n">{SITE["rating"]}</span><span class="s"><b>★★★★★</b>{SITE["review_count"]} Google reviews<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></a></div>'
           f'<div class="c2-view"><div class="c2-cols">{c2cols}</div></div></div></section>')
 
     def c3card(r):
@@ -576,7 +576,7 @@ def parts(ns, tagged=True):
     d2 = (f'<section class="op-sec op-paper d2" aria-label="Option D2">{tag("D2", "Clean card", "A calm, conventional form done properly: clear labels, big tap targets, direct lines beside it.")}'
           f'<div class="wrap" style="margin-top:56px"><div class="d2-grid"><div class="d2-side"><span class="op-lab">Let\'s talk</span><h2 class="op-h" style="margin-top:18px">Your hardest working hire <em>starts here.</em></h2>'
           f'<p>Tell us where you are. You get a free audit, or a free working preview in 48 hours if you have no site yet.</p>'
-          f'<div class="d2-lines"><a href="{WA}"><span>WhatsApp</span>{E(SITE.get("whatsapp_display", "+" + SITE["whatsapp"]))} ↗</a><a href="mailto:{SITE["email"]}"><span>Email</span>{E(SITE["email"])}</a><div><span>Reply</span>Within one business day</div></div></div>'
+          f'<div class="d2-lines"><a href="{WA}"><span>WhatsApp</span>{E(SITE.get("whatsapp_display", "+" + SITE["whatsapp"]))}<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="mailto:{SITE["email"]}"><span>Email</span>{E(SITE["email"])}</a><div><span>Reply</span>Within one business day</div></div></div>'
           f'<div class="d2-card"><form novalidate><div class="d2-row"><label class="d2-f"><span>Your name</span><input name="name" autocomplete="name"></label><label class="d2-f"><span>Business name</span><input name="business" autocomplete="organization"></label></div>'
           f'<div class="d2-f"><span>Do you have a website?</span><div class="d2-seg"><label><input type="radio" name="has" value="yes" checked><span>Yes, I do</span></label><label><input type="radio" name="has" value="no"><span>Not yet</span></label></div></div>'
           f'<label class="d2-f d2-url"><span>Website address</span><input name="website" inputmode="url" placeholder="yourbusiness.com"></label>'
@@ -665,4 +665,10 @@ SITE_CSS = r"""
 .contact-sec .d3-alt{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:44px;color:#B9B7AF;font-size:15px}
 .contact-sec .d3-alt a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(242,241,236,.4);padding-bottom:3px;display:inline-flex;gap:8px;align-items:center}
 .contact-sec .d3-alt a:hover{border-color:var(--go);color:var(--go)}
+
+/* external-link arrow: thin line icon, nudges up-right on hover */
+.ext{width:.62em;height:.62em;margin-left:.4em;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;vertical-align:.02em;opacity:.65;transition:transform .16s var(--ease),opacity .16s var(--ease)}
+.btn .ext{margin-left:0}
+a:hover .ext,a:focus-visible .ext{transform:translate(2px,-2px);opacity:1}
+@media (prefers-reduced-motion:reduce){.ext{transition:none}a:hover .ext,a:focus-visible .ext{transform:none}}
 """

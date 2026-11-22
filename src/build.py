@@ -61,7 +61,7 @@ def header(active):
 def footer():
     return f'''<footer class="ftr" data-dark><div class="wrap">
   <div class="top">
-    <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links"><a href="{WA}">{WA_SVG}WhatsApp Burhan ↗</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
+    <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links"><a href="{WA}">{WA_SVG}WhatsApp Burhan</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
     <div class="cols">
       <div><h4>Studio</h4><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li></ul></div>
       <div><h4>Build</h4><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}</ul></div>
@@ -252,7 +252,7 @@ def deck(clients, label, title, end_title, end_href, end_label):
                   f'<span class="dpic"><span class="dshot"><span class="dbar"><i></i><i></i><i></i><b>{E(dom)}</b></span>'
                   f'<span class="dvp"><img src="{asset("/assets/work/" + c["src"] + ".webp")}" alt="Full-page screenshot of the {E(c["name"])} website" width="560" height="2275" loading="lazy" decoding="async"></span></span></span>'
                   f'<span class="dmeta">{meta}</span>'
-                  f'<span class="drow"><span class="dname">{E(c["name"])}<sup>{i + 1:02d}</sup></span><span class="dres">{c["card"]}</span><span class="darr" aria-hidden="true">↗</span></span>'
+                  f'<span class="drow"><span class="dname">{E(c["name"])}<sup>{i + 1:02d}</sup></span><span class="dres">{c["card"]}</span><span class="darr" aria-hidden="true"><svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></span>'
                   f'<i class="dsheen"></i><i class="ddim"></i></a></li>')
     n = len(clients) + 1
     cards += (f'<li class="dcard dend" style="--i:{n - 1}"><a class="dlink" href="{href(end_href)}" data-cursor="Open"><span class="lab">{E(end_label)}</span>'
@@ -415,7 +415,7 @@ def build_cases():
         t = next((x for x in TESTIMONIALS if x["case"] == c["slug"]), None)
         meta = [("Client", E(c["name"])), ("Industry", E(c["industry"]))]
         if c["where"]: meta.append(("Location", E(c["where"])))
-        meta.append(("Website", f'<a href="{c["url"]}" rel="noopener" data-live="{c["slug"]}">{E(c["url"].replace("https://", "").replace("www.", "").strip("/"))} ↗</a>' if c["url"] else "Sales page"))
+        meta.append(("Website", f'<a href="{c["url"]}" rel="noopener" data-live="{c["slug"]}">{E(c["url"].replace("https://", "").replace("www.", "").strip("/"))}<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>' if c["url"] else "Sales page"))
         md = "".join(f'<div><span class="k">{k}</span><span class="v">{v}</span></div>' for k, v in meta)
         built = "".join(f"<li>{E(b)}</li>" for b in c["built"])
         tickets = ""
@@ -424,7 +424,7 @@ def build_cases():
                 f'<div class="tk"><span class="lab">{E(l)}</span><div class="row">{(f"<span class=from>{E(f)}</span><span class=arr>→</span>" if f else "")}<span class="to">{E(to)}</span></div><span class="lab">{E(w)}</span></div>'
                 for l, f, to, w in c["tickets"]) + "</div>"
         tq = f'<section class="sec space" data-dark><div class="wrap"><div class="feature-q" style="margin:0"><blockquote data-rise>"{E(t["quote"])}"</blockquote><div class="who" data-rise><span>{E(t["name"])}</span><span class="muted">{E(", ".join(x for x in [t["role"], t["company"]] if x))}</span></div></div></div></section>' if t else ""
-        visit = f'<a class="btn ghost" href="{c["url"]}" rel="noopener" data-live="{c["slug"]}" data-magnetic>Visit the live site ↗</a>' if c["url"] else ""
+        visit = f'<a class="btn ghost" href="{c["url"]}" rel="noopener" data-live="{c["slug"]}" data-magnetic>Visit the live site<svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>' if c["url"] else ""
         dom = c["url"].replace("https://", "").replace("www.", "").strip("/") if c["url"] else "sales page"
         body = f'''
 <section class="phero space" data-dark><div class="wrap">{crumbs(("/work/", "Work"), ("", c["short"]))}

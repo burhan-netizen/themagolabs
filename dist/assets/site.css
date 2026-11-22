@@ -1193,3 +1193,9 @@ html{overflow-x:clip}
 .contact-sec .d3-alt{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:44px;color:#B9B7AF;font-size:15px}
 .contact-sec .d3-alt a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(242,241,236,.4);padding-bottom:3px;display:inline-flex;gap:8px;align-items:center}
 .contact-sec .d3-alt a:hover{border-color:var(--go);color:var(--go)}
+
+/* external-link arrow: thin line icon, nudges up-right on hover */
+.ext{width:.62em;height:.62em;margin-left:.4em;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;vertical-align:.02em;opacity:.65;transition:transform .16s var(--ease),opacity .16s var(--ease)}
+.btn .ext{margin-left:0}
+a:hover .ext,a:focus-visible .ext{transform:translate(2px,-2px);opacity:1}
+@media (prefers-reduced-motion:reduce){.ext{transition:none}a:hover .ext,a:focus-visible .ext{transform:none}}

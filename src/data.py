@@ -7,7 +7,7 @@ SITE = {
     "name": "The Mago Labs",
     "whatsapp": "919099245605",
     "whatsapp_display": "+91 90992 45605",
-    "email": "burhan@magolabs.in",          # swap to a themagolabs.com address once the mailbox exists
+    "email": "burhan@themagolabs.com",
     "founder": "Burhan Kapasi",
     "linkedin": "https://www.linkedin.com/in/burhanuddinkapasi/",
     "instagram": "https://www.instagram.com/magolabs.in/",

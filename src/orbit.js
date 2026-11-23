@@ -38,7 +38,7 @@ window.MAGO_ORBIT = function (G, ST) {
       info.querySelector('.k').textContent = d.ind + (d.where ? ' · ' + d.where : '');
       info.querySelector('.nm > span').textContent = d.name;
       info.querySelector('.rs > span').innerHTML = d.res;
-      var b = info.querySelector('.btn'); b.href = d.href; b.setAttribute('aria-label', 'View the ' + d.name + ' case study');
+      var b = info.querySelector('.btn'); b.href = d.href; b.setAttribute('aria-label', b.textContent.trim() + ': ' + d.name);
       if (G && !reduce) G.fromTo(info.querySelectorAll('.t > span'), { yPercent: 105 }, { yPercent: 0, duration: .7, stagger: .05, ease: 'power3.out', overwrite: true });
     }
 
@@ -60,7 +60,7 @@ window.MAGO_ORBIT = function (G, ST) {
         el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + sc.toFixed(3) + ')';
         el.style.zIndex = Math.round(depth * 100);
         el.style.opacity = (.08 + .92 * Math.pow(depth, 1.7)).toFixed(3);
-        el.style.filter = 'brightness(' + (.25 + .75 * Math.pow(depth, 1.5)).toFixed(2) + ')';
+        el.style.setProperty('--dim', (.75 - .75 * Math.pow(depth, 1.5)).toFixed(2)); /* dark veil instead of a brightness filter: same look, cheaper, readable for screen readers */
       }
       var f = ((Math.round(-rot / step) % n) + n) % n;
       if (f !== front) { front = f; setInfo(f); }

@@ -64,9 +64,9 @@ def footer():
   <div class="top">
     <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links people"><div class="person"><span class="who">Burhan · Founder</span><a href="{WA}">{WA_SVG}WhatsApp Burhan</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div><div class="person"><span class="who">Priyanka · International</span><a href="https://wa.me/917420819299?text=Hi%20Priyanka%2C%20I%20found%20The%20Mago%20Labs%20and%20would%20like%20to%20talk%20about%20a%20website.">{WA_SVG}WhatsApp Priyanka</a><a href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a></div></div></div>
     <div class="cols">
-      <div><h4>Studio</h4><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li></ul></div>
-      <div><h4>Build</h4><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}</ul></div>
-      <div><h4>Talk</h4><ul><li><a href="{WA}">WhatsApp</a></li><li><a href="mailto:{SITE['email']}">Email</a></li><li><a href="{SITE['linkedin']}" rel="noopener">LinkedIn</a></li><li><a href="{SITE['instagram']}" rel="noopener">Instagram</a></li><li><a href="{href('/contact/')}">Contact</a></li></ul></div>
+      <div><p class="fh">Studio</p><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li></ul></div>
+      <div><p class="fh">Build</p><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}</ul></div>
+      <div><p class="fh">Talk</p><ul><li><a href="{WA}">WhatsApp</a></li><li><a href="mailto:{SITE['email']}">Email</a></li><li><a href="{SITE['linkedin']}" rel="noopener">LinkedIn</a></li><li><a href="{SITE['instagram']}" rel="noopener">Instagram</a></li><li><a href="{href('/contact/')}">Contact</a></li></ul></div>
     </div>
   </div>
   <p class="word" aria-hidden="true"><em>the</em>Mago Labs<span class="dot"></span></p>
@@ -95,22 +95,33 @@ def responsive(doc):
         return f'<img{m.group(1)}src="{base}.webp" srcset="{base}-640.webp 640w, {base}.webp {w}w" sizes="auto, 100vw"{m.group(3)}>'
     return _IMG_RE.sub(sub, doc)
 
+FIRST = 'try{if(!sessionStorage.getItem("mago-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("first");setTimeout(function(){document.documentElement.classList.remove("first")},4500)}}catch(e){}'  # homepage only: holds the hero intro while the first-visit loader is up
+_HERO_RE = re.compile(r'<h1 class="h-hero">(.*?)</h1>', re.S)
+def presplit(doc):
+    """Split the home headline into words in the HTML itself, so its rise animation is pure CSS and starts on first paint."""
+    def sub(m):
+        parts, i = [], 0
+        for tok in re.findall(r'<em>.*?</em>|[^\s<]+', m.group(1)):
+            parts.append(f'<span class="w"><span style="--i:{i}">{tok}</span></span>'); i += 1
+        return '<h1 class="h-hero" data-done="1">' + " ".join(parts) + '</h1>'
+    return _HERO_RE.sub(sub, doc)
+
 def page(path, title, desc, body, active=None, schema=None, noindex=False, loader=False):
     CUR[0] = path
     canon = abs_url(path)
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (schema or []))
     if MODE == "preview":
         css = f"<style>{CSS}</style>"
-        libs = ('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>'
-                '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>'
-                '<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>')
+        libs = ('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>'
+                '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>'
+                '<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>')
         js = libs + f"<script>{JS}</script>"
     else:
         import hashlib
         ver = hashlib.sha1((CSS + JS).encode("utf-8")).hexdigest()[:10]
         css = f'<link rel="stylesheet" href="/assets/site.css?v={ver}">'
-        js = ('<script src="/assets/vendor/gsap.min.js"></script><script src="/assets/vendor/ScrollTrigger.min.js"></script>'
-              '<script src="/assets/vendor/lenis.min.js"></script>' + f'<script src="/assets/site.js?v={ver}"></script>')
+        js = ('<script src="/assets/vendor/gsap.min.js" defer></script><script src="/assets/vendor/ScrollTrigger.min.js" defer></script>'
+              '<script src="/assets/vendor/lenis.min.js" defer></script>' + f'<script src="/assets/site.js?v={ver}" defer></script>')
     ga = ""
     if SITE["ga4"] and MODE != "preview":
         ga = f'<script async src="https://www.googletagmanager.com/gtag/js?id={SITE["ga4"]}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{SITE["ga4"]}");</script>'
@@ -123,9 +134,8 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
 <meta property="og:type" content="website"><meta property="og:site_name" content="The Mago Labs"><meta property="og:title" content="{E(ft)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{abs_url('/assets/og.png')}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#050505">
 <link rel="icon" href="{asset('/favicon.ico')}?v=2" sizes="32x32"><link rel="icon" href="{asset('/favicon.svg')}?v=2" type="image/svg+xml"><link rel="apple-touch-icon" href="{asset('/apple-touch-icon.png')}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&family=Newsreader:ital,opsz,wght@1,6..72,300&display=swap">
-<script>document.documentElement.classList.add("js");window.MAGO={{whatsapp:"{SITE['whatsapp']}",formEndpoint:"{SITE['form_endpoint']}",formKey:"{SITE.get('form_key', '')}",email:"{SITE['email']}"}};</script>
+<link rel="preload" href="/assets/fonts/geist-500.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/newsreader-italic-300.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{{font-family:"Geist";font-weight:400;font-style:normal;font-display:swap;src:url(/assets/fonts/geist-400.woff2) format("woff2")}}@font-face{{font-family:"Geist";font-weight:500;font-style:normal;font-display:swap;src:url(/assets/fonts/geist-500.woff2) format("woff2")}}@font-face{{font-family:"Geist Mono";font-weight:400;font-style:normal;font-display:swap;src:url(/assets/fonts/geist-mono-400.woff2) format("woff2")}}@font-face{{font-family:"Newsreader";font-weight:300;font-style:italic;font-display:swap;src:url(/assets/fonts/newsreader-italic-300.woff2) format("woff2")}}</style>
+<script>document.documentElement.classList.add("js");{FIRST if loader else ""}window.MAGO={{whatsapp:"{SITE['whatsapp']}",formEndpoint:"{SITE['form_endpoint']}",formKey:"{SITE.get('form_key', '')}",email:"{SITE['email']}"}};</script>
 {css}{ga}{ld}'''
     inner = f'{LOADER if loader else ""}{header(active)}<main id="main">{body}</main>{footer()}{js}'
     if MODE == "preview" and path == "/":
@@ -135,7 +145,7 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
     assert "—" not in doc, f"em dash on {path}"
     out = os.path.join(ROOT, OUT, "404.html") if path == "/404" else os.path.join(ROOT, OUT, path.strip("/"), "index.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(minis(responsive(doc)))
+    open(out, "w", encoding="utf-8").write(presplit(minis(responsive(doc))))
     PAGES.append((path, noindex))
 
 # ---------------- components ----------------

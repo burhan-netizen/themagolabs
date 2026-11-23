@@ -51,7 +51,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:-.0
 /* split text (JS wraps words; without JS it is plain text) */
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
 .w > span{display:inline-block}
-.scrub .sw{opacity:.14}
+.scrub .sw{opacity:.42}
 
 /* section head */
 .sh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-bottom:72px;align-items:end}

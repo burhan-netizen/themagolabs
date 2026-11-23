@@ -38,7 +38,7 @@ window.MAGO_ORBIT = function (G, ST) {
       info.querySelector('.k').textContent = d.ind + (d.where ? ' · ' + d.where : '');
       info.querySelector('.nm > span').textContent = d.name;
       info.querySelector('.rs > span').innerHTML = d.res;
-      var b = info.querySelector('.btn'); b.href = d.href; b.setAttribute('aria-label', 'View the ' + d.name + ' case study');
+      var b = info.querySelector('.btn'); b.href = d.href; b.setAttribute('aria-label', b.textContent.trim() + ': ' + d.name);
       if (G && !reduce) G.fromTo(info.querySelectorAll('.t > span'), { yPercent: 105 }, { yPercent: 0, duration: .7, stagger: .05, ease: 'power3.out', overwrite: true });
     }
 
@@ -60,7 +60,7 @@ window.MAGO_ORBIT = function (G, ST) {
         el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + sc.toFixed(3) + ')';
         el.style.zIndex = Math.round(depth * 100);
         el.style.opacity = (.08 + .92 * Math.pow(depth, 1.7)).toFixed(3);
-        el.style.filter = 'brightness(' + (.25 + .75 * Math.pow(depth, 1.5)).toFixed(2) + ')';
+        el.style.setProperty('--dim', (.75 - .75 * Math.pow(depth, 1.5)).toFixed(2)); /* dark veil instead of a brightness filter: same look, cheaper, readable for screen readers */
       }
       var f = ((Math.round(-rot / step) % n) + n) % n;
       if (f !== front) { front = f; setInfo(f); }
@@ -382,13 +382,9 @@ window.MAGO_ORBIT = function (G, ST) {
     /* hero: kinetic headline, then video shrinks into a card as you scroll */
     var hero = $('.hero');
     if (hero) {
-      var words = split($('.hero h1')), heroMedia = $('.hero .media');
-      heroTl = G.timeline({ paused: true, delay: .1, onComplete: function () { $$('.hero h1 .w').forEach(function (w) { w.classList.add('open'); }); } });
-      heroTl.from(words, { yPercent: 115, rotate: 4, duration: 1.2, stagger: .07, ease: 'power4.out' })
-        .from('.hero .row > *, .hud', { y: 24, opacity: 0, duration: .9, stagger: .08, ease: 'power3.out' }, '-=.8')
-        .from(heroMedia, { scale: 1.15, duration: 2.2, ease: 'power3.out' }, 0);
-      heroTl.progress(0.001).pause(); /* apply the hidden start state now, in the same frame the text is unhidden */
-      G.set('.hero .content', { visibility: 'visible' });
+      /* the headline rise, the copy and the video zoom are CSS animations (see .h-hero in extras.css) */
+      var heroMedia = $('.hero .media');
+      heroTl = true;
       G.timeline({ scrollTrigger: { trigger: '.hero-wrap', start: 'top top', end: 'bottom top', scrub: true,
           onUpdate: function (s) { heroMedia.classList.toggle('shrunk', s.progress > .02); } } })
         .to(heroMedia, { scale: .9, ease: 'none' }, 0)
@@ -495,10 +491,9 @@ window.MAGO_ORBIT = function (G, ST) {
   var heroTl = null;
   scenes();
   intro(function () {
+    document.documentElement.classList.remove('first');
     if (!heroTl) return;
-    var go = function () { if (go) { go = null; heroTl.play(); } };
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { go && go(); });
-    setTimeout(function () { go && go(); }, 1200);
+    setTimeout(function () { $$('.hero h1 .w').forEach(function (w) { w.classList.add('open'); }); }, 1700);
   });
 })();
 /* v4 interactions. Each block checks for its own markup and degrades to a static, usable page. */

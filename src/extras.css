@@ -215,6 +215,24 @@ html{overflow-x:clip}
 .ftr .word{font-size:calc((100vw - 64px) / 7.4);overflow:visible;padding-right:.02em}
 @media (min-width:1440px){.ftr .word{font-size:calc((1440px - 64px) / 7.4)}}
 .pile-next{white-space:nowrap}
-/* split-word reveal: room below round letters so tight line-heights never clip them */
-.w{padding-bottom:.14em;margin-bottom:-.14em}
+/* split-word reveal: room around letters so tight tracking and line-heights never clip them */
+.w{padding:0 .14em .14em;margin:0 -.14em -.14em}
+.w.open{overflow:visible}
 .ftr .word .w{padding:0 .02em .3em;margin:0 -.02em -.3em}
+
+/* perf + no-flash: text that animates in stays hidden until its animation is set up (JS adds .static if motion is off) */
+.js:not(.static) .hero .content,.js:not(.static) [data-split],.js:not(.static) [data-rise],.js:not(.static) [data-stagger]{visibility:hidden;animation:mago-show 0s 3s forwards}
+@keyframes mago-show{to{visibility:visible}}
+.hero .media{transition:border-radius .5s var(--ease)}
+.hero .media.shrunk{border-radius:28px}
+.anim-off *,.anim-off *::before,.anim-off *::after{animation-play-state:paused!important}
+/* hero proof line */
+.hero .trust{margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 72%,transparent)}
+/* co-founder note: quiet, sits under the founder story */
+.partner{margin-top:36px;padding-top:22px;border-top:1px solid var(--rule);max-width:560px}
+.partner .pn{margin:12px 0 6px;font-size:18px;letter-spacing:-.01em}
+.partner p{margin:0 0 10px;color:var(--graphite);font-size:16px;line-height:1.55}
+.partner .pn,.partner .pn b{color:var(--ink)}
+.partner .pc{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:15px;color:var(--ink)}
+.partner .pc .ulink{padding-block:2px}
+.partner .pc span{color:var(--graphite)}

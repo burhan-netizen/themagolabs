@@ -79,6 +79,21 @@ LOADER = '''<div class="loader" aria-hidden="true"><div class="inner">
 <span class="count">000</span></div></div>'''
 
 PAGES = []
+_IMG_RE = re.compile(r'<img\b(?![^>]*\bsrcset=)([^>]*?)\bsrc="(/assets/[^"]+?)\.webp"([^>]*\bloading="lazy"[^>]*)>')
+def responsive(doc):
+    """Lazy images with a 640px copy get a srcset, so small slots load the small file (sizes=auto picks by rendered width)."""
+    def sub(m):
+        base = m.group(2)
+        small = os.path.join(ROOT, base.lstrip("/") + "-640.webp")
+        if not os.path.exists(small): return m.group(0)
+        try:
+            from PIL import Image as _I
+            w = _I.open(os.path.join(ROOT, base.lstrip("/") + ".webp")).width
+        except Exception:
+            return m.group(0)
+        return f'<img{m.group(1)}src="{base}.webp" srcset="{base}-640.webp 640w, {base}.webp {w}w" sizes="auto, 100vw"{m.group(3)}>'
+    return _IMG_RE.sub(sub, doc)
+
 def page(path, title, desc, body, active=None, schema=None, noindex=False, loader=False):
     CUR[0] = path
     canon = abs_url(path)
@@ -119,7 +134,7 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
     assert "—" not in doc, f"em dash on {path}"
     out = os.path.join(ROOT, OUT, "404.html") if path == "/404" else os.path.join(ROOT, OUT, path.strip("/"), "index.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(doc)
+    open(out, "w", encoding="utf-8").write(responsive(doc))
     PAGES.append((path, noindex))
 
 # ---------------- components ----------------
@@ -213,11 +228,11 @@ def founder():
     return f'''<section class="sec founder" aria-label="Meet the founder"><div class="wrap"><div class="fd">
   <div class="txt"><span class="lab">Meet the founder</span><h2 data-split>The guy <em>behind the dot.</em></h2>
     <div class="story" data-rise><p>I'm Burhan. I spent eight years inside banks, fintech and insurance, and walked out knowing one thing: people don't buy the best. <em>They buy the one they trust first.</em></p>
-    <p>Now I build websites that earn that trust in seconds, for clinics in Surat, civil crews in Sydney and concreters in Florida.</p>
+    <p>Now I build websites that earn that trust in seconds, for businesses across India, Australia, the USA, the UK and Canada.</p>
     <p>When I'm not building, I'm somewhere new. Lanterns, mountains, long beach walks. Every trip ends up in a website somewhere: a colour, a headline, a feeling.</p></div>
-    <div class="facts2" data-rise><div><span class="k">Based in</span><span class="v">Surat, India</span></div><div><span class="k">Clients in</span><span class="v">India · Australia · USA</span></div>
+    <div class="facts2" data-rise><div><span class="k">Based in</span><span class="v">Surat, India</span></div><div><span class="k">Clients in</span><span class="v">India · Australia · USA · UK · Canada</span></div>
       <div><span class="k">Before this</span><span class="v">8 years in banking and fintech</span></div><div><span class="k">Recharges by</span><span class="v">Getting lost somewhere new</span></div></div>
-    <div class="ctas" data-rise><a class="btn" href="{WA}" data-magnetic>{WA_SVG}Say hi on WhatsApp</a><a class="ulink" href="{href('/about/')}">The full story →</a></div></div>
+    <div class="ctas" data-rise><a class="btn" href="{WA}" data-magnetic>{WA_SVG}Say hi on WhatsApp</a><a class="ulink" href="{href('/about/')}">The full story →</a></div><div class="partner" data-rise><span class="lab">And the other half</span><p class="pn"><b>Priyanka</b> · Co-Founder and Head of International Relations</p><p>I build the websites. Priyanka makes sure our clients overseas are looked after, from the first hello to launch day.</p><p class="pc"><a class="ulink" href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a><span>·</span><a class="ulink" href="tel:+917420819299">+91 74208 19299</a><span>·</span><a class="ulink" href="https://wa.me/917420819299">WhatsApp</a></p></div></div>
   <div class="pile-wrap"><div class="stamp" aria-hidden="true"><span><b>{SITE['businesses']}</b>businesses<br>helped</span></div>
     <div class="pile" tabindex="0" role="group" aria-label="Photos of Burhan travelling. Press Enter for the next photo.">{pol}</div>
     <div class="pile-hint"><span class="lab"><span class="dot"></span>Drag or tap to flip through</span><button type="button" class="pile-next">Next photo →</button></div></div>
@@ -340,7 +355,7 @@ def build_home():
     <h1 class="h-hero">{it(H['h1'])}</h1>
     <div class="row"><p class="lede">{E(H['lede'])}</p>
       <div class="act"><div class="ctas"><a class="btn inv" href="#contact" data-site="yes" data-magnetic>Get a free site audit</a><a class="wa" href="{WA}" data-magnetic>{WA_SVG}WhatsApp us</a></div>
-      <p class="nosite">No website yet? <a href="#contact" data-site="no">Get a free preview in 48 hours →</a></p></div></div>
+      <p class="nosite">No website yet? <a href="#contact" data-site="no">Get a free preview in 48 hours →</a></p><p class="trust">★ 5.0 on Google · 75+ businesses · India, Australia, USA, UK, Canada</p></div></div>
   </div>
   <div class="scrollcue"><span>Scroll to land</span><i></i></div>
 </section></div>
@@ -362,7 +377,7 @@ def build_home():
     <a class="pcard big" href="{href('/work/smile-care-clinic/')}" data-cursor="View case"><span class="lab">Dental clinic · patients a day</span><span class="n"><span class="from">25</span><span class="arr">→</span><span class="to" data-count="58" data-from="25">58</span></span><div class="d"><p>A new clinic, within two months of launch. They had to hire more staff to keep up.</p><span class="badge live">Case 01</span></div></a>
     <a class="pcard" href="{href('/work/smile-care-clinic/')}" data-cursor="View case"><span class="lab">Appointment calls</span><span class="n"><span class="to"><span data-count="63">63</span>%</span></span><div class="d"><p>More booking calls in the same two months.</p></div></a>
     <a class="pcard" href="{href('/work/darshan-galani-co/')}" data-cursor="View case"><span class="lab">New clients · 3 months</span><span class="n"><span class="to" data-count="34">34</span></span><div class="d"><p>A CA firm that had never had a website.</p></div></a>
-    <div class="pcard"><span class="lab">Businesses helped</span><span class="n">{SITE['businesses']}</span><div class="d"><p>India, Australia, the US and the UK.</p></div></div>
+    <div class="pcard"><span class="lab">Businesses helped</span><span class="n">{SITE['businesses']}</span><div class="d"><p>India, Australia, the USA, the UK and Canada.</p></div></div>
     <a class="pcard" href="{SITE['google_reviews']}" rel="noopener" data-cursor="Reviews"><span class="lab">Google rating</span><span class="n">{SITE['rating']}<span style="font-size:.4em">★</span></span><div class="d"><p>From {SITE['review_count']} Google reviews.</p></div></a>
   </div>
 </div></section>
@@ -399,7 +414,7 @@ def build_work():
 <section class="phero"><div class="wrap">{crumbs(("", "Work"))}
   <h1 class="h-page" data-split>Results, <em>not just pretty pages.</em></h1>
   <p class="lede" data-rise>{len(CLIENTS)} live websites for clinics, accounting firms, contractors, manufacturers and online sellers. Every one started on a blank page. Every one is still live.</p>
-  <div class="meta-row" data-rise><div><span class="k">Live sites</span><span class="v">{len(CLIENTS)}</span></div><div><span class="k">Best result</span><span class="v">25 → 58 patients a day</span></div><div><span class="k">Countries</span><span class="v">India · Australia · USA</span></div><div><span class="k">Google rating</span><span class="v">{SITE['rating']} ★</span></div></div>
+  <div class="meta-row" data-rise><div><span class="k">Live sites</span><span class="v">{len(CLIENTS)}</span></div><div><span class="k">Best result</span><span class="v">25 → 58 patients a day</span></div><div><span class="k">Countries</span><span class="v">India · Australia · USA · UK · Canada</span></div><div><span class="k">Google rating</span><span class="v">{SITE['rating']} ★</span></div></div>
 </div></section>
 {orbit(CLIENTS, "Live client work · " + str(len(CLIENTS)) + " sites", "Every site. *Every result.*")}
 <section class="sec space" data-dark style="padding-bottom:110px"><div class="wrap">{sh("From the lab · Concept builds", "And what we'd build *for your trade.*", "Separate from client work.")}{CNOTE}</div>
@@ -568,7 +583,7 @@ def build_about():
     body = f'''<section class="phero"><div class="wrap">{crumbs(("", "About"))}<h1 class="h-page" data-split>Founder-led. <em>Results-obsessed.</em></h1>
 <p class="lede" data-rise>The Mago Labs is a small studio led by its founder, Burhan Kapasi. You talk to the person doing the work, from the first message to launch day and after.</p></div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap"><div class="about"><div class="pic" data-clip><img src="{asset('/assets/img/burhan-sofa.webp')}" alt="Burhan Kapasi, founder of The Mago Labs, smiling in an armchair" width="768" height="878" loading="lazy"></div>
-<div class="story">{ch}<div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{SITE['linkedin']}" rel="noopener" data-magnetic>Burhan on LinkedIn</a></div></div></div></div></section>
+<div class="story">{ch}<div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{SITE['linkedin']}" rel="noopener" data-magnetic>Burhan on LinkedIn</a></div><div class="partner" data-rise><span class="lab">Co-Founder</span><p class="pn"><b>Priyanka</b> · Co-Founder and Head of International Relations</p><p>Burhan builds the websites. Priyanka makes sure our clients overseas are looked after, from the first hello to launch day.</p><p class="pc"><a class="ulink" href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a><span>·</span><a class="ulink" href="tel:+917420819299">+91 74208 19299</a><span>·</span><a class="ulink" href="https://wa.me/917420819299">WhatsApp</a></p></div></div></div></div></section>
 <section class="sec dark" data-dark><div class="wrap">{sh("Three rules", "How we *work.*")}<div class="grid3" data-stagger>
 <div class="col"><span class="num">01</span><h3 class="h3">Outcome first.</h3><p>A website is judged by the calls, bookings and jobs it brings in.</p></div>
 <div class="col"><span class="num">02</span><h3 class="h3">Numbers beat adjectives.</h3><p>We measure before and after, and we show you. Ours too.</p></div>
@@ -585,7 +600,7 @@ def build_forms():
     body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Contact"))}<div class="formgrid solo"><div class="intro">
 <h1 class="h-page" data-split style="font-size:clamp(44px,6vw,104px)">Let's talk about <em>your website.</em></h1>
 <p class="lede" data-rise>You talk directly to Burhan, the founder. Answer six quick questions below, or email or WhatsApp him directly.</p>
-<ul class="checks" data-stagger><li>WhatsApp: <a class="ulink" href="{WA}">{SITE['whatsapp_display']}</a></li><li>Email: <a class="ulink" href="mailto:{SITE['email']}">{SITE['email']}</a></li><li>Working with businesses in India, Australia, the US, the UK, Canada and New Zealand</li></ul></div></div></div></section>{contact("Six quick questions. *Then we talk.*")}'''
+<ul class="checks" data-stagger><li><span>WhatsApp: <a class="ulink" href="{WA}">{SITE['whatsapp_display']}</a></span></li><li><span>Email: <a class="ulink" href="mailto:{SITE['email']}">{SITE['email']}</a></span></li><li><span>Working with businesses in India, Australia, the USA, the UK and Canada</span></li><li><span>International enquiries: Priyanka, <span style="white-space:nowrap">Co-Founder</span>. <a class="ulink" href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a> · <a class="ulink" href="tel:+917420819299">+91 74208 19299</a> (call or <a class="ulink" href="https://wa.me/917420819299">WhatsApp</a>)</span></li></ul></div></div></div></section>{contact("Six quick questions. *Then we talk.*")}'''
     page("/contact/", "Contact", "Talk directly to the founder of The Mago Labs on WhatsApp or email. Reply within one business day.", body, schema=[bc(("/contact/", "Contact"))])
     body = f'''<section class="phero space" data-dark style="min-height:80vh"><div class="wrap"><span class="dot" style="width:18px;height:18px"></span>
 <h1 class="h-page" data-split style="margin-top:28px">Got it. <em>You've landed.</em></h1>

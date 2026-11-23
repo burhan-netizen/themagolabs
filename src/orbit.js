@@ -15,6 +15,7 @@ window.MAGO_ORBIT = function (G, ST) {
     var desktop = innerWidth > 900;
 
     function measure() {
+      lastRot = null;
       W = stage.clientWidth; H = stage.clientHeight; desktop = innerWidth > 900;
       if (desktop) { cx = W * .6; cy = H * .45; Rx = Math.min(W * .44, 760); Ry = H * .17; cw = Math.min(W * .31, 520); }
       else { cx = W * .5; cy = H * .36; Rx = W * .4; Ry = H * .08; cw = W * .62; }
@@ -41,9 +42,15 @@ window.MAGO_ORBIT = function (G, ST) {
       if (G && !reduce) G.fromTo(info.querySelectorAll('.t > span'), { yPercent: 105 }, { yPercent: 0, duration: .7, stagger: .05, ease: 'power3.out', overwrite: true });
     }
 
+    /* only redraw while on screen and still moving; a settled orbit costs nothing */
+    var onScreen = true, lastRot = null;
+    new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { rootMargin: '200px 0px' }).observe(stage);
     function frame() {
+      requestAnimationFrame(frame);
       var target = scrollT + dragT;
       rot += (target - rot) * (reduce ? 1 : .085);
+      if (!onScreen || (lastRot !== null && Math.abs(rot - lastRot) < 1e-5)) return;
+      lastRot = rot;
       for (var i = 0; i < n; i++) {
         var th = i * step + rot, s = Math.sin(th), c = Math.cos(th);
         var depth = (c + 1) / 2;
@@ -57,7 +64,6 @@ window.MAGO_ORBIT = function (G, ST) {
       }
       var f = ((Math.round(-rot / step) % n) + n) % n;
       if (f !== front) { front = f; setInfo(f); }
-      requestAnimationFrame(frame);
     }
 
     function goTo(i) {

@@ -15,6 +15,7 @@ window.MAGO_ORBIT = function (G, ST) {
     var desktop = innerWidth > 900;
 
     function measure() {
+      lastRot = null;
       W = stage.clientWidth; H = stage.clientHeight; desktop = innerWidth > 900;
       if (desktop) { cx = W * .6; cy = H * .45; Rx = Math.min(W * .44, 760); Ry = H * .17; cw = Math.min(W * .31, 520); }
       else { cx = W * .5; cy = H * .36; Rx = W * .4; Ry = H * .08; cw = W * .62; }
@@ -41,9 +42,15 @@ window.MAGO_ORBIT = function (G, ST) {
       if (G && !reduce) G.fromTo(info.querySelectorAll('.t > span'), { yPercent: 105 }, { yPercent: 0, duration: .7, stagger: .05, ease: 'power3.out', overwrite: true });
     }
 
+    /* only redraw while on screen and still moving; a settled orbit costs nothing */
+    var onScreen = true, lastRot = null;
+    new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { rootMargin: '200px 0px' }).observe(stage);
     function frame() {
+      requestAnimationFrame(frame);
       var target = scrollT + dragT;
       rot += (target - rot) * (reduce ? 1 : .085);
+      if (!onScreen || (lastRot !== null && Math.abs(rot - lastRot) < 1e-5)) return;
+      lastRot = rot;
       for (var i = 0; i < n; i++) {
         var th = i * step + rot, s = Math.sin(th), c = Math.cos(th);
         var depth = (c + 1) / 2;
@@ -57,7 +64,6 @@ window.MAGO_ORBIT = function (G, ST) {
       }
       var f = ((Math.round(-rot / step) % n) + n) % n;
       if (f !== front) { front = f; setInfo(f); }
-      requestAnimationFrame(frame);
     }
 
     function goTo(i) {
@@ -119,7 +125,7 @@ window.MAGO_ORBIT = function (G, ST) {
   /* ---------- smooth scroll ---------- */
   var lenis = null;
   if (motion && window.Lenis && fine) {
-    lenis = new Lenis({ duration: 1.15, smoothWheel: true }); window.MAGO_LENIS = lenis;
+    lenis = new Lenis({ lerp: .14, smoothWheel: true, wheelMultiplier: 1 }); window.MAGO_LENIS = lenis;
     lenis.on('scroll', ST.update);
     G.ticker.add(function (t) { lenis.raf(t * 1000); });
     G.ticker.lagSmoothing(0);
@@ -152,22 +158,25 @@ window.MAGO_ORBIT = function (G, ST) {
 
   /* ---------- loader (once per session, home only) ---------- */
   var loader = $('.loader');
-  function intro(done) {
+  /* calls reveal() once, as the loader starts lifting (or straight away when there is no loader) */
+  function intro(reveal) {
+    var fired = false, done = function () { if (!fired) { fired = true; reveal(); } };
     var seen = false; try { seen = sessionStorage.getItem('mago-intro'); } catch (e) {}
     if (!loader || !motion || seen) { done(); return; }
     try { sessionStorage.setItem('mago-intro', '1'); } catch (e) {}
     loader.classList.add('on');
-    var safety = setTimeout(function () { loader.style.display = 'none'; done(); done = function () {}; }, 4200);
+    var safety = setTimeout(function () { loader.style.display = 'none'; done(); }, 4200);
     var path = $('.loader .m'), dotEl = $('.loader .ld'), count = $('.loader .count');
     var len = path.getTotalLength();
     G.set(path, { strokeDasharray: len, strokeDashoffset: len, fill: 'transparent' });
     G.set(dotEl, { attr: { cx: 60, cy: 40 }, opacity: 0 });
     var o = { v: 0 };
-    var tl = G.timeline({ onComplete: function () { clearTimeout(safety); done(); } });
+    var tl = G.timeline({ onComplete: function () { clearTimeout(safety); } });
     tl.to(o, { v: 100, duration: 1.4, ease: 'power2.inOut', onUpdate: function () { count.textContent = String(Math.round(o.v)).padStart(3, '0'); } }, 0)
       .to(path, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' }, 0)
       .to(path, { fill: '#F2F1EC', duration: .35 }, 1.0)
       .to(dotEl, { opacity: 1, attr: { cx: 124, cy: 11 }, duration: .55, ease: 'back.out(2)' }, 1.05)
+      .call(done, null, 1.75)
       .to(loader, { yPercent: -100, duration: .9, ease: 'power4.inOut' }, 1.75)
       .set(loader, { display: 'none' });
   }
@@ -190,18 +199,19 @@ window.MAGO_ORBIT = function (G, ST) {
   }
 
   /* ---------- header: colour over dark sections, hide on scroll down ---------- */
-  var hdr = $('.hdr'), last = 0;
+  var hdr = $('.hdr'), last = 0, darkSecs = $$('[data-dark]'), mctaEl = $('.mcta'), hdrQueued = false;
   function hdrUpdate() {
+    hdrQueued = false;
     var y = window.scrollY;
     hdr.classList.toggle('solid', y > 40);
     hdr.classList.toggle('hide', y > 500 && y > last && !document.body.classList.contains('menu-open'));
     last = y;
     var probe = 40, dark = false;
-    $$('[data-dark]').forEach(function (s) { var r = s.getBoundingClientRect(); if (r.top <= probe && r.bottom > probe) dark = true; });
+    for (var di = 0; di < darkSecs.length && !dark; di++) { var r = darkSecs[di].getBoundingClientRect(); if (r.top <= probe && r.bottom > probe) dark = true; }
     hdr.classList.toggle('on-dark', dark);
-    var mcta = $('.mcta'); if (mcta) mcta.classList.toggle('on', y > innerHeight * .8);
+    if (mctaEl) mctaEl.classList.toggle('on', y > innerHeight * .8);
   }
-  addEventListener('scroll', hdrUpdate, { passive: true }); hdrUpdate();
+  addEventListener('scroll', function () { if (!hdrQueued) { hdrQueued = true; requestAnimationFrame(hdrUpdate); } }, { passive: true }); hdrUpdate();
 
   /* ---------- mobile menu ---------- */
   var mbtn = $('.menu-btn.open'), mnav = $('#mnav');
@@ -232,8 +242,12 @@ window.MAGO_ORBIT = function (G, ST) {
     var cur = document.createElement('div'); cur.className = 'cursor'; cur.innerHTML = '<span></span>';
     document.body.appendChild(cur);
     var lab = cur.firstChild, mx = -100, my = -100, cx = -100, cy = -100;
-    addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; cur.classList.add('ready'); }, { passive: true });
-    (function loop() { cx += (mx - cx) * .2; cy += (my - cy) * .2; cur.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)'; requestAnimationFrame(loop); })();
+    var curRun = false;
+    function curLoop() {
+      cx += (mx - cx) * .2; cy += (my - cy) * .2; cur.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+      if (Math.abs(mx - cx) + Math.abs(my - cy) > .3) requestAnimationFrame(curLoop); else curRun = false;
+    }
+    addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; cur.classList.add('ready'); if (!curRun) { curRun = true; requestAnimationFrame(curLoop); } }, { passive: true });
     document.addEventListener('pointerover', function (e) {
       var t = e.target.closest && e.target.closest('[data-cursor]');
       if (t) { lab.textContent = t.getAttribute('data-cursor'); cur.classList.add('big'); }
@@ -338,18 +352,27 @@ window.MAGO_ORBIT = function (G, ST) {
       r.addEventListener('pointerenter', function () {
         if (cur) cur.classList.toggle('cur', false);
         cur = imgs[src]; cur.classList.toggle('cur', true);
-        $('.tag', pv).textContent = r.dataset.tag; pv.classList.toggle('on', true); ts = 1;
+        $('.tag', pv).textContent = r.dataset.tag; pv.classList.toggle('on', true); ts = 1; wake();
       });
     });
-    idx.addEventListener('pointerleave', function () { pv.classList.toggle('on', false); ts = .7; });
-    addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; }, { passive: true });
-    (function loop() {
+    var pvRun = false;
+    function wake() { if (!pvRun) { pvRun = true; requestAnimationFrame(loop); } }
+    idx.addEventListener('pointerleave', function () { pv.classList.toggle('on', false); ts = .7; wake(); });
+    addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; if (pv.classList.contains('on')) wake(); }, { passive: true });
+    function loop() {
       var dx = tx - x; x += dx * .12; y += (ty - y) * .12; s += (ts - s) * .12;
       var rot = reduce ? 0 : Math.max(-8, Math.min(8, dx * .04));
       pv.style.transform = 'translate(' + (x + 40) + 'px,' + (y - 20) + 'px) translate(0,-50%) rotate(' + rot + 'deg) scale(' + s + ')';
-      requestAnimationFrame(loop);
-    })();
+      if (Math.abs(dx) + Math.abs(ty - y) + Math.abs(ts - s) * 100 > .3) requestAnimationFrame(loop); else pvRun = false;
+    }
+    wake();
   });
+
+  /* ---------- pause decorative CSS animations in sections that are off screen ---------- */
+  if ('IntersectionObserver' in window) {
+    var offIO = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('anim-off', !(e.isIntersecting && e.intersectionRatio > 0)); }); }, { rootMargin: '0px' });
+    $$('main > section, main > div, .ftr').forEach(function (s) { offIO.observe(s); });
+  }
 
   if (!motion) { document.documentElement.classList.add('static'); return; }
 
@@ -359,30 +382,37 @@ window.MAGO_ORBIT = function (G, ST) {
     /* hero: kinetic headline, then video shrinks into a card as you scroll */
     var hero = $('.hero');
     if (hero) {
-      var words = split($('.hero h1'));
-      var tl = G.timeline({ delay: .1 });
-      tl.from(words, { yPercent: 115, rotate: 4, duration: 1.2, stagger: .07, ease: 'power4.out' })
+      var words = split($('.hero h1')), heroMedia = $('.hero .media');
+      heroTl = G.timeline({ paused: true, delay: .1, onComplete: function () { $$('.hero h1 .w').forEach(function (w) { w.classList.add('open'); }); } });
+      heroTl.from(words, { yPercent: 115, rotate: 4, duration: 1.2, stagger: .07, ease: 'power4.out' })
         .from('.hero .row > *, .hud', { y: 24, opacity: 0, duration: .9, stagger: .08, ease: 'power3.out' }, '-=.8')
-        .from('.hero .media', { scale: 1.15, duration: 2.2, ease: 'power3.out' }, 0);
-      G.timeline({ scrollTrigger: { trigger: '.hero-wrap', start: 'top top', end: 'bottom top', scrub: true } })
-        .to('.hero .media', { scale: .9, borderRadius: 28, ease: 'none' }, 0)
+        .from(heroMedia, { scale: 1.15, duration: 2.2, ease: 'power3.out' }, 0);
+      heroTl.progress(0.001).pause(); /* apply the hidden start state now, in the same frame the text is unhidden */
+      G.set('.hero .content', { visibility: 'visible' });
+      G.timeline({ scrollTrigger: { trigger: '.hero-wrap', start: 'top top', end: 'bottom top', scrub: true,
+          onUpdate: function (s) { heroMedia.classList.toggle('shrunk', s.progress > .02); } } })
+        .to(heroMedia, { scale: .9, ease: 'none' }, 0)
         .to('.hero .content', { yPercent: -18, opacity: 0, ease: 'none' }, 0)
         .to('.hud', { opacity: 0, ease: 'none' }, 0);
     }
     /* inner page heroes */
     $$('[data-split]').forEach(function (el) {
       var w = split(el);
-      if (el.closest('.hero')) return;
+      if (el.closest('.hero')) { G.set(el, { visibility: 'visible' }); return; }
       var inView = el.getBoundingClientRect().top < innerHeight;
-      G.from(w, { yPercent: 115, rotate: 3, duration: 1.1, stagger: .05, ease: 'power4.out', delay: inView ? .25 : 0,
+      G.from(w, { yPercent: 115, rotate: 3, duration: 1.1, stagger: .05, ease: 'power4.out', delay: inView ? .25 : 0, immediateRender: true,
+        onComplete: function () { $$('.w', el).forEach(function (x) { x.classList.add('open'); }); },
         scrollTrigger: inView ? null : { trigger: el, start: 'top 85%' } });
+      G.set(el, { visibility: 'visible' });
     });
     /* fades */
     $$('[data-rise]').forEach(function (el) {
-      G.from(el, { y: 50, opacity: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+      G.from(el, { y: 50, opacity: 0, duration: 1.1, ease: 'power3.out', immediateRender: true, scrollTrigger: { trigger: el, start: 'top 90%' } });
+      G.set(el, { visibility: 'visible' });
     });
     $$('[data-stagger]').forEach(function (g) {
-      G.from(g.children, { y: 60, opacity: 0, duration: 1, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: g, start: 'top 85%' } });
+      G.from(g.children, { y: 60, opacity: 0, duration: 1, stagger: .08, ease: 'power3.out', immediateRender: true, scrollTrigger: { trigger: g, start: 'top 85%' } });
+      G.set(g, { visibility: 'visible' });
     });
     /* word-by-word scrub */
     $$('.scrub').forEach(function (el) {
@@ -433,9 +463,9 @@ window.MAGO_ORBIT = function (G, ST) {
     if (ml) G.fromTo(ml, { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '.method', start: 'top 80%', end: 'bottom 60%', scrub: true } });
     /* scroll-velocity marquees */
     $$('.mq .in').forEach(function (el, i) {
-      var dir = i % 2 ? 1 : -1, x = 0, w = el.scrollWidth / 2, boost = 0;
-      ST.create({ trigger: el, start: 'top bottom', end: 'bottom top', onUpdate: function (s) { boost = Math.min(Math.abs(s.getVelocity()) / 300, 8); } });
-      G.ticker.add(function () { x += dir * (1.6 + boost); boost *= .94; if (x <= -w) x += w; if (x > 0) x -= w; el.style.transform = 'translate3d(' + x + 'px,0,0)'; });
+      var dir = i % 2 ? 1 : -1, x = 0, w = el.scrollWidth / 2, boost = 0, on = false;
+      ST.create({ trigger: el, start: 'top bottom', end: 'bottom top', onToggle: function (s) { on = s.isActive; }, onUpdate: function (s) { boost = Math.min(Math.abs(s.getVelocity()) / 300, 8); } });
+      G.ticker.add(function () { if (!on) return; x += dir * (1.6 + boost); boost *= .94; if (x <= -w) x += w; if (x > 0) x -= w; el.style.transform = 'translate3d(' + x + 'px,0,0)'; });
     });
     /* case study screenshot scrolls with the page */
     $$('.scrollshot').forEach(function (s) {
@@ -462,7 +492,14 @@ window.MAGO_ORBIT = function (G, ST) {
     });
     ST.sort(); addEventListener('load', function () { ST.refresh(); });
   }
-  intro(scenes);
+  var heroTl = null;
+  scenes();
+  intro(function () {
+    if (!heroTl) return;
+    var go = function () { if (go) { go = null; heroTl.play(); } };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { go && go(); });
+    setTimeout(function () { go && go(); }, 1200);
+  });
 })();
 /* v4 interactions. Each block checks for its own markup and degrades to a static, usable page. */
 (function () {

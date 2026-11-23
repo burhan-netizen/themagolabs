@@ -974,6 +974,16 @@ html{overflow-x:clip}
 .skip{left:max(32px,env(safe-area-inset-left,0px));transform:none}
 .skip:focus{left:max(32px,env(safe-area-inset-left,0px))}
 .skip:focus-visible{top:88px}
+/* Priyanka's contact: real buttons, same family as the founder CTA */
+.partner .pc{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;font-size:inherit}
+.partner .pc .btn{gap:10px}
+.partner .pc .wa-ic,.partner .pc .btn-ic{width:17px;height:17px;flex:none}
+@media (max-width:560px){.partner .pc .btn{flex:1 1 100%;justify-content:center}}
+.partner{max-width:none;margin-top:40px;padding:26px 28px 28px;border:0;border-radius:24px;background:var(--stone)}
+.stone .partner{background:var(--paper)}
+.partner .pc .btn::before{display:none}
+.partner p{max-width:62ch}
+@media (max-width:560px){.partner{padding:22px 18px 20px}}
 
 .op-intro{padding:calc(150px + env(safe-area-inset-top,0px)) 0 64px}
 .op-intro h1{font-size:clamp(46px,7vw,110px);line-height:.92;letter-spacing:-.06em;max-width:12ch}

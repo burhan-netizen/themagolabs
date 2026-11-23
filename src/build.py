@@ -121,7 +121,7 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
 <link rel="canonical" href="{canon}">{'<meta name="robots" content="noindex">' if noindex else ''}
 <meta property="og:type" content="website"><meta property="og:site_name" content="The Mago Labs"><meta property="og:title" content="{E(ft)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{abs_url('/assets/og.png')}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#050505">
-<link rel="icon" href="{asset('/favicon.ico')}" sizes="any"><link rel="apple-touch-icon" href="{asset('/apple-touch-icon.png')}">
+<link rel="icon" href="{asset('/favicon.ico')}?v=2" sizes="32x32"><link rel="icon" href="{asset('/favicon.svg')}?v=2" type="image/svg+xml"><link rel="apple-touch-icon" href="{asset('/apple-touch-icon.png')}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&family=Newsreader:ital,opsz,wght@1,6..72,300&display=swap">
 <script>document.documentElement.classList.add("js");window.MAGO={{whatsapp:"{SITE['whatsapp']}",formEndpoint:"{SITE['form_endpoint']}",formKey:"{SITE.get('form_key', '')}",email:"{SITE['email']}"}};</script>
@@ -636,7 +636,8 @@ shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(ROOT, OUT, "assets"),
 for b in [build_home, build_work, build_cases, build_concepts, build_testimonials, build_services, build_industries, build_process, build_about, build_forms, build_legal]:
     b()
 png = os.path.join(BRAND, "png")
-shutil.copy(os.path.join(png, "favicon.ico"), os.path.join(ROOT, OUT, "favicon.ico"))
+shutil.copy(os.path.join(ROOT, "src", "favicon.ico"), os.path.join(ROOT, OUT, "favicon.ico"))  # transparent mark, no box
+shutil.copy(os.path.join(ROOT, "src", "favicon.svg"), os.path.join(ROOT, OUT, "favicon.svg"))  # switches colour for dark tabs
 shutil.copy(os.path.join(png, "apple-touch-icon.png"), os.path.join(ROOT, OUT, "apple-touch-icon.png"))
 shutil.copy(os.path.join(png, "lockup-ink-2000.png"), os.path.join(ROOT, OUT, "assets", "logo.png"))
 shutil.copy(os.path.join(ROOT, "src", "og.png"), os.path.join(ROOT, OUT, "assets", "og.png"))

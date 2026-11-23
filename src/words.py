@@ -24,7 +24,7 @@ HOME = dict(
 
 BUILD = [  # stacked cards on the homepage, each links to a service page
     ("website-design", "enquiry", "Websites that *convert.*", "Designed around the one action that pays you: the call, the booking, the quote. Built for a stranger on a phone with eight seconds to spare."),
-    ("website-development", "code", "Fast. Hand-coded. *Yours.*", "No page builders, no plug-in pile-ups, no monthly rent. Your domain and your code, in your name, with hosting included."),
+    ("website-development", "code", "Fast. Coded by hand. *Yours.*", "No page builders, no pile of plugins, no monthly rent. Your domain and your code, in your name, with hosting included."),
     ("website-redesign", "growth", "Redesigns that *rescue.*", "Your site gets visitors and nobody calls. We find exactly why, then rebuild it around what makes people pick up the phone."),
     ("local-seo", "local", "Found by people *already searching.*", "Someone near you is searching for exactly what you sell, right now. We make sure your name comes up first."),
 ]
@@ -37,7 +37,7 @@ METHOD = [
 ]
 
 FAQ = [
-    ("What does the free audit actually include?", "We go through your site the way a customer does: on a phone, in a hurry. Speed, clarity, trust, how easy it is to call you, how you show up on Google. You get a short, plain-English list of what's costing you enquiries, in order of what to fix first."),
+    ("What does the free audit actually include?", "We go through your site the way a customer does: on a phone, in a hurry. Speed, clarity, trust, how easy it is to call you, how you show up on Google. You get a short, plain English list of what's costing you enquiries, in order of what to fix first."),
     ("No website yet. Is this still for me?", "Yes. Tell us what you do and who you do it for, and we'll send back a working preview of your new site within 48 hours. Free."),
     ("How much does it cost?", "It depends on what your business needs. After a free call you get a fixed quote in writing before any work starts, and it doesn't change. Hosting is included and you own everything."),
     ("How fast can it be live?", "Between 5 and 28 days, depending on the size of the site. You'll know the date before you sign."),
@@ -54,12 +54,12 @@ SERVICES = {
         faq=[("Why not just use a template?", "A template is built for everyone, so it sells for no one. Yours is built around how your customers decide."),
              ("Do you write the words?", "Every one of them, for your business, by a person. You review and approve all of it."),
              ("Will I see it before it's built?", "Yes. You approve the design first. Nothing gets coded until you're happy.")]),
-    "website-development": dict(name="Website development", title="Fast, Hand-Coded Custom Websites",
-        h1="Fast. Hand-coded. *Yours.*",
-        intro="A slow site loses customers before the page even loads. We hand-code every site so it's fast on any phone, secure, simple to run, and yours to keep.",
-        included=["Hand-coded, no heavy page builders", "Fast on any phone and any network", "SSL, speed and security set up", "Simple editing for text, photos and prices", "Hosting included for life, fair use", "Domain and code registered in your name"],
+    "website-development": dict(name="Website development", title="Fast Custom Websites, Coded by Hand",
+        h1="Fast. Coded by hand. *Yours.*",
+        intro="A slow site loses customers before the page even loads. We code every site by hand so it's fast on any phone, secure, simple to run, and yours to keep.",
+        included=["Coded by hand, no heavy page builders", "Fast on any phone and any network", "SSL, speed and security set up", "Simple editing for text, photos and prices", "Hosting included for life, fair use", "Domain and code registered in your name"],
         cases=["prabhakar-processors", "centurion-strategic-ventures"],
-        faq=[("Who owns the site?", "You do. Domain in your name, code in your hands. No lock-in."),
+        faq=[("Who owns the site?", "You do. Domain in your name, code in your hands. No strings attached."),
              ("Is hosting really included?", "Yes, for standard business websites under fair use. No monthly fee."),
              ("Can you build custom features?", "Calculators, booking flows, separate enquiry paths, CRM hookups. We've built all of them for clients.")]),
     "website-redesign": dict(name="Website redesign", title="Website Redesign For More Enquiries",
@@ -93,7 +93,7 @@ INDUSTRIES = {
         cases=["darshan-galani-co", "mnp-co", "jay-mehta-co", "kd-mayani-co", "astrabizz", "centurion-strategic-ventures"]),
     "home-services": dict(name="Trades and home services", title="Websites For Contractors and Trades",
         h1="Quotes in. *Phone ringing.*",
-        intro="Homeowners and builders search, check your photos and call the contractor who looks the real deal. We build trade websites with real jobs, tap-to-call and quote forms that take a minute.",
+        intro="Homeowners and builders search, check your photos and call the contractor who looks the real deal. We build trade websites with real jobs, tap to call buttons and quote forms that take a minute.",
         points=[("Real work", "Your jobs, your crew. No stock photos."), ("One tap away", "Call and quote buttons on every screen."), ("On the map", "Google Business Profile and local SEO for every area you cover.")],
         cases=["jaymo-civil", "ladson-concrete"]),
 }
@@ -104,3 +104,6 @@ ABOUT = [
     ("The studio", "Today it's a studio that has helped 75+ businesses, from dental clinics in India to civil crews in Sydney. Every site still starts on a blank page."),
     ("The point", "Good businesses lose work every day to competitors with half their skill and a better website. *That's the problem we fix.*"),
 ]
+
+# overview cards on /services/ and /industries/ (slug empty = no dedicated page yet, card opens the contact form)
+INDUSTRY_CARDS = [('home-services', 'Contractors and trades', 'Concrete · Civil · Roofing · Landscaping', 'Homeowners and builders check your photos and call the crew that looks the real deal. Real jobs, call buttons and quote forms that take a minute.'), ('clinics', 'Clinics and healthcare', 'Dental · Medical · Specialists', 'Patients pick a clinic online long before they call. Sites that earn trust in seconds and make booking effortless.'), ('professional-services', 'Professional services', 'Accountants · Consultants · Finance', 'Clients check a firm online before the first meeting. Clear services, real credentials and an easy way to get in touch.'), ('', 'Manufacturers and B2B', 'Textiles · Industrial · Exporters', 'Buyers vet a supplier online before they send an enquiry. Capacity, range and certifications shown so the right buyers reach out.'), ('', 'Real estate', 'Agents · Brokers · Developers', 'Buyers and sellers judge an agent by their website. Listings, local knowledge and a viewing booked in a few taps.'), ('', 'Online stores', 'Brands · Retail · Digital products', 'A product page has no salesperson. Stores that explain, earn trust and take the order on their own.')]

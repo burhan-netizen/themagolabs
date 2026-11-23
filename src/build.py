@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data import SITE, CLIENTS, CATS, TESTIMONIALS, CONCEPTS, PLANS
 import words as C
 import opts as OPTS
+from minis import minis
 
 MODE = sys.argv[1] if len(sys.argv) > 1 else "prod"
 OUT = "preview" if MODE == "preview" else "dist"
@@ -61,7 +62,7 @@ def header(active):
 def footer():
     return f'''<footer class="ftr" data-dark><div class="wrap">
   <div class="top">
-    <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links"><a href="{WA}">{WA_SVG}WhatsApp Burhan</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
+    <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links people"><div class="person"><span class="who">Burhan · Founder</span><a href="{WA}">{WA_SVG}WhatsApp Burhan</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div><div class="person"><span class="who">Priyanka · International</span><a href="https://wa.me/917420819299?text=Hi%20Priyanka%2C%20I%20found%20The%20Mago%20Labs%20and%20would%20like%20to%20talk%20about%20a%20website.">{WA_SVG}WhatsApp Priyanka</a><a href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a></div></div></div>
     <div class="cols">
       <div><h4>Studio</h4><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li></ul></div>
       <div><h4>Build</h4><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}</ul></div>
@@ -134,7 +135,7 @@ def page(path, title, desc, body, active=None, schema=None, noindex=False, loade
     assert "—" not in doc, f"em dash on {path}"
     out = os.path.join(ROOT, OUT, "404.html") if path == "/404" else os.path.join(ROOT, OUT, path.strip("/"), "index.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(responsive(doc))
+    open(out, "w", encoding="utf-8").write(minis(responsive(doc)))
     PAGES.append((path, noindex))
 
 # ---------------- components ----------------
@@ -178,7 +179,7 @@ FOUNDER_PHOTOS = [  # (file, caption, place)
     ("saigon", "Even the city hall has a great hero section.", "Ho Chi Minh City"),
     ("mountains", "Best place to think about your homepage.", "Up in the mountains"),
     ("shoreline", "Ideas arrive on long walks.", "Barefoot, between briefs"),
-    ("night-swing", "Where the best headlines get written.", "Late-night swing"),
+    ("night-swing", "Where the best headlines get written.", "Late night swing"),
     ("white-arch", "Found the perfect frame. Then built one.", "Whitewashed arches"),
     ("beach-shades", "Wi-Fi optional. Smiles mandatory.", "Beach shack office"),
     ("night-out", "The horns come out when a site goes live.", "Off duty"),
@@ -265,7 +266,7 @@ def deck(clients, label, title, end_title, end_href, end_label):
         meta = "".join(f"<span>{E(x)}</span>" for x in ["Live client", c["industry"], c["where"] or "Design · Build · SEO"])
         cards += (f'<li class="dcard" style="--i:{i}"><a class="dlink" href="{href("/work/" + c["slug"] + "/")}" data-cursor="View case">'
                   f'<span class="dpic"><span class="dshot"><span class="dbar"><i></i><i></i><i></i><b>{E(dom)}</b></span>'
-                  f'<span class="dvp"><img src="{asset("/assets/work/" + c["src"] + ".webp")}" alt="Full-page screenshot of the {E(c["name"])} website" width="560" height="2275" loading="lazy" decoding="async"></span></span></span>'
+                  f'<span class="dvp"><img src="{asset("/assets/work/" + c["src"] + ".webp")}" alt="Full page screenshot of the {E(c["name"])} website" width="560" height="2275" loading="lazy" decoding="async"></span></span></span>'
                   f'<span class="dmeta">{meta}</span>'
                   f'<span class="drow"><span class="dname">{E(c["name"])}<sup>{i + 1:02d}</sup></span><span class="dres">{c["card"]}</span><span class="darr" aria-hidden="true"><svg class="ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></span>'
                   f'<i class="dsheen"></i><i class="ddim"></i></a></li>')
@@ -455,7 +456,7 @@ def build_cases():
     <div class="block" data-rise><span class="lab">03 · After</span><h2>The result.</h2>{tickets}<p class="body" style="margin-top:{'24px' if tickets else '0'}">{E(c["outcome"])}</p></div>
     <div class="ctas" data-rise>{visit}<a class="btn" href="#contact" data-magnetic>Let's talk</a></div>
   </div>
-  <div class="visual"><div class="scrollshot"><div class="bar"><i></i><i></i><i></i><span>{E(dom)}</span></div><div class="vp"><img src="{asset(FULLSHOT(c))}" alt="Full-page screenshot of the {E(c['name'])} website" width="1000" height="6000" loading="lazy" decoding="async"></div></div></div>
+  <div class="visual"><div class="scrollshot"><div class="bar"><i></i><i></i><i></i><span>{E(dom)}</span></div><div class="vp"><img src="{asset(FULLSHOT(c))}" alt="Full page screenshot of the {E(c['name'])} website" width="1000" height="6000" loading="lazy" decoding="async"></div></div></div>
 </div></div></section>
 {tq}
 <section class="sec tight"><div class="wrap"><a class="next" href="{href('/work/' + nxt['slug'] + '/')}" data-cursor="Next case"><div class="in"><span class="lab">Next case · {E(nxt['name'])}</span><h3>{it(nxt['headline'])}</h3><div class="img"><img src="{asset(HEROSHOT(nxt))}" alt="" width="1600" height="1000" loading="lazy"></div></div></a></div></section>
@@ -493,8 +494,17 @@ def build_testimonials():
 {final()}'''
     page("/testimonials/", "Client Reviews", f"{len(TESTIMONIALS)} client reviews of The Mago Labs, rated {SITE['rating']} on Google.", body, schema=[bc(("/testimonials/", "Reviews")), ORG])
 
+def industry_cards():
+    out = ""
+    for slug, name, tags, text in C.INDUSTRY_CARDS:
+        link = href("/industries/" + slug + "/") if slug else "#contact"
+        more = "Explore" if slug else "Let's talk"
+        out += (f'<a class="col ind" href="{link}" data-cursor="{more}"><span class="tags">{E(tags)}</span><h3 class="h3">{E(name)}</h3>'
+                f'<p>{E(text)}</p><span class="more">{more} →</span></a>')
+    return out
+
 def build_services():
-    inds = "".join(f'<a class="col" href="{href("/industries/" + k + "/")}" style="text-decoration:none" data-cursor="Explore"><span class="num">{len(v["cases"])} live client{"s" if len(v["cases"]) > 1 else ""}</span><h3 class="h3">{E(v["name"])}</h3><p>{E(v["intro"])}</p></a>' for k, v in C.INDUSTRIES.items())
+    inds = industry_cards()
     body = f'''
 <section class="phero"><div class="wrap">{crumbs(("", "Services"))}
   <h1 class="h-page" data-split>Websites built to <em>bring in work.</em></h1>
@@ -526,11 +536,11 @@ def build_services():
                      {"@context": "https://schema.org", "@type": "Service", "name": s["name"], "provider": {"@type": "Organization", "name": "The Mago Labs"}}])
 
 def build_industries():
-    cards = "".join(f'<a class="col" href="{href("/industries/" + k + "/")}" style="text-decoration:none" data-cursor="Explore"><span class="num">{len(v["cases"])} live client{"s" if len(v["cases"]) > 1 else ""}</span><h3 class="h3">{E(v["name"])}</h3><p>{E(v["intro"])}</p></a>' for k, v in C.INDUSTRIES.items())
+    cards = industry_cards()
     body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Industries"))}<h1 class="h-page" data-split>For businesses that <em>live on enquiries.</em></h1>
-<p class="lede" data-rise>Clinics, accountants, consultants, contractors. Different buyers, same goal: more calls.</p></div></section>
+<p class="lede" data-rise>Contractors, clinics, firms, manufacturers, agents and online stores. Different buyers, same goal: more calls.</p></div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap"><div class="grid3" data-stagger>{cards}</div></div></section>{final()}'''
-    page("/industries/", "Websites By Industry", "Custom websites for clinics, professional services firms and trades, with live client results in each.", body, schema=[bc(("/industries/", "Industries"))])
+    page("/industries/", "Websites By Industry", "Custom websites for contractors, clinics, professional firms, manufacturers, real estate agents and online stores.", body, schema=[bc(("/industries/", "Industries"))])
     for k, v in C.INDUSTRIES.items():
         pts = "".join(f'<div class="col"><h3 class="h3">{E(a)}</h3><p>{E(b)}</p></div>' for a, b in v["points"])
         cases = "".join(rcard(BY[x], i + 1) for i, x in enumerate(v["cases"]))
@@ -580,23 +590,23 @@ def build_process():
 
 def build_about():
     ch = "".join(f'<div class="chap" data-rise><span class="lab">{E(a)}</span><p>{it(b)}</p></div>' for a, b in C.ABOUT)
-    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "About"))}<h1 class="h-page" data-split>Founder-led. <em>Results-obsessed.</em></h1>
+    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "About"))}<h1 class="h-page" data-split>Led by the founder. <em>Obsessed with results.</em></h1>
 <p class="lede" data-rise>The Mago Labs is a small studio led by its founder, Burhan Kapasi. You talk to the person doing the work, from the first message to launch day and after.</p></div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap"><div class="about"><div class="pic" data-clip><img src="{asset('/assets/img/burhan-sofa.webp')}" alt="Burhan Kapasi, founder of The Mago Labs, smiling in an armchair" width="768" height="878" loading="lazy"></div>
 <div class="story">{ch}<div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{SITE['linkedin']}" rel="noopener" data-magnetic>Burhan on LinkedIn</a></div><div class="partner" data-rise><span class="lab">Co-Founder</span><p class="pn"><b>Priyanka</b> · Co-Founder and Head of International Relations</p><p>Burhan builds the websites. Priyanka makes sure our clients overseas are looked after, from the first hello to launch day.</p><p class="pc"><a class="ulink" href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a><span>·</span><a class="ulink" href="tel:+917420819299">+91 74208 19299</a><span>·</span><a class="ulink" href="https://wa.me/917420819299">WhatsApp</a></p></div></div></div></div></section>
 <section class="sec dark" data-dark><div class="wrap">{sh("Three rules", "How we *work.*")}<div class="grid3" data-stagger>
 <div class="col"><span class="num">01</span><h3 class="h3">Outcome first.</h3><p>A website is judged by the calls, bookings and jobs it brings in.</p></div>
 <div class="col"><span class="num">02</span><h3 class="h3">Numbers beat adjectives.</h3><p>We measure before and after, and we show you. Ours too.</p></div>
-<div class="col"><span class="num">03</span><h3 class="h3">Yours to keep.</h3><p>No lock-in, no monthly rent, no hostage domains.</p></div></div></div></section>{final()}'''
-    page("/about/", "About The Mago Labs", "A founder-led website studio. Burhan Kapasi designs and builds websites that bring in calls, bookings and jobs.", body, active="/about/",
+<div class="col"><span class="num">03</span><h3 class="h3">Yours to keep.</h3><p>No contracts that trap you, no monthly rent, no hostage domains.</p></div></div></div></section>{final()}'''
+    page("/about/", "About The Mago Labs", "A website studio led by its founder. Burhan Kapasi designs and builds websites that bring in calls, bookings and jobs.", body, active="/about/",
          schema=[bc(("/about/", "About")), {"@context": "https://schema.org", "@type": "Person", "name": SITE["founder"], "jobTitle": "Founder", "worksFor": {"@type": "Organization", "name": "The Mago Labs"}, "sameAs": [SITE["linkedin"]]}])
 
 def build_forms():
     body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Free site audit"))}<div class="formgrid solo"><div class="intro">
 <h1 class="h-page" data-split style="font-size:clamp(44px,6vw,104px)">Where is your site <em>losing customers?</em></h1>
-<p class="lede" data-rise>We go through your website the way a customer does: on a phone, in a hurry. You get a short, plain-English list of what's costing you enquiries and what to fix first.</p>
+<p class="lede" data-rise>We go through your website the way a customer does: on a phone, in a hurry. You get a short, plain English list of what's costing you enquiries and what to fix first.</p>
 <ul class="checks" data-stagger><li>Free. No strings.</li><li>A reply within one business day</li><li>No site yet? A free working preview in 48 hours</li></ul></div></div></div></section>{contact("Tell us about *your site.*")}'''
-    page("/free-audit/", "Free Website Audit", "Find out exactly where your website loses customers. A free, plain-English audit from The Mago Labs.", body)
+    page("/free-audit/", "Free Website Audit", "Find out exactly where your website loses customers. A free, plain English audit from The Mago Labs.", body)
     body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Contact"))}<div class="formgrid solo"><div class="intro">
 <h1 class="h-page" data-split style="font-size:clamp(44px,6vw,104px)">Let's talk about <em>your website.</em></h1>
 <p class="lede" data-rise>You talk directly to Burhan, the founder. Answer six quick questions below, or email or WhatsApp him directly.</p>
@@ -615,10 +625,10 @@ def build_options():
     opts.build(globals())
 
 def build_legal():
-    pv = f'''<p class="note">Plain-English draft. Have it checked against the laws where you sell before launch.</p><h2>What we collect</h2><p>When you use a form or message us: your name, business, email, phone, website address and message.</p>
+    pv = f'''<p class="note">Plain English draft. Have it checked against the laws where you sell before launch.</p><h2>What we collect</h2><p>When you use a form or message us: your name, business, email, phone, website address and message.</p>
 <h2>How we use it</h2><p>Only to reply, prepare your audit or quote, and do the work you ask for. We never sell your details.</p><h2>Analytics</h2><p>We may use analytics to see which pages help. Where the law requires it, we ask first.</p>
 <h2>Your rights</h2><p>Ask to see, correct or delete your details any time: <a href="mailto:{SITE['email']}">{SITE['email']}</a>.</p>'''
-    tm = f'''<p class="note">Plain-English draft. Have it checked by a lawyer before launch.</p><h2>Quotes and payment</h2><p>Every project starts with a fixed written quote. Payment is half to start and half at launch.</p>
+    tm = f'''<p class="note">Plain English draft. Have it checked by a lawyer before launch.</p><h2>Quotes and payment</h2><p>Every project starts with a fixed written quote. Payment is half to start and half at launch.</p>
 <h2>Ownership</h2><p>Once paid in full, you own the design, content and code. Your domain is registered in your name.</p><h2>Changes and support</h2><p>Two rounds of revisions and one year of free support for small changes. After that, changes are quoted when you ask for them, or you can edit the site yourself.</p>
 <h2>Hosting</h2><p>Included for standard business websites under fair use. Unusual traffic or storage may need a paid plan, always agreed first.</p><h2>Contact</h2><p><a href="mailto:{SITE['email']}">{SITE['email']}</a></p>'''
     for p, t, h, x in [("/privacy/", "Privacy Policy", "Privacy", pv), ("/terms/", "Terms of Service", "Terms", tm)]:

@@ -236,3 +236,5 @@ html{overflow-x:clip}
 .partner .pc{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:15px;color:var(--ink)}
 .partner .pc .ulink{padding-block:2px}
 .partner .pc span{color:var(--graphite)}
+/* phones: leave room under the footer for the floating Let's talk / WhatsApp bar */
+@media (max-width:760px){.ftr{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}}

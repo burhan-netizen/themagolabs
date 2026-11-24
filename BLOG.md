@@ -1,11 +1,11 @@
 # Daily guide routine (themagolabs.com/guides/)
 
-One new guide a day for contractors and trades in the USA, UK, Canada, Australia and New Zealand. It goes live automatically after the checks pass. The owner (Burhan) gets a notification with the link.
+Three new guides a day (morning, noon and night, India time) for contractors and trades in the USA, UK, Canada, Australia and New Zealand. It goes live automatically after the checks pass. The owner (Burhan) gets a notification with the link.
 
 ## Steps
 
 1. `git pull` on `main`.
-2. Open `BLOG-TOPICS.md`. Take the first `todo` row whose group is different from the latest daily post (see `src/posts_src/daily/`). If that topic is already covered by a live guide, mark it `skip` and take the next one.
+2. Open `BLOG-TOPICS.md`. Take the first `todo` row whose group is different from the latest daily post (see `src/posts_src/daily/`; several posts can share a date, so check the commit log for the most recent). Runs happen three times a day, so pull first and never take a topic another run already published. If that topic is already covered by a live guide, mark it `skip` and take the next one.
 3. **Research before writing.** Search the main term and close variants. Read the top results and Reddit or forum threads where owners discuss it, and note the questions people actually ask (these become headings and FAQs). For any price, fee, rule or statistic, find a current source from this year and prefer the official page. Figures from forums are presented as "trades report…", never as fact.
 4. Copy `src/posts_src/TEMPLATE.py` to `src/posts_src/daily/YYYY-MM-DD-slug.py` (today's date, the slug from the topic row) and write the post.
 5. Build and check from `src/`:
@@ -13,7 +13,7 @@ One new guide a day for contractors and trades in the USA, UK, Canada, Australia
    python3 posts_src/gen.py && python3 build.py && python3 posts_src/check.py
    ```
    Fix every ERROR and rerun until it passes. Fix warnings unless there is a good reason.
-6. In `BLOG-TOPICS.md`, set the row's status to today's date. If research turned up two or three good new questions, add them as new `todo` rows at the bottom.
+6. In `BLOG-TOPICS.md`, set the row's status to today's date. If research turned up good new questions, add them as new `todo` rows at the bottom. **Keep the plan full:** if fewer than 30 `todo` rows remain, research and add at least 6 new topics (real searches, spread across the groups, none overlapping a live guide or another row).
 7. Commit `Daily guide: <title>` and push to `main`. Vercel deploys automatically.
 
 ## Writing rules

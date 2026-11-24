@@ -8,6 +8,7 @@ from data import SITE, CLIENTS, CATS, TESTIMONIALS, CONCEPTS, PLANS
 import words as C
 import opts as OPTS
 from minis import minis
+import trades as TR
 
 MODE = sys.argv[1] if len(sys.argv) > 1 else "prod"
 OUT = "preview" if MODE == "preview" else "dist"
@@ -64,7 +65,7 @@ def footer():
   <div class="top">
     <div class="cta"><p>Got a website that should be <em>working harder?</em> Or none at all?</p><div class="links people"><div class="person"><span class="who">Burhan · Founder</span><a href="{WA}">{WA_SVG}WhatsApp Burhan</a><a href="mailto:{SITE['email']}">{SITE['email']}</a></div><div class="person"><span class="who">Priyanka · International</span><a href="https://wa.me/917420819299?text=Hi%20Priyanka%2C%20I%20found%20The%20Mago%20Labs%20and%20would%20like%20to%20talk%20about%20a%20website.">{WA_SVG}WhatsApp Priyanka</a><a href="mailto:priyanka@themagolabs.com">priyanka@themagolabs.com</a></div></div></div>
     <div class="cols">
-      <div><p class="fh">Studio</p><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li></ul></div>
+      <div><p class="fh">Studio</p><ul><li><a href="{href('/work/')}">Work</a></li><li><a href="{href('/concepts/')}">Concepts</a></li><li><a href="{href('/testimonials/')}">Reviews</a></li><li><a href="{href('/about/')}">About</a></li><li><a href="{href('/process/')}">Process</a></li><li><a href="{href('/trades/')}">Trades</a></li><li><a href="{href('/guides/')}">Guides</a></li></ul></div>
       <div><p class="fh">Build</p><ul>{"".join(f'<li><a href="{href("/services/" + k + "/")}">{v["name"]}</a></li>' for k, v in C.SERVICES.items())}</ul></div>
       <div><p class="fh">Talk</p><ul><li><a href="{WA}">WhatsApp</a></li><li><a href="mailto:{SITE['email']}">Email</a></li><li><a href="{SITE['linkedin']}" rel="noopener">LinkedIn</a></li><li><a href="{SITE['instagram']}" rel="noopener">Instagram</a></li><li><a href="{href('/contact/')}">Contact</a></li></ul></div>
     </div>
@@ -403,6 +404,8 @@ def build_home():
 
 <section class="sec"><div class="wrap">{sh("What we build", H['build_h'], "Four ways we turn a website into your hardest working hire.")}{stack()}</div></section>
 
+{trades_section(" stone")}
+
 {labfloor()}
 
 {process()}
@@ -507,31 +510,40 @@ def build_testimonials():
 def industry_cards():
     out = ""
     for slug, name, tags, text in C.INDUSTRY_CARDS:
-        link = href("/industries/" + slug + "/") if slug else "#contact"
+        link = (href(slug) if slug.startswith("/") else href("/industries/" + slug + "/")) if slug else "#contact"
         more = "Explore" if slug else "Let's talk"
         out += (f'<a class="col ind" href="{link}" data-cursor="{more}"><span class="tags">{E(tags)}</span><h3 class="h3">{E(name)}</h3>'
                 f'<p>{E(text)}</p><span class="more">{more} →</span></a>')
     return out
 
+def trades_section(tone=""):
+    cards = "".join(f'<a class="tlink" href="{href(h)}"><span class="t">{E(n)}</span><span class="go" aria-hidden="true">→</span></a>' for h, n in C.TRADE_LINKS)
+    cards += f'<a class="tlink all" href="{href("/trades/")}"><span class="t">Every trade we build for</span><span class="go" aria-hidden="true">→</span></a>'
+    ctry = " · ".join(f'<a class="ulink" href="{href(h)}">{E(n)}</a>' for h, n in C.COUNTRY_LINKS)
+    return (f'<section class="sec{tone}"><div class="wrap">{sh("Built for trades", "Websites for *your trade.*", "Roofers, concreters, civil crews and every trade in between. Pick yours to see what we would build.")}'
+            f'<div class="tlinks t9" data-stagger>{cards}</div><p class="tmore ctry"><span>Trade websites by country:</span> {ctry} · <a class="ulink" href="{href("/guides/")}">Free guides</a></p></div></section>')
+
 def build_services():
     inds = industry_cards()
     body = f'''
-<section class="phero"><div class="wrap">{crumbs(("", "Services"))}
+<section class="phero"><div class="wrap">{crumbs(("", "Services"))}<span class="lab kw">Website design services</span>
   <h1 class="h-page" data-split>Websites built to <em>bring in work.</em></h1>
   <p class="lede" data-rise>Everything we make has one job: turn someone who's never heard of you into someone who calls.</p>
   <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{href('/work/')}" data-magnetic>See the work</a></div>
 </div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap">{stack()}</div></section>
 <section class="sec stone"><div class="wrap">{sh("By industry", "Built for how *your customers* choose.")}<div class="grid3" data-stagger>{inds}</div></div></section>
+{trades_section()}
 {final()}'''
-    page("/services/", "Website Design and Development Services", "Custom website design, development, redesign and local SEO, built around the calls, bookings and jobs that pay you.",
+    page("/services/", "Website Design and Development Services", "Website design, development, redesign, local SEO, Google Business Profile and copywriting, built around the calls, bookings and jobs that pay you.",
          body, active="/services/", schema=[bc(("/services/", "Services"))])
     for slug, s in C.SERVICES.items():
         inc = "".join(f"<li>{E(x)}</li>" for x in s["included"])
         cases = "".join(rcard(BY[k], i + 1) for i, k in enumerate(s["cases"]))
         others = "".join(f'<a class="ulink" href="{href("/services/" + k + "/")}">{v["name"]} →</a>' for k, v in C.SERVICES.items() if k != slug)
+        others += "".join(f'<a class="ulink" href="{href(h)}">{E(n)} →</a>' for h, n in C.SERVICE_MORE.get(slug, []))
         body = f'''
-<section class="phero"><div class="wrap">{crumbs(("/services/", "Services"), ("", s["name"]))}
+<section class="phero"><div class="wrap">{crumbs(("/services/", "Services"), ("", s["name"]))}<span class="lab kw">{E(s["kw"])}</span>
   <h1 class="h-page" data-split>{it(s["h1"])}</h1>
   <p class="lede" data-rise>{E(s["intro"])}</p>
   <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a><a class="btn ghost" href="{href('/work/')}" data-magnetic>See the work</a></div>
@@ -541,16 +553,16 @@ def build_services():
 <section class="sec"><div class="wrap">{sh("Proof", "Work like this. *For real clients.*")}<div class="wgrid">{cases}</div></div></section>
 <section class="sec tight"><div class="wrap">{sh("Questions", "Straight *answers.*")}{faq(s["faq"])}<div class="ctas" style="margin-top:48px;gap:28px">{others}</div></div></section>
 {final()}'''
-        page(f"/services/{slug}/", s["title"], s["intro"][:155].rsplit(" ", 1)[0] + ".", body, active="/services/",
+        page(f"/services/{slug}/", s["title"], s["desc"], body, active="/services/",
              schema=[bc(("/services/", "Services"), (f"/services/{slug}/", s["name"])), faq_schema(s["faq"]),
                      {"@context": "https://schema.org", "@type": "Service", "name": s["name"], "provider": {"@type": "Organization", "name": "The Mago Labs"}}])
 
 def build_industries():
     cards = industry_cards()
-    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Industries"))}<h1 class="h-page" data-split>For businesses that <em>live on enquiries.</em></h1>
+    body = f'''<section class="phero"><div class="wrap">{crumbs(("", "Industries"))}<span class="lab kw">Websites by industry</span><h1 class="h-page" data-split>For businesses that <em>live on enquiries.</em></h1>
 <p class="lede" data-rise>Contractors, clinics, firms, manufacturers, agents and online stores. Different buyers, same goal: more calls.</p></div></section>
-<section class="sec tight" style="padding-top:0"><div class="wrap"><div class="grid3" data-stagger>{cards}</div></div></section>{final()}'''
-    page("/industries/", "Websites By Industry", "Custom websites for contractors, clinics, professional firms, manufacturers, real estate agents and online stores.", body, schema=[bc(("/industries/", "Industries"))])
+<section class="sec tight" style="padding-top:0"><div class="wrap"><div class="grid3" data-stagger>{cards}</div></div></section>{trades_section(" stone")}{final()}'''
+    page("/industries/", "Website Design by Industry", "Custom websites for contractors and trades, clinics, professional firms, manufacturers, real estate agents and online stores.", body, schema=[bc(("/industries/", "Industries"))])
     for k, v in C.INDUSTRIES.items():
         pts = "".join(f'<div class="col"><h3 class="h3">{E(a)}</h3><p>{E(b)}</p></div>' for a, b in v["points"])
         cases = "".join(rcard(BY[x], i + 1) for i, x in enumerate(v["cases"]))
@@ -558,12 +570,12 @@ def build_industries():
         qs = f'<section class="sec light"><div class="wrap">{sh("Reviews", "From clients *in your field.*")}<div class="qgrid" data-stagger>{"".join(quote(t, True) for t in tq)}</div></div></section>' if tq else ""
         extra = f'''<section class="sec space" data-dark style="padding-bottom:110px"><div class="wrap">{sh("From the lab · Concept builds", "More trade sites *we've designed.*")}{CNOTE}</div>{wall()}</section>''' if k == "home-services" else ""
         body = f'''
-<section class="phero"><div class="wrap">{crumbs(("/industries/", "Industries"), ("", v["name"]))}<h1 class="h-page" data-split>{it(v["h1"])}</h1><p class="lede" data-rise>{E(v["intro"])}</p>
+<section class="phero"><div class="wrap">{crumbs(("/industries/", "Industries"), ("", v["name"]))}<span class="lab kw">{E(v["kw"])}</span><h1 class="h-page" data-split>{it(v["h1"])}</h1><p class="lede" data-rise>{E(v["intro"])}</p>
 <div class="ctas" data-rise><a class="btn" href="#contact" data-magnetic>Let's talk</a></div></div></section>
 <section class="sec tight" style="padding-top:0"><div class="wrap"><div class="grid3" data-stagger>{pts}</div></div></section>
 <section class="sec stone"><div class="wrap">{sh("Live client work", "Built for businesses *like yours.*")}<div class="wgrid">{cases}</div></div></section>
 {extra}{qs}{final()}'''
-        page(f"/industries/{k}/", v["title"], v["intro"][:155].rsplit(" ", 1)[0] + ".", body, schema=[bc(("/industries/", "Industries"), (f"/industries/{k}/", v["name"]))])
+        page(f"/industries/{k}/", v["title"], v["desc"], body, schema=[bc(("/industries/", "Industries"), (f"/industries/{k}/", v["name"]))])
 
 def build_pricing():
     plans = "".join(f'''<div class="plan{' pop' if p['pop'] else ''}"><div class="tag"><span>Live in {p['days']}</span>{'<b>Most chosen</b>' if p['pop'] else ''}</div><h3>{p['name']}</h3>
@@ -653,7 +665,7 @@ for n in os.listdir(os.path.join(ROOT, OUT)):
     q = os.path.join(ROOT, OUT, n); shutil.rmtree(q) if os.path.isdir(q) else os.remove(q)
 shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(ROOT, OUT, "assets"),
                 ignore=shutil.ignore_patterns("vendor") if MODE == "preview" else None)
-for b in [build_home, build_work, build_cases, build_concepts, build_testimonials, build_services, build_industries, build_process, build_about, build_forms, build_legal]:
+for b in [build_home, build_work, build_cases, build_concepts, build_testimonials, build_services, build_industries, lambda: TR.build_all(globals()), build_process, build_about, build_forms, build_legal]:
     b()
 png = os.path.join(BRAND, "png")
 shutil.copy(os.path.join(ROOT, "src", "favicon.ico"), os.path.join(ROOT, OUT, "favicon.ico"))  # transparent mark, no box

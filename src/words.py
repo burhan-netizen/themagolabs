@@ -3,7 +3,7 @@ outcome first, numbers beat adjectives, plain and direct, confident never cocky.
 One italic phrase per headline (*like this*). No em dashes."""
 
 HOME = dict(
-    title="The Mago Labs | Websites That Pay For Themselves",
+    title="The Mago Labs | Website Design Studio for Small Businesses",
     desc="Custom websites built to bring in calls, bookings and jobs. A dental clinic went from 25 to 58 patients a day. Get a free site audit.",
     h1="Websites that *pay for* themselves.",
     lede="Your customers are already searching. Most land on a slow, forgettable site and call someone else. We build the one that gets the call.",
@@ -106,4 +106,39 @@ ABOUT = [
 ]
 
 # overview cards on /services/ and /industries/ (slug empty = no dedicated page yet, card opens the contact form)
-INDUSTRY_CARDS = [('home-services', 'Contractors and trades', 'Concrete · Civil · Roofing · Landscaping', 'Homeowners and builders check your photos and call the crew that looks the real deal. Real jobs, call buttons and quote forms that take a minute.'), ('clinics', 'Clinics and healthcare', 'Dental · Medical · Specialists', 'Patients pick a clinic online long before they call. Sites that earn trust in seconds and make booking effortless.'), ('professional-services', 'Professional services', 'Accountants · Consultants · Finance', 'Clients check a firm online before the first meeting. Clear services, real credentials and an easy way to get in touch.'), ('', 'Manufacturers and B2B', 'Textiles · Industrial · Exporters', 'Buyers vet a supplier online before they send an enquiry. Capacity, range and certifications shown so the right buyers reach out.'), ('', 'Real estate', 'Agents · Brokers · Developers', 'Buyers and sellers judge an agent by their website. Listings, local knowledge and a viewing booked in a few taps.'), ('', 'Online stores', 'Brands · Retail · Digital products', 'A product page has no salesperson. Stores that explain, earn trust and take the order on their own.')]
+INDUSTRY_CARDS = [('/trades/', 'Contractors and trades', 'Concrete · Civil · Roofing · Landscaping', 'Homeowners and builders check your photos and call the crew that looks the real deal. Real jobs, call buttons and quote forms that take a minute.'), ('clinics', 'Clinics and healthcare', 'Dental · Medical · Specialists', 'Patients pick a clinic online long before they call. Sites that earn trust in seconds and make booking effortless.'), ('professional-services', 'Professional services', 'Accountants · Consultants · Finance', 'Clients check a firm online before the first meeting. Clear services, real credentials and an easy way to get in touch.'), ('', 'Manufacturers and B2B', 'Textiles · Industrial · Exporters', 'Buyers vet a supplier online before they send an enquiry. Capacity, range and certifications shown so the right buyers reach out.'), ('', 'Real estate', 'Agents · Brokers · Developers', 'Buyers and sellers judge an agent by their website. Listings, local knowledge and a viewing booked in a few taps.'), ('', 'Online stores', 'Brands · Retail · Digital products', 'A product page has no salesperson. Stores that explain, earn trust and take the order on their own.')]
+
+# SEO: keyword label above each H1, page title and a full meta description (no truncation)
+SEO_SERVICES = {
+    "website-design": ("Custom website design", "Custom Website Design Services",
+        "Custom website design for small businesses in India, Australia, the USA, the UK and Canada. Built from a blank page to turn visitors into calls."),
+    "website-development": ("Website development", "Website Development, Coded by Hand",
+        "Hand coded websites that load fast on any phone, stay secure and belong to you. No page builders, hosting included, domain in your name."),
+    "website-redesign": ("Website redesign", "Website Redesign Services for More Enquiries",
+        "We find out why visitors leave your site without calling, then rebuild it around what makes them stay. Your Google rankings carried over, not lost."),
+    "local-seo": ("Local SEO services", "Local SEO Services for Small Businesses",
+        "Local SEO that puts you in front of people already searching nearby: search led pages, clean schema, Google Business Profile and a review plan."),
+}
+SEO_INDUSTRIES = {
+    "clinics": ("Websites for clinics and dentists", "Website Design for Clinics and Dentists",
+        "Clinic and dental websites that earn a patient's trust in seconds and make booking easy on any phone. Built with local SEO so nearby patients find you."),
+    "professional-services": ("Websites for accountants and consultants", "Website Design for Accountants and Consultants",
+        "Websites for chartered accountants, consultants and finance firms that explain your services plainly and turn a first visit into an enquiry."),
+}
+for _k, (_kw, _t, _d) in SEO_SERVICES.items(): SERVICES[_k].update(kw=_kw, title=_t, desc=_d)
+for _k, (_kw, _t, _d) in SEO_INDUSTRIES.items(): INDUSTRIES[_k].update(kw=_kw, title=_t, desc=_d)
+INDUSTRIES.pop("home-services")  # now /trades/, redirected in vercel.json
+
+# where each service page sends readers next (extra services and guides)
+SERVICE_MORE = {
+    "website-design": [("/services/copywriting/", "Copywriting"), ("/guides/what-a-trade-website-needs/", "Guide: what a trade website needs")],
+    "website-development": [("/services/google-business-profile/", "Google Business Profile"), ("/guides/what-a-trade-website-needs/", "Guide: what a trade website needs")],
+    "website-redesign": [("/free-audit/", "Free website audit"), ("/services/copywriting/", "Copywriting")],
+    "local-seo": [("/services/google-business-profile/", "Google Business Profile"), ("/guides/local-seo-for-trades/", "Guide: local SEO for trades"), ("/guides/google-business-profile-checklist/", "Guide: Google Business Profile checklist")],
+}
+
+# "who we build for" links on the home and services pages
+TRADE_LINKS = [("/trades/concreters/", "Concreters"), ("/trades/excavation/", "Excavation and civil"), ("/trades/roofers/", "Roofers"),
+    ("/trades/builders/", "Builders"), ("/trades/landscapers/", "Landscapers"), ("/trades/plumbers/", "Plumbers"),
+    ("/trades/electricians/", "Electricians"), ("/trades/hvac/", "HVAC")]
+COUNTRY_LINKS = [("/usa/", "USA"), ("/canada/", "Canada"), ("/australia/", "Australia"), ("/uk/", "UK"), ("/new-zealand/", "New Zealand")]

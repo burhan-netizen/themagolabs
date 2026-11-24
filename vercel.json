@@ -27,6 +27,16 @@
       "source": "/pricing/",
       "destination": "/contact/",
       "permanent": true
+    },
+    {
+      "source": "/industries/home-services",
+      "destination": "/trades/",
+      "permanent": true
+    },
+    {
+      "source": "/industries/home-services/",
+      "destination": "/trades/",
+      "permanent": true
     }
   ]
 }

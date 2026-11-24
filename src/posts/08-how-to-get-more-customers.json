@@ -1,0 +1,103 @@
+{
+ "path": "/guides/how-to-get-more-customers/",
+ "group": "work",
+ "card": "Seven ways contractors get more customers without buying shared leads, ranked from free and fast to slower and longer lasting.",
+ "title": "How to Get More Customers as a Contractor",
+ "desc": "How to get more customers as a contractor without buying shared leads: Google Business Profile, reviews, referrals, builders and your own website.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "How to get more customers *without buying leads.*",
+   "eyebrow": "Guide / Updated November 2026",
+   "lede": "The contractors who stay busy all year usually do the same few things: they are easy to find on Google, they have plenty of recent reviews, they ask for referrals on purpose, and they keep in touch with past customers and builders. None of it costs per lead, and all of it keeps working after the job is done.",
+   "ticks": [
+    "Seven ways, from fastest to longest lasting",
+    "What homeowners check before they call",
+    "How word of mouth and Google work together"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"what-customers-check\">What homeowners check before they call you</h2><p>Homeowners in renovation forums describe the same routine: search Google, look at the map results, read the reviews, check photos of past work and, for bigger jobs, confirm the licence and insurance. Some say the best trades are the hardest to find because they have no website or listing at all. That is the opening: be good and easy to find.</p><h2 id=\"seven-ways\">Seven ways to get more customers</h2><ol><li><strong>Finish your Google Business Profile.</strong> Right category, every service, service areas, hours and real photos. It is free and it is how you appear on Google Maps. Use our <a href=\"/guides/google-business-profile-checklist/\">checklist</a>.</li><li><strong>Ask every happy customer for a Google review.</strong> Send the link by text the day the job is finished, while they are pleased. See <a href=\"/guides/how-to-get-google-reviews/\">how to get Google reviews</a>.</li><li><strong>Knock on the neighbours' doors.</strong> When you start a job, drop a short note next door: what you are doing, how long, and your number. Neighbours see the work and often have the same job to do.</li><li><strong>Ask for referrals on purpose.</strong> “If you know anyone who needs this done, I would really appreciate the referral.” Most people are happy to, they just never think of it.</li><li><strong>Look after builders, designers and property managers.</strong> One relationship can mean steady repeat work. Turn up, finish on time, and keep them updated.</li><li><strong>Post your work.</strong> Before and after photos with a sentence about the job, on your Google profile and social media. Real work sells better than any advert.</li><li><strong>Get a website that turns searches into calls.</strong> A page for each service and area, real photos, reviews and a tap to call button. That is what lets Google send you work, and what convinces the people your customers refer. See <a href=\"/guides/what-a-trade-website-needs/\">what a trade website needs</a>.</li></ol><h2 id=\"word-of-mouth\">Busy on word of mouth? Do this anyway</h2><p>Plenty of trades say they never advertise because they are flat out on word of mouth, and that is a great place to be. But the same threads show the risk: one builder stops calling, a quiet winter hits, or a few regular customers move away. A strong Google presence gives you choice: pick the better jobs, raise prices when you are booked out, and keep the calendar full in slow months.</p><p>It also helps word of mouth itself. When someone recommends you, the first thing their friend does is search your name.</p><h2 id=\"paid\">What about paid leads and ads?</h2><p>Shared lead platforms can fill gaps but get expensive fast; see <a href=\"/guides/is-angi-worth-it/\">is Angi worth it</a>. Paid ads work best once your free presence is strong; see <a href=\"/guides/are-local-services-ads-worth-it/\">are Local Services Ads worth it</a>.</p><h2 id=\"30-days\">A simple 30 day plan</h2><table><thead><tr><th>Week</th><th>Do this</th></tr></thead><tbody><tr><td>1</td><td>Finish your Google Business Profile: category, services, areas, hours, 20 real photos.</td></tr><tr><td>2</td><td>Text your last 20 customers for a Google review and a referral.</td></tr><tr><td>3</td><td>Contact five builders, designers or property managers with photos of your work.</td></tr><tr><td>4</td><td>Make sure your website has a page for each main service and a tap to call button. Ask every new caller how they found you.</td></tr></tbody></table><p>After 30 days you will have more reviews, a stronger listing and a clear picture of where your work comes from.</p><h2 id=\"mistakes\">Common mistakes that cost customers</h2><ul><li><strong>Missing calls.</strong> Many people call the next business on the list instead of leaving a message. Call back within minutes or use a call answering service.</li><li><strong>A website that only works on a computer.</strong> Most people search on their phone.</li><li><strong>No prices at all.</strong> Even a rough “jobs like this usually start from” line helps people decide to call.</li><li><strong>Stock photos.</strong> Customers want to see your real work and your real crew.</li><li><strong>Spreading too thin.</strong> Better to be strong on Google in your area than present everywhere and remembered nowhere.</li></ul>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "Complete your Google Business Profile",
+    "Text a review link after every job",
+    "Leave a note for neighbours when a job starts",
+    "Ask every happy customer for a referral",
+    "Check in with builders and property managers monthly",
+    "Post before and after photos of each job",
+    "Make sure your name brings up a proper website",
+    "Ask every new customer how they found you"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "What is the fastest way to get customers as a new contractor?",
+     "a": "Finish your Google Business Profile, ask friends and early customers for reviews, door knock around every job, and approach builders and property managers directly."
+    },
+    {
+     "q": "Do contractors need a website if they get work by word of mouth?",
+     "a": "It helps. People who are referred to you usually search your name before calling, and a website with photos and reviews turns that search into a call."
+    },
+    {
+     "q": "How do I get work from builders?",
+     "a": "Introduce yourself with photos of your work, be reliable on the first job, and keep in touch. Builders value trades who turn up on time and communicate."
+    },
+    {
+     "q": "Are lead generation sites worth it?",
+     "a": "Sometimes, for filling gaps or when starting out. Leads are usually shared, so track your cost per won job before renewing."
+    },
+    {
+     "q": "How do I get more customers in a quiet month?",
+     "a": "Contact past customers, offer maintenance or seasonal services, and post recent work on your Google profile. Our slow season guide covers more."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/how-to-get-google-reviews/",
+     "title": "How to get Google reviews when you are just starting out.",
+     "text": ""
+    },
+    {
+     "href": "/guides/slow-season/",
+     "title": "How busy trades fill the slow season.",
+     "text": ""
+    },
+    {
+     "href": "/guides/is-angi-worth-it/",
+     "title": "Is Angi worth it for contractors? The real cost per job.",
+     "text": ""
+    },
+    {
+     "href": "/guides/local-seo-for-trades/",
+     "title": "How do trades and contractors get found on Google Maps?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ],
+ "kicker": "Getting work"
+}

@@ -1,0 +1,103 @@
+{
+ "path": "/guides/should-you-charge-for-quotes/",
+ "group": "work",
+ "card": "When a call out fee credited against the job filters out time wasters, when it backfires, and how to word it so customers accept it.",
+ "title": "Should Contractors Charge for Quotes?",
+ "desc": "Should you charge for quotes as a contractor? When a small call out fee credited to the job works, when it backfires, and how to explain it to customers.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "Should you charge *for quotes?*",
+   "eyebrow": "Guide / Updated November 2026",
+   "lede": "Charging a small fee for a site visit, credited back if the customer goes ahead, is one of the most recommended ways to stop free quoting from eating your week. It works best on complex jobs and for established businesses. On simple jobs in a competitive area, a free quote may still win you more work.",
+   "ticks": [
+    "When a quote fee works",
+    "When it backfires",
+    "How to word it"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"short-answer\">Should you charge for quotes?</h2><p>For many trades, yes, at least for some jobs. Contractors in forums report that a fee of roughly $50 to $100 for the visit, credited against the job, weeds out a surprising number of people who were never going to go ahead. Serious customers rarely object because they get the money back when they book.</p><h2 id=\"when-it-works\">When a quote fee works</h2><ul><li><strong>Complex jobs</strong> where pricing takes hours: renovations, landscaping designs, extensions, commercial work.</li><li><strong>Diagnosis</strong> is part of the visit: finding a leak, an electrical fault or a heating problem is real work.</li><li><strong>You are busy</strong> and have more enquiries than time.</li><li><strong>You have reviews and a reputation</strong>, so customers already want you specifically.</li></ul><h2 id=\"when-it-backfires\">When it backfires</h2><ul><li><strong>Simple, common jobs</strong> where three competitors quote for free from photos.</li><li><strong>You are new</strong> with few reviews; a fee can send people to someone with a free quote.</li><li><strong>The fee is not explained</strong>, so it feels like a charge for nothing.</li></ul><h2 id=\"middle-ground\">The middle ground most trades use</h2><ol><li><strong>Free ballpark</strong> over the phone or from photos for everyone.</li><li><strong>Free site visit</strong> for straightforward jobs that are clearly real.</li><li><strong>Paid visit or design fee</strong>, credited to the job, for complex work or detailed drawings.</li></ol><p>This keeps the door open for easy jobs while protecting the hours that big quotes take.</p><h2 id=\"wording\">How to explain a quote fee</h2><p>Say it plainly and early: “For jobs like this we charge $80 for the site visit, because it takes a couple of hours to measure and price properly. If you go ahead, the $80 comes off your invoice.”</p><p>Put the same line on your website next to your quote form, so nobody is surprised. Clear expectations are what make customers accept it.</p><h2 id=\"trust\">Why trust makes a fee easier</h2><p>People pay for a visit from a business they already trust. Recent Google reviews, photos of similar jobs and a professional website make a small fee feel reasonable instead of risky. See <a href=\"/guides/local-seo-for-trades/\">how trades get found on Google</a>.</p><h2 id=\"how-much\">How to set your quote fee</h2><p>Work out what a typical visit really costs you: travel time, time on site, and the time to price and write it up. Multiply by your hourly rate. You do not have to charge all of it; many trades charge enough to cover travel and an hour, then credit it against the job. A fee that covers your costs filters time wasters without scaring off real customers.</p><h2 id=\"estimate-vs-quote\">Estimate, quote or design fee?</h2><ul><li><strong>Estimate or ballpark:</strong> a rough range, usually free, often by phone or from photos.</li><li><strong>Quote:</strong> a firm price for a defined job, sometimes after a paid visit for complex work.</li><li><strong>Design or consultation fee:</strong> for drawings, plans, colour schemes or detailed specifications that have value on their own.</li></ul><p>Being clear which one you are giving helps customers understand why one is free and another is not.</p><h2 id=\"remote\">Remote quoting saves the most time</h2><p>Photos, short videos and video calls let you price many jobs without leaving the yard. A quote form on your website that asks for photos up front does a lot of this work for you, and serious customers like the speed. See <a href=\"/guides/how-to-deal-with-time-wasters/\">how to deal with time wasters</a>.</p>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "Decide which jobs get a free ballpark",
+    "Decide which jobs need a paid visit",
+    "Set a fee that covers your time",
+    "Always credit it against the job",
+    "Explain the fee on the first call",
+    "Put the fee policy next to your quote form",
+    "Charge separately for detailed drawings",
+    "Track how many paid visits turn into jobs"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "How much should I charge for a quote?",
+     "a": "Many trades charge roughly $50 to $100 for a site visit, credited against the job. Complex design work is often charged separately."
+    },
+    {
+     "q": "Is it normal to charge for a quote?",
+     "a": "It is increasingly common for complex jobs and diagnosis. Simple jobs are still usually quoted for free."
+    },
+    {
+     "q": "Will charging for quotes lose me customers?",
+     "a": "You will lose some, mostly people who were not serious. If you are new or in a very competitive trade, test it on bigger jobs first."
+    },
+    {
+     "q": "Should the quote fee be refundable?",
+     "a": "The most common approach is to credit it against the job if the customer goes ahead, rather than refund it if they do not."
+    },
+    {
+     "q": "Can I charge for drawings and designs?",
+     "a": "Yes. Many builders and landscapers charge a design fee, which also stops customers taking your plans to a cheaper competitor."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/how-to-deal-with-time-wasters/",
+     "title": "Four questions that filter time wasters.",
+     "text": ""
+    },
+    {
+     "href": "/guides/customer-ghosted-after-quote/",
+     "title": "Ghosted after a quote? Here is what to send.",
+     "text": ""
+    },
+    {
+     "href": "/guides/how-to-get-paid-on-time/",
+     "title": "How to get paid on time: set it up before the job starts.",
+     "text": ""
+    },
+    {
+     "href": "/guides/what-a-trade-website-needs/",
+     "title": "What does a trade business website need to make the phone ring?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ],
+ "kicker": "Quotes"
+}

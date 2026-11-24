@@ -1,0 +1,103 @@
+{
+ "path": "/guides/is-checkatrade-worth-it/",
+ "group": "work",
+ "card": "Checkatrade, MyBuilder and Bark compared: what each really costs, how many trades see the same lead, and the sum that tells you if it pays.",
+ "title": "Is Checkatrade Worth It? vs MyBuilder and Bark (2026)",
+ "desc": "Is Checkatrade worth it in 2026? What Checkatrade, MyBuilder and Bark really cost UK tradespeople per won job, how leads are shared, and what to do instead.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "Is Checkatrade worth it? *Checkatrade, MyBuilder and Bark compared.*",
+   "eyebrow": "Guide / Updated November 2026",
+   "lede": "Checkatrade can pay for itself if you do bigger jobs in a busy area and the badge wins you trust. MyBuilder and Bark are cheaper to start but every lead is shared, so the real cost sits in the jobs you lose. The only way to know is to work out what one won job costs you on each.",
+   "ticks": [
+    "What each platform charges in 2026",
+    "How many trades see each lead",
+    "The cost per won job sum"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"short-answer\">Is Checkatrade worth it?</h2><p>For some UK tradespeople, yes. The vetting badge carries weight with homeowners, and on large jobs like kitchens, bathrooms and extensions one win covers a lot of membership. For small jobs it rarely adds up, and the 12 month term means a bad decision costs you for a year.</p><p>MyBuilder and Bark work differently: no big monthly fee, but you pay each time you want to quote, and the same job is shown to several trades. Here is how they compare.</p><h2 id=\"costs\">What Checkatrade, MyBuilder and Bark cost in 2026</h2><table><thead><tr><th>Platform</th><th>How you pay</th><th>Reported cost</th><th>Shared?</th></tr></thead><tbody><tr><td>Checkatrade</td><td>Monthly membership, usually 12 months</td><td>From £30 + VAT (no leads at that tier); members report around £60 to £180 a month for plans with leads, depending on trade and area</td><td>Varies by plan</td></tr><tr><td>MyBuilder</td><td>Fee when a homeowner shortlists you</td><td>About £2 to £35 per shortlist, depending on job size</td><td>Several trades shortlisted</td></tr><tr><td>Bark</td><td>Credits per lead</td><td>£1.80 + VAT per credit; most leads roughly £7 to £40</td><td>Up to about 5 professionals</td></tr></tbody></table><p>Two details catch people out. Bark credits bought since November 2025 expire after three months. And on MyBuilder you pay for the chance to quote, not for the job, so a homeowner who goes quiet still costs you the fee.</p><h2 id=\"the-sum\">The sum that tells you if it pays</h2><p><strong>Cost per won job</strong> = what you spent on the platform ÷ jobs you actually won from it.</p><p>Pay £20 a lead and win one in five, and each job cost £100. Win one in ten and it cost £200. On a £2,000 bathroom, £100 is fine. On a £90 call out, it is the whole job.</p><p>Do this for the last three to six months, platform by platform, and then compare each figure with your profit on a typical job. The platform that looks cheapest per lead is often not the cheapest per job.</p><h2 id=\"which\">Checkatrade vs MyBuilder vs Bark: which is better?</h2><ul><li><strong>Checkatrade</strong> suits established trades doing larger jobs who value the badge and can commit for a year.</li><li><strong>MyBuilder</strong> suits trades who want to pick jobs one at a time with no standing fee, and who are happy to compete on quotes.</li><li><strong>Bark</strong> suits businesses that respond fast and quote cheaply on small jobs, but watch the credit expiry.</li></ul><p>Whichever you choose, start with the option you can stop tomorrow, not a 12 month term.</p><h2 id=\"own-your-leads\">What to build instead</h2><ol><li><strong>Google Business Profile.</strong> Free, and it is where most local customers look first. Our <a href=\"/guides/google-business-profile-checklist/\">Google Business Profile checklist</a> covers every setting.</li><li><strong>Google reviews you own.</strong> Reviews on a platform stay on the platform. Reviews on Google follow your business.</li><li><strong>Your own website.</strong> A page for each service and town, real photos and a tap to call button. See <a href=\"/guides/what-a-trade-website-needs/\">what a trade website needs</a>.</li><li><strong>Referrals.</strong> Ask every happy customer, and stay in touch with past clients.</li></ol><h2 id=\"stay\">Getting the most from Checkatrade if you stay</h2><ul><li><strong>Respond to every enquiry fast</strong>, by phone where possible. Speed matters most on shared leads.</li><li><strong>Collect reviews on Checkatrade and Google.</strong> Your Checkatrade reviews stay on Checkatrade; Google reviews follow you whatever you decide next year.</li><li><strong>Narrow your categories and areas</strong> so you only pay for work you want.</li><li><strong>Track every job by source</strong> in a simple spreadsheet, so renewal is a decision based on numbers, not a feeling.</li><li><strong>Diary the renewal date</strong> two months ahead, so you have time to decide.</li></ul><h2 id=\"homeowners\">What UK homeowners check besides the badge</h2><p>A vetting badge helps, but homeowners also search your business name on Google, look at your reviews and photos, and check you look established. A trade with a strong Google profile and a clear website can win the same customers without paying for a directory listing. See <a href=\"/guides/local-seo-for-trades/\">local SEO for trades</a> and our guide to <a href=\"/guides/website-cost-uk/\">what a trade website costs in the UK</a>.</p>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "List every platform you pay for",
+    "Add up three to six months of spend on each",
+    "Count the jobs won from each one",
+    "Work out cost per won job for each",
+    "Check your Checkatrade renewal date",
+    "Use up or stop buying Bark credits before they expire",
+    "Set up and complete your Google Business Profile",
+    "Ask every happy customer for a Google review"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "How much does Checkatrade cost per month?",
+     "a": "The entry plan starts from £30 + VAT a month but does not include leads. Members commonly report paying around £60 to £180 a month for plans with leads, depending on trade and area."
+    },
+    {
+     "q": "Is MyBuilder free for tradespeople?",
+     "a": "It is free to join. You pay a fee, typically about £2 to £35, when a homeowner shortlists you, whether or not you win the job."
+    },
+    {
+     "q": "How much does a Bark lead cost?",
+     "a": "Credits cost £1.80 + VAT and most leads need between about 5 and 20 credits, so roughly £7 to £40 a lead. Each lead can go to up to about five professionals."
+    },
+    {
+     "q": "Can I leave Checkatrade early?",
+     "a": "Memberships are usually on a 12 month term. Check your agreement for the end date and notice period before you sign or renew."
+    },
+    {
+     "q": "What is better than Checkatrade?",
+     "a": "For many trades, a complete Google Business Profile with steady reviews and a website of your own. They cost nothing per lead and the customers come to you alone."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/is-angi-worth-it/",
+     "title": "Is Angi worth it for contractors? The real cost per job.",
+     "text": ""
+    },
+    {
+     "href": "/guides/is-hipages-worth-it/",
+     "title": "Is hipages worth it? The real cost per job.",
+     "text": ""
+    },
+    {
+     "href": "/guides/website-cost-uk/",
+     "title": "How much does a website cost for a tradesperson in the UK?",
+     "text": ""
+    },
+    {
+     "href": "/guides/local-seo-for-trades/",
+     "title": "How do trades and contractors get found on Google Maps?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ],
+ "kicker": "Leads and ads"
+}

@@ -1,0 +1,103 @@
+{
+ "path": "/guides/slow-season/",
+ "group": "work",
+ "card": "How busy trades fill winter and quiet months: maintenance offers, past customers, commercial work, Google posts and getting ready before the slump.",
+ "title": "How to Get Work in the Slow Season as a Contractor",
+ "desc": "How contractors get work in winter and the slow season: maintenance offers, past customer texts, commercial work, Google posts and planning ahead.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "How busy trades *fill the slow season.*",
+   "eyebrow": "Guide / Updated November 2026",
+   "lede": "Feast or famine is the most common complaint in trade forums after leads. The trades who stay steady plan for quiet months before they arrive: they sell maintenance, contact past customers, chase commercial and builder work, and keep their Google presence active so they are the one found when work does come up.",
+   "ticks": [
+    "Seven ways to fill quiet months",
+    "A past customer text to copy",
+    "What to set up before the slump"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"why\">Why the slow season hits so hard</h2><p>Many trades run on word of mouth and stay flat out most of the year. Then a builder pauses a project, the weather turns, or a few regular customers go quiet, and the calendar empties at the same time as everyone else's. The fix is to build steady sources of work you can switch on when you need them.</p><h2 id=\"seven-ways\">Seven ways to fill quiet months</h2><ol><li><strong>Sell maintenance.</strong> Servicing, inspections, cleaning, sealing, safety checks. HVAC trades sell plans; roofers sell gutter and roof checks; landscapers sell winter tidy ups.</li><li><strong>Text past customers.</strong> They already trust you. “Hi Jo, Mike here from last year's deck job. We have some space in June if you wanted that pergola done before summer.”</li><li><strong>Chase commercial and builder work.</strong> Offices, shops, schools and property managers often schedule work in quieter months.</li><li><strong>Offer the jobs people put off.</strong> Indoor work in winter: bathrooms, painting, electrical upgrades, insulation.</li><li><strong>Keep your Google profile active.</strong> Post recent jobs and seasonal offers. Fresh activity and new reviews keep you visible when people do search.</li><li><strong>Have pages for seasonal services.</strong> If your website has a page for heating repairs, storm damage or winter maintenance, Google can send you those searches when they spike. See <a href=\"/guides/local-seo-for-trades/\">local SEO for trades</a>.</li><li><strong>Use paid options carefully.</strong> Lead platforms and ads can fill gaps, but switch them on for the quiet weeks and off when you are busy. See <a href=\"/guides/is-angi-worth-it/\">is Angi worth it</a>.</li></ol><h2 id=\"before\">Set it up before you need it</h2><ul><li><strong>Keep a customer list</strong> with names, numbers, jobs and dates. It is your most valuable marketing asset.</li><li><strong>Book next season early.</strong> Offer a small saving for jobs booked now and done in the quiet months.</li><li><strong>Build reviews all year</strong> so you are the obvious choice when someone searches in a slow month.</li><li><strong>Save cash in busy months</strong> to cover the gap, and raise prices when you are fully booked.</li></ul><h2 id=\"choice\">Busy is good. Choice is better.</h2><p>A steady stream of enquiries from Google means you are never fully dependent on one builder, one platform or one season. You can pick the jobs you want, and quiet months become a chance to catch up instead of a worry. That is what your own website and Google presence are for.</p><h2 id=\"by-trade\">Slow season ideas by trade</h2><table><thead><tr><th>Trade</th><th>Ideas for quiet months</th></tr></thead><tbody><tr><td>HVAC</td><td>Servicing plans, pre season checks, upgrade offers before peak</td></tr><tr><td>Roofing</td><td>Gutter cleaning, roof inspections, storm damage repairs</td></tr><tr><td>Landscaping</td><td>Winter tidy ups, design work for spring, hardscaping that can be done in cooler weather</td></tr><tr><td>Concrete</td><td>Commercial and builder work, booking spring driveways early</td></tr><tr><td>Painting</td><td>Interior work, commercial repaints while offices are quiet</td></tr><tr><td>Electrical</td><td>Safety checks, lighting upgrades, EV charger installs</td></tr><tr><td>Plumbing</td><td>Hot water services, heating repairs, bathroom renovations</td></tr></tbody></table><h2 id=\"pages\">Why seasonal pages bring in work</h2><p>When the weather turns, searches like “heater repair near me” or “storm damage roof repair” jump. If your website has a dedicated page for that service, mentioning the areas you cover, Google has something to show. Trades without those pages miss the spike entirely, no matter how good their work is.</p>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "Write a list of past customers with dates and jobs",
+    "Create a maintenance or servicing offer",
+    "Text past customers before the quiet months",
+    "Contact property managers and commercial clients",
+    "Add pages for seasonal services to your website",
+    "Post recent jobs on your Google profile",
+    "Offer early booking for quiet months",
+    "Put cash aside during busy months"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "How do I get more work in winter as a tradesperson?",
+     "a": "Offer indoor jobs and maintenance, contact past customers, chase commercial and builder work, and keep your Google profile active so you are found when people search."
+    },
+    {
+     "q": "What trades are busy in winter?",
+     "a": "Heating, plumbing, electrical, roofing repairs after storms, and indoor work like bathrooms, kitchens and painting usually hold up best."
+    },
+    {
+     "q": "Should I lower my prices in the slow season?",
+     "a": "Rather than cutting prices, many trades offer a small saving for booking ahead or bundle maintenance services. Cutting prices can be hard to undo."
+    },
+    {
+     "q": "How do I stop relying on one builder for work?",
+     "a": "Build a mix of sources: Google, reviews, past customers, several builders or property managers. No single source should be most of your work."
+    },
+    {
+     "q": "Do maintenance plans work for small contractors?",
+     "a": "Yes, especially in HVAC, plumbing, roofing, pools and landscaping. They create repeat visits and steady income through quieter months."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/how-to-get-more-customers/",
+     "title": "How to get more customers without buying leads.",
+     "text": ""
+    },
+    {
+     "href": "/guides/how-to-get-google-reviews/",
+     "title": "How to get Google reviews when you are just starting out.",
+     "text": ""
+    },
+    {
+     "href": "/guides/are-local-services-ads-worth-it/",
+     "title": "Are Local Services Ads worth it? Fix three free things first.",
+     "text": ""
+    },
+    {
+     "href": "/guides/local-seo-for-trades/",
+     "title": "How do trades and contractors get found on Google Maps?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ],
+ "kicker": "Getting work"
+}

@@ -8,6 +8,16 @@ import json, os, re, html as _html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CONTENT = json.load(open(os.path.join(HERE, "trades_content.json"), encoding="utf-8"))
+# new posts written for themagolabs.com live in src/posts/*.json, one file per post
+POSTS = []
+for _f in sorted(os.listdir(os.path.join(HERE, "posts"))):
+    if _f.endswith(".json"):
+        _p = json.load(open(os.path.join(HERE, "posts", _f), encoding="utf-8"))
+        CONTENT[_p["path"]] = _p; POSTS.append(_p)
+if POSTS:
+    _g = CONTENT["/guides/"]["blocks"]
+    _i = next(i for i, b in enumerate(_g) if b.get("type") == "cards")
+    _g.insert(_i, {"type": "cards", "eyebrow": "Winning work", "title": "Leads, quotes and *getting paid.*", "items": [], "posts": True})
 
 TRADES = ["concreters", "excavation", "roofers", "builders", "landscapers", "plumbers", "electricians", "hvac",
           "painters", "tilers", "glaziers", "handymen"]
@@ -31,6 +41,8 @@ def map_href(href, base):
     """Resolve an old relative link against the page it was on, then send it to its new home."""
     if not href or href.startswith(("http", "mailto:", "tel:", "#")):
         return href
+    if href.startswith("/"):
+        return href.split("#")[0]
     parts = [x for x in base.strip("/").split("/") if x]
     for seg in href.split("#")[0].split("/"):
         if seg in ("", "."): continue
@@ -133,7 +145,8 @@ def build_all(G):
                     f'{"".join(f"<p data-rise>{md(p, base)}</p>" for p in rest)}</div>{aside}</div></section>')
         if t == "cards" and not b["items"]:
             # hub grids on the old site were link cards; rebuild them from our own pages
-            if base == "/trades/": paths = [f"/trades/{x}/" for x in TRADES]
+            if b.get("posts"): paths = [x["path"] for x in POSTS]
+            elif base == "/trades/": paths = [f"/trades/{x}/" for x in TRADES]
             elif "cost" in (b.get("title") or "").lower(): paths = [f"/guides/website-cost-{c}/" for c, _ in COUNTRIES]
             else: paths = ["/guides/local-seo-for-trades/", "/guides/google-business-profile-checklist/", "/guides/what-a-trade-website-needs/"]
             cards = ""
@@ -142,8 +155,8 @@ def build_all(G):
                 if base == "/trades/":
                     kick, ttl = "Websites for", HUB_NAMES.get(h.split("/")[2], h.split("/")[2].title())
                 else:
-                    kick, ttl = ("Guide" if "cost" not in h else dict(COUNTRIES)[h.split("website-cost-")[1].strip("/")]), plain(hb["h1"])
-                d = DESC.get(h) or brand(pg["desc"] or "")
+                    kick, ttl = (pg.get("kicker") or "Guide" if "cost" not in h else dict(COUNTRIES)[h.split("website-cost-")[1].strip("/")]), plain(hb["h1"])
+                d = pg.get("card") or DESC.get(h) or brand(pg["desc"] or "")
                 d = " ".join(x for x in re.split(r"(?<=\.)\s+", d) if "preview" not in x.lower()) or d
                 cards += (f'<a class="tlink hub" href="{href(h)}"><span class="k">{E(kick)}</span><span class="t">{E(ttl)}</span>'
                           f'<span class="d">{E(d)}</span><span class="go" aria-hidden="true">→</span></a>')

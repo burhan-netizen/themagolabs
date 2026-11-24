@@ -1,0 +1,103 @@
+{
+ "path": "/guides/how-to-get-paid-on-time/",
+ "group": "work",
+ "card": "Deposits, staged payments and clear terms on every quote: how contractors stop chasing late payments before the job even starts.",
+ "title": "How to Get Paid on Time as a Contractor",
+ "desc": "How contractors get paid on time: taking deposits, staged progress payments, payment terms on every quote, and what to do when a client pays late.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "How to get paid on time: *set it up before the job starts.*",
+   "eyebrow": "Guide / Updated November 2026",
+   "lede": "Late payment is one of the most common money worries for contractors, and most of it is decided before the first tool comes out. Clear terms on the quote, a deposit, staged payments tied to stages of work and fast invoicing stop most problems before they start.",
+   "ticks": [
+    "Deposits and staged payments",
+    "Terms to put on every quote",
+    "What to do when a client pays late"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"the-problem\">How common is late payment?</h2><p>Very. A 2026 industry survey reported that around 70% of contractors regularly get paid late. For a small business, one slow payer can mean covering wages and materials out of your own pocket.</p><h2 id=\"deposit\">Take a deposit</h2><p>A deposit does three things: it covers materials, it confirms the customer is serious, and it means you are never fully out of pocket. Ask for it before you order materials or book the job in.</p><p>Check the rules where you work. Some places limit deposits on home improvement work. California, for example, caps them for many residential jobs. A quick check with your licensing body or trade association saves trouble later.</p><h2 id=\"stages\">Use staged payments on bigger jobs</h2><p>Split larger jobs into stages and tie each payment to a stage you can both see is finished:</p><table><thead><tr><th>Stage</th><th>Example payment</th></tr></thead><tbody><tr><td>Booking and materials</td><td>Deposit</td></tr><tr><td>Demolition and prep finished</td><td>Progress payment 1</td></tr><tr><td>Main work finished</td><td>Progress payment 2</td></tr><tr><td>Handover and final check</td><td>Final payment</td></tr></tbody></table><p>You are never far ahead of what has been paid, and the customer only pays for work they can see.</p><h2 id=\"terms\">Terms to put on every quote</h2><ul><li>The deposit amount and when it is due.</li><li>Each stage payment and what triggers it.</li><li>When the final invoice is due (for example, within 7 days of completion).</li><li>How they can pay: bank transfer, card or payment link.</li><li>What happens with variations: agreed in writing, priced before the work is done.</li><li>The expiry date of the quote.</li></ul><p>Customers who agree to clear terms before the job starts rarely argue about them at the end.</p><h2 id=\"invoice-fast\">Invoice the same day</h2><p>Send the invoice the day each stage finishes, while the customer is happy with the work. Use invoicing software or a payment link so paying takes one tap. The longer you wait to invoice, the longer you wait to be paid.</p><h2 id=\"late\">When a client pays late</h2><ol><li><strong>Friendly reminder</strong> the day after it is due: “Just a reminder the invoice for your fence is due. Here is the link to pay.”</li><li><strong>Phone call</strong> a few days later. Often there is a simple reason you can sort out.</li><li><strong>Formal letter</strong> with a clear deadline, referring to the terms they agreed.</li><li><strong>Get advice.</strong> If it is still unpaid, speak to your trade association or a lawyer about your options where you work.</li></ol><h2 id=\"good-customers\">Attract better customers in the first place</h2><p>Customers who find you because of your reviews and your work, rather than the cheapest price on a lead platform, are usually easier to work with and quicker to pay. A professional website with clear processes sets expectations before the first call. See <a href=\"/guides/what-a-trade-website-needs/\">what a trade website needs</a>.</p><p><em>This guide is general information, not legal or financial advice.</em></p><h2 id=\"wording\">Example payment terms</h2><p>Adapt something like this for your quotes (and check it suits the rules where you work):</p><p><em>“A deposit of [amount] is due to confirm your booking and before materials are ordered. Progress payments are due on completion of each stage listed above. The final invoice is due within 7 days of completion. Changes to the scope will be quoted in writing and agreed before the work is done. This quote is valid for 14 days.”</em></p><h2 id=\"why-late\">Why customers pay late</h2><ul><li><strong>The invoice arrived weeks later</strong> and the job no longer feels urgent.</li><li><strong>Paying is awkward:</strong> bank details buried in a PDF, no payment link.</li><li><strong>There is a dispute</strong> about a variation that was never agreed in writing.</li><li><strong>Cash flow problems</strong> on their side, especially with builders and commercial clients.</li></ul><p>Most of these are fixed by invoicing the same day, offering easy payment and agreeing changes in writing.</p><h2 id=\"commercial\">Builders and commercial clients</h2><p>Commercial work often comes with longer payment terms. Agree them before you start, invoice exactly as the contract asks, and keep copies of every approval. If a builder is often late, factor that into your price or limit how much work you take from them at once.</p>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "Write standard payment terms for every quote",
+    "Take a deposit before ordering materials",
+    "Check local rules on deposit limits",
+    "Split big jobs into staged payments",
+    "Agree variations in writing before doing them",
+    "Invoice the same day each stage is finished",
+    "Offer a one tap payment link",
+    "Follow up late payments within a day"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "How much deposit should a contractor take?",
+     "a": "It depends on the job and local rules. Many trades take enough to cover materials. Some places cap deposits on home improvement work, so check where you work."
+    },
+    {
+     "q": "What are progress payments?",
+     "a": "Payments tied to stages of a job, such as preparation, main work and completion, so the customer pays as work is finished."
+    },
+    {
+     "q": "How do I ask a customer for payment politely?",
+     "a": "Send a short reminder with a payment link the day after it is due, then call. Most late payers respond to a friendly, direct nudge."
+    },
+    {
+     "q": "Should I start work without a deposit?",
+     "a": "It is risky, especially when you buy materials. A deposit confirms the customer is serious and protects your cash."
+    },
+    {
+     "q": "What should payment terms on a quote include?",
+     "a": "The deposit, each stage payment and its trigger, when the final invoice is due, how to pay, how variations are handled and when the quote expires."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/customer-ghosted-after-quote/",
+     "title": "Ghosted after a quote? Here is what to send.",
+     "text": ""
+    },
+    {
+     "href": "/guides/should-you-charge-for-quotes/",
+     "title": "Should you charge for quotes?",
+     "text": ""
+    },
+    {
+     "href": "/guides/how-to-get-more-customers/",
+     "title": "How to get more customers without buying leads.",
+     "text": ""
+    },
+    {
+     "href": "/guides/what-a-trade-website-needs/",
+     "title": "What does a trade business website need to make the phone ring?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ],
+ "kicker": "Getting paid"
+}

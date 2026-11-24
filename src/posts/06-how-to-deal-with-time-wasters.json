@@ -1,0 +1,103 @@
+{
+ "path": "/guides/how-to-deal-with-time-wasters/",
+ "group": "work",
+ "card": "Four questions to ask on the phone that filter out tyre kickers before you drive out, and how your website can screen them for you.",
+ "title": "How to Deal With Tyre Kickers and Time Wasters",
+ "desc": "How contractors filter out tyre kickers and time wasters before driving out to quote: four phone questions, photos first and ballpark prices.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "Four questions that filter *time wasters.*",
+   "eyebrow": "Guide / Updated November 2026",
+   "lede": "Trades lose countless hours driving to quotes for people who were never going to go ahead. The fix is not to quote less, it is to qualify faster: ask about budget, timing, photos and who decides, before you get in the van.",
+   "ticks": [
+    "Four questions for every enquiry",
+    "Photos and ballparks before site visits",
+    "How your website can screen for you"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"the-cost\">What time wasters really cost you</h2><p>A site visit is rarely just an hour. Add driving, measuring, pricing and writing the quote, and a big job can take most of a day. If half of those quotes go nowhere, that is days every month spent working for free. Contractors in forums call these people tyre kickers, or tire kickers in the USA, and the most upvoted advice is always the same: filter them on the phone.</p><h2 id=\"four-questions\">Four questions to ask before you drive out</h2><ol><li><strong>“What sort of budget do you have in mind?”</strong> If they will not say, give a range and watch the reaction. “Jobs like this usually land between $8,000 and $12,000. Does that sound about right?”</li><li><strong>“When are you hoping to get it done?”</strong> “Sometime next year” and “just getting ideas” tell you a lot.</li><li><strong>“Could you send a few photos first?”</strong> Serious customers send them within the hour. It also lets you spot problems and price more accurately.</li><li><strong>“Is anyone else involved in the decision?”</strong> If a partner, landlord or body corporate decides, get them at the site visit or you will be quoting twice.</li></ol><p>Asked in a friendly way, none of these put off a genuine customer. They show you are organised.</p><h2 id=\"ballpark\">Give ballpark prices early</h2><p>A rough range on the first call is the single most effective filter. People who cannot afford the job drop out before you have spent anything. People who stay have already accepted roughly what it costs, which makes the final quote easier to accept too.</p><h2 id=\"video\">Use photos and video calls</h2><p>For many jobs, photos or a five minute video call are enough for a range or even a firm price. Save site visits for jobs that are clearly real and clearly worth it.</p><h2 id=\"website\">Let your website do the screening</h2><p>A good trade website filters before the phone even rings:</p><ul><li>A <strong>“typical jobs”</strong> section with rough starting prices or ranges, so people self select.</li><li>A <strong>quote form</strong> that asks for the suburb, the job type, the timeframe and photos.</li><li>Clear <strong>service areas</strong>, so you stop getting calls from two hours away.</li><li><strong>Real project photos</strong>, so people know the standard (and the price level) they are calling about.</li></ul><p>See <a href=\"/guides/what-a-trade-website-needs/\">what a trade website needs</a> for the full list. Fewer, better enquiries beat a ringing phone full of maybes.</p><h2 id=\"script\">A first call script you can use</h2><p>“Thanks for calling. So I can give you a proper idea, can I ask a few quick questions? What are you looking to have done? Roughly when are you hoping to start? Jobs like this usually come in between X and Y; is that around what you were expecting? Great. Could you text me a few photos so I can check a couple of things before I come out? And will anyone else be part of the decision, so they can be there when I visit?”</p><p>Two minutes, friendly, and you know whether the visit is worth it.</p><h2 id=\"signs\">Signs a lead is not serious</h2><ul><li>Will not give any idea of budget, even after hearing a range.</li><li>No timeframe, or “just getting prices for now”.</li><li>Will not send photos or answer simple questions.</li><li>Asks for a detailed breakdown, drawings or a materials list up front.</li><li>Has already had several quotes and only mentions price.</li></ul><p>None of these mean you should be rude. They mean a ballpark by phone instead of a site visit, or a paid visit for complex work. See <a href=\"/guides/should-you-charge-for-quotes/\">should you charge for quotes</a>.</p><h2 id=\"track\">Track it for a month</h2><p>Write down every quote, where the enquiry came from and whether you won it. After a month you will see which sources bring serious customers and which bring time wasters. That tells you where to spend your time and money.</p>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "Ask about budget on every first call",
+    "Ask when they want the work done",
+    "Ask for photos before any site visit",
+    "Ask who makes the decision",
+    "Give a ballpark range early",
+    "Use video calls for smaller jobs",
+    "Add a quote form that asks for photos and timing",
+    "List your service areas clearly on your website"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "What is a tyre kicker in construction?",
+     "a": "Someone who asks for quotes with no real intention or budget to go ahead. They often collect several quotes just to get ideas."
+    },
+    {
+     "q": "Is it okay to ask a customer their budget?",
+     "a": "Yes. Most people expect it. If they will not say, give a typical range for similar jobs and ask if it sounds right."
+    },
+    {
+     "q": "Should I quote from photos?",
+     "a": "For many smaller jobs, photos or a video call are enough for a range or a firm price. Visit only when the job needs it."
+    },
+    {
+     "q": "How do I stop getting calls from outside my area?",
+     "a": "List your service areas clearly on your website and Google Business Profile, and ask for the suburb or town on your quote form."
+    },
+    {
+     "q": "Should I charge for site visits?",
+     "a": "Many trades charge a small fee credited against the job if they go ahead. It works well for some trades and areas and not others."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/should-you-charge-for-quotes/",
+     "title": "Should you charge for quotes?",
+     "text": ""
+    },
+    {
+     "href": "/guides/customer-ghosted-after-quote/",
+     "title": "Ghosted after a quote? Here is what to send.",
+     "text": ""
+    },
+    {
+     "href": "/guides/how-to-get-more-customers/",
+     "title": "How to get more customers without buying leads.",
+     "text": ""
+    },
+    {
+     "href": "/guides/what-a-trade-website-needs/",
+     "title": "What does a trade business website need to make the phone ring?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ],
+ "kicker": "Quotes"
+}

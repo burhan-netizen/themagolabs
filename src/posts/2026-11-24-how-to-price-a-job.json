@@ -1,0 +1,108 @@
+{
+ "path": "/guides/how-to-price-a-job/",
+ "group": "work",
+ "kicker": "Quotes",
+ "date": "2026-11-24",
+ "card": "A simple way to price any job so it covers your wages, your overheads and a real profit, with a worked example you can copy and a markup vs margin table.",
+ "title": "How to Price a Construction Job: A Worked Example",
+ "desc": "How to price a construction job in 2026: labour, materials, overhead, contingency and profit, with a worked example and a markup vs margin table.",
+ "blocks": [
+  {
+   "type": "hero",
+   "h1": "How to price a construction job *so it actually pays.*",
+   "eyebrow": "Guide / November 2026",
+   "lede": "To price a construction job, add up your direct costs (materials, labour at its true hourly cost, subcontractors and hire), add your share of overheads and a contingency for risk, then set the price so profit is a fixed percentage of the final number. Most underpricing comes from three gaps: labour costed at the wage only, overheads left out, and markup confused with margin.",
+   "ticks": [
+    "The price formula in one line",
+    "A worked example with real sums",
+    "Markup vs margin table and the mistakes that kill profit"
+   ]
+  },
+  {
+   "type": "guide",
+   "html": "<h2 id=\"short-answer\">How do you price a construction job?</h2><p>Use one formula for every job, big or small:</p><p><strong>Price = (direct costs + overhead share + contingency) ÷ (1 minus your target profit margin)</strong></p><p>Direct costs are the things the job itself uses up: materials, labour, subcontractors, hire and disposal. Overhead share is the slice of your yearly running costs this job has to carry. Contingency covers the risk you can see coming. Dividing by one minus the margin, instead of adding a percentage on top, makes sure the profit you planned is the profit you keep.</p><p>That is the whole method. The rest of this guide shows how to get each number right, because a formula is only as good as what goes into it.</p>\n\n<h2 id=\"what-goes-in\">What goes into a job price?</h2><p>Work through this list on every quote, in this order, so nothing gets missed:</p><ol><li><strong>Materials.</strong> Use a current supplier quote, not last year's invoice. Add waste (offcuts, breakages, overage) and delivery.</li><li><strong>Labour.</strong> Hours for every person on site, including you, multiplied by the true hourly cost (next section). Include travel, setting up, cleaning up and the return visit for snags.</li><li><strong>Subcontractors.</strong> Get written prices from your electrician, plumber, plasterer or whoever you need, and check what they have left out.</li><li><strong>Equipment and hire.</strong> Scaffolding, mixers, diggers, skip bins (dumpsters in the USA), tip fees and permits.</li><li><strong>Overhead share.</strong> Your van, insurance, phone, software, accountant, tools, marketing and office time, spread across your jobs.</li><li><strong>Contingency.</strong> A small allowance for the unknowns on this particular job, such as rot behind old tiles.</li><li><strong>Profit.</strong> What the business earns for taking the risk, on top of your wage.</li></ol><p>Profit and your wage are different things. If you only pay yourself through what is left over, you are working for a wage with no profit at all.</p>\n\n<h2 id=\"labour-rate\">How do you work out your real labour rate?</h2><p>The wage you pay is not what an hour of labour (labor in the USA) costs you. On top of the wage come payroll taxes, pension or retirement contributions, workers' compensation or employer insurance, paid holidays and sick days. Ask your accountant or payroll provider for the exact on costs in your country, then use this sum:</p><p><strong>True hourly cost = wage × (1 + employer costs as a percentage)</strong></p><p>Do the same for yourself. Decide the wage you would pay someone to do your job and cost your own hours at that rate. Leaving your own time off the quote is one of the quickest ways to have a busy year end with nothing in the bank.</p><p>Then check your hours estimate against your diary. Look at the last three similar jobs and compare the hours you quoted with the hours you actually spent. If jobs keep taking 20% longer than you quoted, add that 20% to your next estimates, or every price you send carries the same loss.</p>\n\n<h2 id=\"overhead\">How much overhead should you add to a job?</h2><p>There is no universal percentage, because overhead depends on your setup. A sole trader working from a van has very different costs to a firm with a yard and an office. Work out your own figure:</p><ol><li>Add up every running cost for the year that is not tied to one job: vehicles and fuel, insurance, phone, software, accounting, tools and repairs, marketing, your website, office or yard rent, and admin wages.</li><li>Estimate your <strong>billable hours</strong> for the year. Start from the hours your crew could work, then take off holidays, bad weather, quoting, admin and quiet weeks. For most small crews this is far below a full time week every week of the year.</li><li>Divide one by the other. That is your <strong>overhead per billable hour</strong>, and every hour of labour on a job carries it.</li></ol><p>Pricing overhead per hour is fairer than a flat percentage on materials. A job with expensive fittings but few hours should not carry the same overhead as a long job with cheap materials.</p>\n\n<h2 id=\"markup-vs-margin\">Markup vs margin: which one are you using?</h2><p>This is where a lot of trades lose money without noticing. <strong>Markup</strong> is a percentage of your cost. <strong>Margin</strong> is a percentage of the price. Add 20% to your costs and your profit is only 16.7% of the price. To keep 20% of the price, you need a 25% markup.</p><table><thead><tr><th>Target margin (of price)</th><th>Markup needed (on cost)</th></tr></thead><tbody><tr><td>10%</td><td>11.1%</td></tr><tr><td>15%</td><td>17.6%</td></tr><tr><td>20%</td><td>25%</td></tr><tr><td>25%</td><td>33.3%</td></tr><tr><td>30%</td><td>42.9%</td></tr></tbody></table><p>The sum behind the table: markup = margin ÷ (1 minus margin). Dividing your total cost by one minus the margin, as in the formula at the top, does the conversion for you.</p><p>How much profit should you aim for? NEXT Insurance's 2026 guide on contractor margins says many well run contractors aim for a net profit margin between 5% and 10%, with top performers going higher. Treat that as a floor to check against, not a target to copy. Small jobs, awkward access and difficult clients deserve more.</p>\n\n<h2 id=\"worked-example\">A worked example: pricing a bathroom refit</h2><p>Here is the formula used on a typical job. The numbers are an example to show the method, not a price guide for your area. Swap in your own figures.</p><table><thead><tr><th>Item</th><th>How it is worked out</th><th>Amount</th></tr></thead><tbody><tr><td>Materials</td><td>Supplier quote including waste and delivery</td><td>$6,000</td></tr><tr><td>Labour</td><td>2 people × 6 days × 8 hours = 96 hours at $45.50 (a $35 wage plus 30% employer costs)</td><td>$4,368</td></tr><tr><td>Subcontractors</td><td>Plumber and electrician, written prices</td><td>$2,500</td></tr><tr><td>Hire and disposal</td><td>Skip bin and tip fees</td><td>$600</td></tr><tr><td><strong>Direct costs</strong></td><td></td><td><strong>$13,468</strong></td></tr><tr><td>Overhead share</td><td>$60,000 a year ÷ 2,800 billable hours = $21.43 an hour × 96 hours</td><td>$2,057</td></tr><tr><td>Contingency</td><td>5% of direct costs, because old bathrooms hide surprises</td><td>$673</td></tr><tr><td><strong>Total cost</strong></td><td></td><td><strong>$16,198</strong></td></tr><tr><td><strong>Price</strong></td><td>$16,198 ÷ 0.90 for a 10% net margin, rounded</td><td><strong>$18,000</strong></td></tr></tbody></table><p>Profit is $18,000 minus $16,198, which is $1,802, or 10% of the price. Everyone on the job is paid, including you, and the business still earns.</p><p>Now the same job priced the way many new contractors do it: direct costs plus 10%. That gives $13,468 × 1.10 = $14,815. It looks like a 10% profit, but once the $2,057 of overhead is paid, the job loses $710 before a single surprise turns up. Two quotes, the same work, a $3,185 difference, and only one of them keeps the business alive.</p>\n\n<h2 id=\"rising-costs\">How should you handle rising material prices in 2026?</h2><p>Costs have moved fast this year. In the USA, the National Association of Home Builders reported in November 2026 that prices for goods used in residential construction were 9.8% higher than in October 2025. The Associated General Contractors of America reported that the index for inputs to new nonresidential construction rose 13.3% over the same twelve months, with steel mill products up 32.9% and copper and brass mill shapes up 23.9%. Costs in the UK, Canada, Australia and New Zealand follow their own paths, so check your local suppliers, but the lesson is the same everywhere:</p><ul><li><strong>Price from today's supplier quote,</strong> never from memory or an old job.</li><li><strong>Put an expiry date on every quote.</strong> A short validity, such as 14 or 30 days, protects you when materials move a lot.</li><li><strong>Name the volatile items.</strong> If copper, steel or timber are a big part of the job, say in the quote that their prices are based on today's supplier prices and may be reviewed if the start date moves. Ask a lawyer or your trade association for wording that suits your contracts.</li><li><strong>Order early on fixed price work,</strong> once the deposit is in, so the price you quoted is the price you pay.</li></ul>\n\n<h2 id=\"mistakes\">Pricing mistakes that kill profit</h2><ul><li><strong>Leaving your own hours off.</strong> Your time is a cost, whether you pay yourself a wage or not.</li><li><strong>Forgetting the small stuff.</strong> Fixings, sealant, sandpaper, fuel and tip runs add up to real money on every job.</li><li><strong>Pricing to beat the cheapest quote.</strong> Someone always works for less. Price to cover your costs and win on trust instead.</li><li><strong>One rate for every job.</strong> A two hour repair carries the same travel and setup as a full day. Set a minimum charge.</li><li><strong>Never checking the result.</strong> Compare quoted and actual hours and materials after every job. It is the only way your next price gets better.</li><li><strong>Giving discounts without removing scope.</strong> If a customer wants it cheaper, offer a smaller job, not the same job for less.</li></ul>\n\n<h2 id=\"presenting\">How do you present the price to the customer?</h2><p>A good price still loses if it arrives as one number on a scrap of paper. Break the quote into clear stages, say what is included and what is not, add the expiry date and your payment terms, and send it quickly. Then follow up. Here is a message you can copy when you send it:</p><p>“Hi Sam, your quote for the bathroom is attached. It covers everything we talked about: strip out, plumbing and electrics by our licensed trades, tiling, fittings and full clean up. The price is held for 14 days because material prices are moving a lot at the moment. Happy to talk it through or look at options if you want to adjust anything. Cheers, Jake.”</p><p>If a customer says it is too expensive, ask which part they would like to change, not how much they want off. That keeps your margin and often finds a smaller job they can say yes to. For what to do when people go quiet, see <a href=\"/guides/customer-ghosted-after-quote/\">our follow up guide for quotes</a>, and for collecting the money, see <a href=\"/guides/how-to-get-paid-on-time/\">how to get paid on time</a>. If you spend hours pricing for people who never book, <a href=\"/guides/should-you-charge-for-quotes/\">charging for complex quotes</a> can help.</p><p>Customers accept a fair price more easily from a business they already trust. Recent reviews, photos of similar jobs and a clear website make your number feel safe rather than steep. See <a href=\"/guides/what-a-trade-website-needs/\">what a trade website needs</a>.</p>"
+  },
+  {
+   "type": "list",
+   "eyebrow": "Do this now",
+   "title": "Your checklist.",
+   "lede": "",
+   "items": [
+    "Get a current supplier quote for materials, including waste and delivery",
+    "Cost every hour at the wage plus employer costs, including your own hours",
+    "Get written prices from subcontractors and check what they exclude",
+    "Work out your overhead per billable hour and add it to every job",
+    "Add a contingency for the risks you can see on this job",
+    "Divide total cost by one minus your target margin to set the price",
+    "Put an expiry date and payment terms on the quote",
+    "Compare quoted and actual hours and materials after the job"
+   ]
+  },
+  {
+   "type": "faq",
+   "eyebrow": "Quick answers",
+   "title": "Common questions.",
+   "lede": "",
+   "items": [
+    {
+     "q": "What is a good profit margin for a contractor?",
+     "a": "Many well run contractors aim for a net profit margin of roughly 5% to 10% after all costs and their own wage, and top performers go higher. Small, awkward or high risk jobs deserve more."
+    },
+    {
+     "q": "Is markup the same as margin?",
+     "a": "No. Markup is a percentage of your cost and margin is a percentage of the price. A 20% markup gives only a 16.7% margin; you need a 25% markup to keep 20% of the price."
+    },
+    {
+     "q": "How do contractors calculate overhead?",
+     "a": "Add up a year of running costs that are not tied to one job, then divide by your billable hours for the year. Every labour hour on a job then carries that overhead amount."
+    },
+    {
+     "q": "Should I charge by the hour or a fixed price?",
+     "a": "Fixed prices suit jobs you can measure and scope clearly, and customers prefer them. Hourly rates suit repairs, diagnosis and jobs with too many unknowns to fix a price."
+    },
+    {
+     "q": "How much contingency should I add to a quote?",
+     "a": "It depends on the risk. A new build with clear plans needs little, while old houses and repairs need more. Many trades use a small percentage of direct costs and explain it as an allowance for unknowns."
+    },
+    {
+     "q": "How do I stop underpricing jobs?",
+     "a": "Cost your own time, include overhead on every job, use margin rather than markup, and compare quoted against actual hours after each job so your estimates keep getting closer."
+    }
+   ]
+  },
+  {
+   "type": "links",
+   "eyebrow": "Keep reading",
+   "title": "More guides.",
+   "lede": "",
+   "items": [
+    {
+     "href": "/guides/should-you-charge-for-quotes/",
+     "title": "Should you charge for quotes?",
+     "text": ""
+    },
+    {
+     "href": "/guides/customer-ghosted-after-quote/",
+     "title": "Ghosted after a quote? Here is what to send.",
+     "text": ""
+    },
+    {
+     "href": "/guides/how-to-get-paid-on-time/",
+     "title": "How to get paid on time: set it up before the job starts.",
+     "text": ""
+    },
+    {
+     "href": "/guides/what-a-trade-website-needs/",
+     "title": "What does a trade business website need to make the phone ring?",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "eyebrow": "Your turn",
+   "title": "Send us your Instagram. We will show you your website.",
+   "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
+  }
+ ]
+}

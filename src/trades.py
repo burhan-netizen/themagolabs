@@ -56,6 +56,8 @@ DESC = {
     "/services/google-business-profile/": "Google Business Profile setup or cleanup for trades: categories, areas, photos, reviews. Quoted up front, and linked to your site free with every build.",
 }
 
+HUB_NAMES = {"hvac": "HVAC contractors", "excavation": "Excavation and civil", "handymen": "Handymen", "glaziers": "Glaziers"}
+
 def build_all(G):
     E, it, href, page, sh, crumbs, bc, faq, faq_schema, final, process, phone, icon = (
         G["E"], G["it"], G["href"], G["page"], G["sh"], G["crumbs"], G["bc"], G["faq"], G["faq_schema"],
@@ -129,6 +131,23 @@ def build_all(G):
                 aside = f'<aside class="tq tq-plain"><span class="lab">{E(card["label"])}</span><ul class="tq-list">{"".join(f"<li>{E(x)}</li>" for x in card["items"])}</ul></aside>'
             return (f'<section class="sec{tone}"><div class="wrap tsplit"><div class="tprose"><p class="tlead" data-rise>{md(lead, base)}</p>'
                     f'{"".join(f"<p data-rise>{md(p, base)}</p>" for p in rest)}</div>{aside}</div></section>')
+        if t == "cards" and not b["items"]:
+            # hub grids on the old site were link cards; rebuild them from our own pages
+            if base == "/trades/": paths = [f"/trades/{x}/" for x in TRADES]
+            elif "cost" in (b.get("title") or "").lower(): paths = [f"/guides/website-cost-{c}/" for c, _ in COUNTRIES]
+            else: paths = ["/guides/local-seo-for-trades/", "/guides/google-business-profile-checklist/", "/guides/what-a-trade-website-needs/"]
+            cards = ""
+            for h in paths:
+                pg = CONTENT[h]; hb = pg["blocks"][0]
+                if base == "/trades/":
+                    kick, ttl = "Websites for", HUB_NAMES.get(h.split("/")[2], h.split("/")[2].title())
+                else:
+                    kick, ttl = ("Guide" if "cost" not in h else dict(COUNTRIES)[h.split("website-cost-")[1].strip("/")]), plain(hb["h1"])
+                d = DESC.get(h) or brand(pg["desc"] or "")
+                d = " ".join(x for x in re.split(r"(?<=\.)\s+", d) if "preview" not in x.lower()) or d
+                cards += (f'<a class="tlink hub" href="{href(h)}"><span class="k">{E(kick)}</span><span class="t">{E(ttl)}</span>'
+                          f'<span class="d">{E(d)}</span><span class="go" aria-hidden="true">→</span></a>')
+            return f'<section class="sec{tone}"><div class="wrap">{head}<div class="tlinks hubs{" g3" if base != "/trades/" else ""}" data-stagger>{cards}</div></div></section>'
         if t == "cards":
             used, cards = set(), ""
             for i, c in enumerate(b["items"]):

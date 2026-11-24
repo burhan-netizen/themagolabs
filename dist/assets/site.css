@@ -1084,6 +1084,13 @@ html{overflow-x:clip}
 .tlink.all .go{background:var(--paper);color:var(--ink)}
 @media (max-width:899px){.tlinks.t9{grid-template-columns:1fr 1fr;gap:10px}.tlinks.t9 .tlink{padding:18px 46px 18px 16px;font-size:15px}.tlinks.t9 .tlink.all{grid-column:1/-1}}
 @media (max-width:899px){.tlinks.t9 .tlink{padding:17px 42px 17px 15px}.tlinks.t9 .tlink .go{width:24px;height:24px;right:12px;top:50%;margin-top:-12px;font-size:12px}}
+/* hub link cards on /trades/ and /guides/ */
+.tlinks.hubs{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.tlink.hub{padding:26px 60px 28px 26px;gap:10px;align-content:start}
+.tlink.hub .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite)}
+.tlink.hub .t{font-size:22px;letter-spacing:-.01em;line-height:1.2}
+.tlink.hub .go{top:24px}
+@media (min-width:1000px){.tlinks.hubs{grid-template-columns:repeat(4,1fr)}.tlinks.hubs.g3{grid-template-columns:repeat(3,1fr)}}
 
 .op-intro{padding:calc(150px + env(safe-area-inset-top,0px)) 0 64px}
 .op-intro h1{font-size:clamp(46px,7vw,110px);line-height:.92;letter-spacing:-.06em;max-width:12ch}

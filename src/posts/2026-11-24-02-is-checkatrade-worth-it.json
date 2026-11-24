@@ -1,6 +1,8 @@
 {
  "path": "/guides/is-checkatrade-worth-it/",
  "group": "work",
+ "kicker": "Leads and ads",
+ "date": "2026-11-24",
  "card": "Checkatrade, MyBuilder and Bark compared: what each really costs, how many trades see the same lead, and the sum that tells you if it pays.",
  "title": "Is Checkatrade Worth It? vs MyBuilder and Bark (2026)",
  "desc": "Is Checkatrade worth it in 2026? What Checkatrade, MyBuilder and Bark really cost UK tradespeople per won job, how leads are shared, and what to do instead.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "Is Checkatrade worth it? *Checkatrade, MyBuilder and Bark compared.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "Checkatrade can pay for itself if you do bigger jobs in a busy area and the badge wins you trust. MyBuilder and Bark are cheaper to start but every lead is shared, so the real cost sits in the jobs you lose. The only way to know is to work out what one won job costs you on each.",
    "ticks": [
     "What each platform charges in 2026",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Leads and ads"
+ ]
 }

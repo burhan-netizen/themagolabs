@@ -1,6 +1,8 @@
 {
  "path": "/guides/are-local-services-ads-worth-it/",
  "group": "work",
+ "kicker": "Leads and ads",
+ "date": "2026-11-24",
  "card": "How Google Local Services Ads charge, what a lead costs in 2026, and the three free things to fix before you spend a dollar on ads.",
  "title": "Are Google Local Services Ads Worth It? (2026)",
  "desc": "Are Google Local Services Ads worth it for contractors? What LSA leads cost in 2026, how disputes work, LSA vs Google Ads, and the free fixes to make first.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "Are Local Services Ads worth it? *Fix three free things first.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "For many contractors in the USA and Canada, Google Local Services Ads are one of the better paid options: you pay per lead, not per click, and the ad sits at the very top of the search. But they work far better when your free Google presence is already strong. Fix those first, then test a small budget and track booked jobs.",
    "ticks": [
     "What LSA leads cost in 2026",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Leads and ads"
+ ]
 }

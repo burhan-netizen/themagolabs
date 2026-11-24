@@ -1,6 +1,8 @@
 {
  "path": "/guides/how-to-deal-with-time-wasters/",
  "group": "work",
+ "kicker": "Quotes",
+ "date": "2026-11-24",
  "card": "Four questions to ask on the phone that filter out tyre kickers before you drive out, and how your website can screen them for you.",
  "title": "How to Deal With Tyre Kickers and Time Wasters",
  "desc": "How contractors filter out tyre kickers and time wasters before driving out to quote: four phone questions, photos first and ballpark prices.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "Four questions that filter *time wasters.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "Trades lose countless hours driving to quotes for people who were never going to go ahead. The fix is not to quote less, it is to qualify faster: ask about budget, timing, photos and who decides, before you get in the van.",
    "ticks": [
     "Four questions for every enquiry",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Quotes"
+ ]
 }

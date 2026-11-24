@@ -1,6 +1,8 @@
 {
  "path": "/guides/how-to-get-paid-on-time/",
  "group": "work",
+ "kicker": "Getting paid",
+ "date": "2026-11-24",
  "card": "Deposits, staged payments and clear terms on every quote: how contractors stop chasing late payments before the job even starts.",
  "title": "How to Get Paid on Time as a Contractor",
  "desc": "How contractors get paid on time: taking deposits, staged progress payments, payment terms on every quote, and what to do when a client pays late.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "How to get paid on time: *set it up before the job starts.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "Late payment is one of the most common money worries for contractors, and most of it is decided before the first tool comes out. Clear terms on the quote, a deposit, staged payments tied to stages of work and fast invoicing stop most problems before they start.",
    "ticks": [
     "Deposits and staged payments",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Getting paid"
+ ]
 }

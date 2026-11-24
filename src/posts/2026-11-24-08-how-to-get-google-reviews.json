@@ -1,6 +1,8 @@
 {
  "path": "/guides/how-to-get-google-reviews/",
  "group": "work",
+ "kicker": "Getting work",
+ "date": "2026-11-24",
  "card": "How new contractors with one review build trust fast: the review ask, the right timing, door knocking, photos and what never to do.",
  "title": "How to Get Google Reviews as a New Contractor",
  "desc": "How to get Google reviews as a new contractor: when and how to ask, a review request text to copy, and how to build trust with only a few reviews.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "How to get Google reviews *when you are just starting out.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "Every established trade started with no reviews. The ones who build them fastest ask every single customer, at the right moment, with a direct link, and back it up with photos of their work and a profile that looks complete. Here is exactly how.",
    "ticks": [
     "When and how to ask",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Getting work"
+ ]
 }

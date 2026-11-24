@@ -14,10 +14,12 @@ for _f in sorted(os.listdir(os.path.join(HERE, "posts"))):
     if _f.endswith(".json"):
         _p = json.load(open(os.path.join(HERE, "posts", _f), encoding="utf-8"))
         CONTENT[_p["path"]] = _p; POSTS.append(_p)
+POSTS.sort(key=lambda x: x.get("date", ""), reverse=True)  # newest first, stable within a day
+HUB_POSTS = 12  # newest posts on /guides/; every post is listed on /guides/all/
 if POSTS:
     _g = CONTENT["/guides/"]["blocks"]
     _i = next(i for i, b in enumerate(_g) if b.get("type") == "cards")
-    _g.insert(_i, {"type": "cards", "eyebrow": "Winning work", "title": "Leads, quotes and *getting paid.*", "items": [], "posts": True})
+    _g.insert(_i, {"type": "cards", "eyebrow": "Winning work", "title": "Latest guides for *winning work.*", "items": [], "posts": True})
 
 TRADES = ["concreters", "excavation", "roofers", "builders", "landscapers", "plumbers", "electricians", "hvac",
           "painters", "tilers", "glaziers", "handymen"]
@@ -67,6 +69,30 @@ DESC = {
     "/guides/website-cost-new-zealand/": "What a trade website costs in New Zealand in 2026: typical market price ranges, what drives the cost, ongoing fees to watch for and what a good build includes.",
     "/services/google-business-profile/": "Google Business Profile setup or cleanup for trades: categories, areas, photos, reviews. Quoted up front, and linked to your site free with every build.",
 }
+
+def build_archive(G):
+    """/guides/all/: every post, grouped by topic, newest first."""
+    E, href, page, sh, crumbs, bc, final = G["E"], G["href"], G["page"], G["sh"], G["crumbs"], G["bc"], G["final"]
+    groups = {}
+    for x in POSTS: groups.setdefault(x.get("kicker") or "Guides", []).append(x)
+    secs, tone = "", ""
+    ORDER = ["Leads and ads", "Quotes", "Getting work", "Getting paid", "Websites and Google", "By trade", "By country", "Running the business"]
+    HEAD = {"Leads and ads": "Leads, platforms *and ads.*", "Quotes": "Quoting *and pricing.*", "Getting work": "Getting *more work.*",
+            "Getting paid": "Getting *paid on time.*", "Websites and Google": "Websites *and Google.*", "By trade": "Guides *by trade.*",
+            "By country": "Guides *by country.*", "Running the business": "Running *the business.*"}
+    MON = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+    when = lambda d: f"{int(d[8:10])} {MON[int(d[5:7]) - 1]} {d[:4]}" if len(d) == 10 else "Guide"
+    for k in ORDER + [g for g in groups if g not in ORDER]:
+        if k not in groups: continue
+        cards = "".join(f'<a class="tlink hub" href="{href(x["path"])}"><span class="k">{E(when(x.get("date", "")))}</span><span class="t">{E(re.sub(r"[*_]", "", x["blocks"][0]["h1"]))}</span><span class="d">{E(x.get("card", ""))}</span><span class="go" aria-hidden="true">→</span></a>' for x in groups[k])
+        secs += f'<section class="sec{tone}"><div class="wrap">{sh(k, HEAD.get(k, k + "."))}<div class="tlinks hubs g3" data-stagger>{cards}</div></div></section>'
+        tone = "" if tone else " stone"
+    body = (f'<section class="phero"><div class="wrap">{crumbs(("/guides/", "Guides"), ("", "All guides"))}<span class="lab kw">Guides for contractors</span>'
+            f'<h1 class="h-page" data-split>Every guide, <em>in one place.</em></h1><p class="lede" data-rise>Straight answers to what contractors and trades search for: leads, quotes, pricing, getting paid, Google and websites. {len(POSTS)} guides and counting.</p></div></section>'
+            + secs + final("Send us your Instagram. *We'll show you your website.*"))
+    page("/guides/all/", "All Guides for Contractors and Trades | The Mago Labs",
+         "Every guide for contractors and trades in one place: leads, quotes, pricing, getting paid, Google reviews, local SEO and websites. New guides added daily.",
+         body, schema=[bc(("/guides/", "Guides"), ("/guides/all/", "All guides"))])
 
 HUB_NAMES = {"hvac": "HVAC contractors", "excavation": "Excavation and civil", "handymen": "Handymen", "glaziers": "Glaziers"}
 
@@ -145,7 +171,7 @@ def build_all(G):
                     f'{"".join(f"<p data-rise>{md(p, base)}</p>" for p in rest)}</div>{aside}</div></section>')
         if t == "cards" and not b["items"]:
             # hub grids on the old site were link cards; rebuild them from our own pages
-            if b.get("posts"): paths = [x["path"] for x in POSTS]
+            if b.get("posts"): paths = [x["path"] for x in POSTS[:HUB_POSTS]]
             elif base == "/trades/": paths = [f"/trades/{x}/" for x in TRADES]
             elif "cost" in (b.get("title") or "").lower(): paths = [f"/guides/website-cost-{c}/" for c, _ in COUNTRIES]
             else: paths = ["/guides/local-seo-for-trades/", "/guides/google-business-profile-checklist/", "/guides/what-a-trade-website-needs/"]
@@ -160,7 +186,8 @@ def build_all(G):
                 d = " ".join(x for x in re.split(r"(?<=\.)\s+", d) if "preview" not in x.lower()) or d
                 cards += (f'<a class="tlink hub" href="{href(h)}"><span class="k">{E(kick)}</span><span class="t">{E(ttl)}</span>'
                           f'<span class="d">{E(d)}</span><span class="go" aria-hidden="true">→</span></a>')
-            return f'<section class="sec{tone}"><div class="wrap">{head}<div class="tlinks hubs{" g3" if base != "/trades/" else ""}" data-stagger>{cards}</div></div></section>'
+            more = (f'<p class="tmore"><a class="btn ghost" href="{href("/guides/all/")}">See all {len(POSTS)} guides</a></p>' if b.get("posts") and len(POSTS) > HUB_POSTS else "")
+            return f'<section class="sec{tone}"><div class="wrap">{head}<div class="tlinks hubs{" g3" if base != "/trades/" else ""}" data-stagger>{cards}</div>{more}</div></section>'
         if t == "cards":
             used, cards = set(), ""
             for i, c in enumerate(b["items"]):
@@ -252,6 +279,8 @@ def build_all(G):
             d = CONTENT[p]; title = re.sub(r"\s*\|.*$", "", d["title"]).strip()
             art = {"@context": "https://schema.org", "@type": "Article", "headline": title[:110], "author": {"@type": "Person", "name": "Burhan Kapasi"},
                    "publisher": {"@type": "Organization", "name": "The Mago Labs"}, "mainEntityOfPage": G["abs_url"](p)}
+            if d.get("date"): art.update(datePublished=d["date"], dateModified=d.get("updated", d["date"]))
             build(p, [("/guides/", "Guides"), ("", title[:48] + ("…" if len(title) > 48 else ""))], [("/guides/", "Guides"), (p, title)], extra_schema=art)
+    build_archive(G)
     for s, n in (("google-business-profile", "Google Business Profile"), ("copywriting", "Copywriting")):
         build(f"/services/{s}/", [("/services/", "Services"), ("", n)], [("/services/", "Services"), (f"/services/{s}/", n)])

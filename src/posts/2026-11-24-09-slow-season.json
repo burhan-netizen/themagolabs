@@ -1,6 +1,8 @@
 {
  "path": "/guides/slow-season/",
  "group": "work",
+ "kicker": "Getting work",
+ "date": "2026-11-24",
  "card": "How busy trades fill winter and quiet months: maintenance offers, past customers, commercial work, Google posts and getting ready before the slump.",
  "title": "How to Get Work in the Slow Season as a Contractor",
  "desc": "How contractors get work in winter and the slow season: maintenance offers, past customer texts, commercial work, Google posts and planning ahead.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "How busy trades *fill the slow season.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "Feast or famine is the most common complaint in trade forums after leads. The trades who stay steady plan for quiet months before they arrive: they sell maintenance, contact past customers, chase commercial and builder work, and keep their Google presence active so they are the one found when work does come up.",
    "ticks": [
     "Seven ways to fill quiet months",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Getting work"
+ ]
 }

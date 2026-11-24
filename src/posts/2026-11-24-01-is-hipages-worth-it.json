@@ -1,6 +1,8 @@
 {
  "path": "/guides/is-hipages-worth-it/",
  "group": "work",
+ "kicker": "Leads and ads",
+ "date": "2026-11-24",
  "card": "hipages plans, what a lead really costs once it is shared with other tradies, the sum to do before your contract renews, and what to build instead.",
  "title": "Is hipages Worth It? The Real Cost Per Job (2026)",
  "desc": "Is hipages worth it in 2026? What hipages plans and leads really cost per won job, the 12 month contract catch, and how Australian trades get work without it.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "Is hipages worth it? *The real cost per job.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "hipages can be worth it for a new business in a big city that needs jobs on the calendar and can call every lead straight back. For most established trades it is an expensive way to win small jobs, because each lead is shared with other tradies and the monthly plan runs whether the phone rings or not. Here is how to check your own numbers.",
    "ticks": [
     "Current hipages plans and lead costs",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Leads and ads"
+ ]
 }

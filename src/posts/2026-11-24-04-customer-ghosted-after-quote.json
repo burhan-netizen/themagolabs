@@ -1,6 +1,8 @@
 {
  "path": "/guides/customer-ghosted-after-quote/",
  "group": "work",
+ "kicker": "Quotes",
+ "date": "2026-11-24",
  "card": "Why homeowners go quiet after a quote, the three message follow up that gets replies, and how to stop handing your drawings to a cheaper competitor.",
  "title": "Customer Ghosted After a Quote? The Follow Up That Works",
  "desc": "Customer ghosted you after a quote? Why homeowners go quiet, a three message follow up text that gets replies, and how to stop wasting hours quoting.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "Ghosted after a quote? *Here is what to send.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "Most homeowners who go quiet after a quote are not being rude. They got several quotes, someone was cheaper or quicker, and saying no feels awkward, so they say nothing. You cannot stop it completely, but a ballpark price first, an expiry date on every quote and a short follow up sequence win back a surprising share.",
    "ticks": [
     "Why customers go quiet",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Quotes"
+ ]
 }

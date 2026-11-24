@@ -1,6 +1,8 @@
 {
  "path": "/guides/how-to-get-more-customers/",
  "group": "work",
+ "kicker": "Getting work",
+ "date": "2026-11-24",
  "card": "Seven ways contractors get more customers without buying shared leads, ranked from free and fast to slower and longer lasting.",
  "title": "How to Get More Customers as a Contractor",
  "desc": "How to get more customers as a contractor without buying shared leads: Google Business Profile, reviews, referrals, builders and your own website.",
@@ -8,7 +10,7 @@
   {
    "type": "hero",
    "h1": "How to get more customers *without buying leads.*",
-   "eyebrow": "Guide / Updated November 2026",
+   "eyebrow": "Guide / November 2026",
    "lede": "The contractors who stay busy all year usually do the same few things: they are easy to find on Google, they have plenty of recent reviews, they ask for referrals on purpose, and they keep in touch with past customers and builders. None of it costs per lead, and all of it keeps working after the job is done.",
    "ticks": [
     "Seven ways, from fastest to longest lasting",
@@ -98,6 +100,5 @@
    "title": "Send us your Instagram. We will show you your website.",
    "text": "Within 48 hours you get a working preview of your new site, free and with no strings."
   }
- ],
- "kicker": "Getting work"
+ ]
 }

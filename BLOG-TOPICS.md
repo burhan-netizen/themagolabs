@@ -8,7 +8,7 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 |---|------|------------------|-------|-------|--------|
 | 1 | how-to-price-a-job | how to price a construction job | Quotes | Materials, labour, overheads, margin; a worked example; mistakes that kill profit | 2026-11-24 |
 | 2 | google-business-profile-suspended | google business profile suspended | Websites and Google | Why profiles get suspended, how to appeal, how to avoid it | 2026-11-25 |
-| 3 | how-to-get-commercial-work | how to get commercial work as a contractor | Getting work | Property managers, facilities, tenders, prequalification, insurance | todo |
+| 3 | how-to-get-commercial-work | how to get commercial work as a contractor | Getting work | Property managers, facilities, tenders, prequalification, insurance | 2026-11-25 |
 | 4 | roofing-leads | how to get more roofing leads | By trade | Storm seasons, inspections, insurance work, reviews, photos, Google | todo |
 | 5 | how-to-write-a-quote | how to write a quote for a job | Quotes | What to include, a free template layout, presentation that wins | todo |
 | 6 | do-contractors-need-a-website | do contractors need a website | Websites and Google | Honest answer, word of mouth vs search, what a basic site needs | todo |
@@ -64,3 +64,6 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | 56 | is-serviceseeking-worth-it | is serviceseeking worth it | By country | Australia; how it charges, the sum, alternatives | todo |
 | 57 | canada-contractor-get-more-clients | how to get more clients as a contractor in canada | By country | Canada: Google, HomeStars, builders, winter work | todo |
 | 58 | how-to-get-government-contracts | how to get government contracts as a small contractor | Getting work | Registrations, small tenders, subcontracting first | todo |
+| 59 | chas-vs-safecontractor | chas vs safecontractor vs constructionline | By country | UK; what each checks, who asks for which, annual fees, picking one | todo |
+| 60 | contractor-retainage | what is retainage in construction | Getting paid | Retention or retainage explained, caps, getting it released, cash flow | todo |
+| 61 | capability-statement-for-contractors | capability statement for contractors | Getting work | What to include, a layout to copy, when commercial buyers ask | todo |

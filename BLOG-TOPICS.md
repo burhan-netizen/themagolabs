@@ -7,7 +7,7 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | # | Slug | Main search term | Group | Angle | Status |
 |---|------|------------------|-------|-------|--------|
 | 1 | how-to-price-a-job | how to price a construction job | Quotes | Materials, labour, overheads, margin; a worked example; mistakes that kill profit | 2026-11-24 |
-| 2 | google-business-profile-suspended | google business profile suspended | Websites and Google | Why profiles get suspended, how to appeal, how to avoid it | todo |
+| 2 | google-business-profile-suspended | google business profile suspended | Websites and Google | Why profiles get suspended, how to appeal, how to avoid it | 2026-11-25 |
 | 3 | how-to-get-commercial-work | how to get commercial work as a contractor | Getting work | Property managers, facilities, tenders, prequalification, insurance | todo |
 | 4 | roofing-leads | how to get more roofing leads | By trade | Storm seasons, inspections, insurance work, reviews, photos, Google | todo |
 | 5 | how-to-write-a-quote | how to write a quote for a job | Quotes | What to include, a free template layout, presentation that wins | todo |

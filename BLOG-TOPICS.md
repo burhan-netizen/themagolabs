@@ -10,7 +10,7 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | 2 | google-business-profile-suspended | google business profile suspended | Websites and Google | Why profiles get suspended, how to appeal, how to avoid it | 2026-11-25 |
 | 3 | how-to-get-commercial-work | how to get commercial work as a contractor | Getting work | Property managers, facilities, tenders, prequalification, insurance | 2026-11-25 |
 | 4 | roofing-leads | how to get more roofing leads | By trade | Storm seasons, inspections, insurance work, reviews, photos, Google | 2026-11-25 |
-| 5 | how-to-write-a-quote | how to write a quote for a job | Quotes | What to include, a free template layout, presentation that wins | todo |
+| 5 | how-to-write-a-quote | how to write a quote for a job | Quotes | What to include, a free template layout, presentation that wins | 2026-11-26 |
 | 6 | do-contractors-need-a-website | do contractors need a website | Websites and Google | Honest answer, word of mouth vs search, what a basic site needs | todo |
 | 7 | is-homestars-worth-it | is homestars worth it | By country | Canada; how it charges, shared leads, cost per job sum, alternatives | todo |
 | 8 | contractor-cash-flow | cash flow tips for contractors | Getting paid | Deposits, stages, materials timing, buffers, slow payers | todo |

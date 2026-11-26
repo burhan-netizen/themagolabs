@@ -12,7 +12,7 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | 4 | roofing-leads | how to get more roofing leads | By trade | Storm seasons, inspections, insurance work, reviews, photos, Google | 2026-11-25 |
 | 5 | how-to-write-a-quote | how to write a quote for a job | Quotes | What to include, a free template layout, presentation that wins | 2026-11-26 |
 | 6 | do-contractors-need-a-website | do contractors need a website | Websites and Google | Honest answer, word of mouth vs search, what a basic site needs | 2026-11-26 |
-| 7 | is-homestars-worth-it | is homestars worth it | By country | Canada; how it charges, shared leads, cost per job sum, alternatives | todo |
+| 7 | is-homestars-worth-it | is homestars worth it | By country | Canada; how it charges, shared leads, cost per job sum, alternatives | 2026-11-26 |
 | 8 | contractor-cash-flow | cash flow tips for contractors | Getting paid | Deposits, stages, materials timing, buffers, slow payers | todo |
 | 9 | how-to-get-work-from-builders | how to get work from builders | Getting work | Approaching builders, reliability, rates, staying on the list | todo |
 | 10 | concrete-contractor-marketing | concrete contractor marketing | By trade | Driveways, patios, commercial; photos, Google, seasonal timing | todo |
@@ -67,3 +67,4 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | 59 | chas-vs-safecontractor | chas vs safecontractor vs constructionline | By country | UK; what each checks, who asks for which, annual fees, picking one | todo |
 | 60 | contractor-retainage | what is retainage in construction | Getting paid | Retention or retainage explained, caps, getting it released, cash flow | todo |
 | 61 | capability-statement-for-contractors | capability statement for contractors | Getting work | What to include, a layout to copy, when commercial buyers ask | todo |
+| 62 | is-trustedpros-worth-it | is trustedpros worth it | By country | Canada; flat monthly membership vs pay per lead, the sum, alternatives | todo |

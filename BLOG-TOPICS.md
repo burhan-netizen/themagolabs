@@ -13,7 +13,7 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | 5 | how-to-write-a-quote | how to write a quote for a job | Quotes | What to include, a free template layout, presentation that wins | 2026-11-26 |
 | 6 | do-contractors-need-a-website | do contractors need a website | Websites and Google | Honest answer, word of mouth vs search, what a basic site needs | 2026-11-26 |
 | 7 | is-homestars-worth-it | is homestars worth it | By country | Canada; how it charges, shared leads, cost per job sum, alternatives | 2026-11-26 |
-| 8 | contractor-cash-flow | cash flow tips for contractors | Getting paid | Deposits, stages, materials timing, buffers, slow payers | todo |
+| 8 | contractor-cash-flow | cash flow tips for contractors | Getting paid | Deposits, stages, materials timing, buffers, slow payers | 2026-11-27 |
 | 9 | how-to-get-work-from-builders | how to get work from builders | Getting work | Approaching builders, reliability, rates, staying on the list | todo |
 | 10 | concrete-contractor-marketing | concrete contractor marketing | By trade | Driveways, patios, commercial; photos, Google, seasonal timing | todo |
 | 11 | how-to-respond-to-bad-reviews | how to respond to a bad review | Websites and Google | Reply templates, removal rules, turning it into trust | todo |

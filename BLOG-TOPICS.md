@@ -18,7 +18,7 @@ Groups: Leads and ads · Quotes · Getting work · Getting paid · Websites and 
 | 10 | concrete-contractor-marketing | concrete contractor marketing | By trade | Driveways, patios, commercial; photos, Google, seasonal timing | 2026-11-27 |
 | 11 | how-to-respond-to-bad-reviews | how to respond to a bad review | Websites and Google | Reply templates, removal rules, turning it into trust | 2026-11-28 |
 | 12 | facebook-ads-for-contractors | are facebook ads worth it for contractors | Leads and ads | When they work, budgets, lead forms vs calls, tracking | 2026-11-28 |
-| 13 | how-to-raise-your-prices | how to raise prices as a contractor | Quotes | When, how much, what to say to existing clients | todo |
+| 13 | how-to-raise-your-prices | how to raise prices as a contractor | Quotes | When, how much, what to say to existing clients | 2026-11-28 |
 | 14 | is-rated-people-worth-it | is rated people worth it | By country | UK; subscription, leads per job, the sum, alternatives | todo |
 | 15 | landscaping-marketing | landscaping marketing ideas | By trade | Seasonal offers, maintenance contracts, photos, Google | todo |
 | 16 | why-not-showing-on-google-maps | why is my business not showing on google maps | Websites and Google | Verification, categories, proximity, suspensions, fixes | todo |
